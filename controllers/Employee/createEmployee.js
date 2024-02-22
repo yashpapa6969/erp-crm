@@ -1,0 +1,88 @@
+const schemas = require("../../mongodb/schemas/schemas");
+const bcrypt = require("bcryptjs");
+const sendEmail = require("../../middleware/mailingService")
+
+const hashPassword = async (password) => {
+    const saltRounds = 10;
+    return bcrypt.hash(password, saltRounds);
+};
+
+const createEmployee = async (req, res) => {
+    const {
+        name,
+        dob,
+        position,
+        department,
+        email,
+        password,
+        joiningDate,
+        manager_id,
+    } = req.body;
+
+    try {
+        // Check for an existing employee with the same email
+        const existingEmployee = await schemas.Employee.findOne({ email: email });
+
+        if (existingEmployee) {
+            res.status(400).json({ message: "Employee with this email is already registered" });
+        } else {
+            const hashedPassword = await hashPassword(password);
+
+            const employee = new schemas.Employee({
+                name,
+                dob,
+                position,
+                department,
+                email,
+                password: hashedPassword,
+                joiningDate,
+                manager_id
+            });
+            await sendEmail(
+                email,
+                "Welcome to the Company",
+                `Welcome ${name}! Your account has been created. Your initial password is ${password}. Please change it upon your first login.`,
+                `<!DOCTYPE html>
+                <html lang="en">
+                <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <style>
+                    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; color: #333; background-color: #f4f4f4; }
+                    .container { background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+                    h1 { color: #007bff; }
+                    p { line-height: 1.6; }
+                    .footer { margin-top: 20px; font-size: 0.9em; text-align: center; color: #666; }
+                    .button { background-color: #007bff; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; }
+                </style>
+                </head>
+                <body>
+                <div class="container">
+                    <h1>Welcome to the Company, ${name}!</h1>
+                    <p>Your account has been created successfully. For your security, we have not included your password in this email.</p>
+                    <p>Please follow the link below to set up your password and access your account:</p>
+                    <a href="https://yourcompany.com/set-password" class="button">Set Your Password</a>
+                    <p>If you did not request this account or if you have any questions, please contact our support team.</p>
+                    <div class="footer">
+                        <p>Thank you for joining us!<br>The Company Team</p>
+                    </div>
+                </div>
+                </body>
+                </html>
+                `
+            );
+            await employee.save();
+            console.log("Saved to the employee collection.");
+            console.log(employee);
+          
+            res.status(200).json({
+                message: "Employee successfully registered!",
+            });
+        }
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
+module.exports = createEmployee;
+
