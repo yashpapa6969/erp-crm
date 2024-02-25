@@ -24,8 +24,8 @@ const createProject = async (req, res) => {
             status,
             totalRate,
             estimatedHours,
-            startDate: new Date(startDate), // Ensure date is correctly handled
-            deadline: deadline ? new Date(deadline) : undefined, // Ensure date is correctly handled
+            startDate: startDate,
+            deadline: deadline,
             tags,
             description,
             employees
