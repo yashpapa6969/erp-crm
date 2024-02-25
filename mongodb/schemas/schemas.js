@@ -2,6 +2,7 @@ const Employee = require('./employee');
 const Project = require('./project');
 const Client = require('./client');
 const LeaveRequest = require('./leaveManagement');
+const Lead = require('./leads');
 
 var schemas =
  {
@@ -9,6 +10,8 @@ var schemas =
     Employee:Employee,
     Client:Client,
     LeaveRequest:LeaveRequest,
+    Lead:Lead,
+    
 
    
   }

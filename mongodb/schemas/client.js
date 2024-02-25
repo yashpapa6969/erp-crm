@@ -84,6 +84,12 @@ const clientSchema = new mongoose.Schema({
         enum: ['new', 'working', 'client', 'contacted','proposal'], // Add more statuses as needed
         default: 'new' // Default status for new employees
     },
+    status: {
+        type: String,
+        required: true,
+        enum: ['Raw', 'In-Progress', 'Converted', 'Lost'],
+        default: 'new' // Default status for new employees
+    },
 });
 
 const Client = mongoose.model('Client', clientSchema);

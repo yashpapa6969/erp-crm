@@ -10,11 +10,6 @@ const upload = multer({ dest: '/tmp/' })
 // router.patch('/changeScore/:team_id/:Score',(req,res)=>{apis.changeScore(req,res)});
 // router.delete('/deleteTeam/:team_id',(req,res)=>{apis.deleteTeam(req,res)});
 
-// router.get('/giveHints/:team_id/:question_id/:clue_number',(req,res) => {apis.giveHints(req,res)});
-
-//   router.post('/invalidateToken',(req,res) => {apis.invalidateToken(req,res)});
-  
-//   router.get('/changeQuestionStatus',(req,res) => {apis.changeQuestionStatus(req,res)});
   router.post('/createEmployee',(req,res) => {apis.createEmployee(req,res)});
   router.get('/getAllEmployees',(req,res) => {apis.getAllEmployees(req,res)});
   router.get('/getEmployeeByID/:employee_id',(req,res) => {apis.getEmployeeDetails(req,res)});
@@ -30,6 +25,8 @@ const upload = multer({ dest: '/tmp/' })
   router.get('/getClientDetails/:client_id',(req,res) => {apis.getClientDetails(req,res)});
   router.get('/getAllClients',(req,res) => {apis.getAllClients(req,res)});
   
+  
+  router.post('/createLead',(req,res) => {apis.createLead(req,res)});
 
 
 
