@@ -1,12 +1,13 @@
 const schemas = require("../../mongodb/schemas/schemas");
 
-const updateLeadStatus = async (req, res) => {
+async function updateLeadStatus(req, res) {
+
     try {
         const { lead_id } = req.params;
         const { status } = req.params;
 
         const lead = await schemas.Lead.findOne({ lead_id: lead_id });
-        console.log(lead)
+        console.log(lead);
 
         if (!lead) {
             return res.status(404).json({ message: "Lead not found" });
@@ -45,7 +46,8 @@ const updateLeadStatus = async (req, res) => {
                     clientAnniversary: lead.clientAnniversary || undefined,
                     workStartDate: lead.workStartDate || undefined,
                     companyAnniversary: lead.companyAnniversary || undefined,
-                }
+                    
+                };
                 const newClient = new schemas.Client(
                     clientData
                 );
@@ -65,6 +67,6 @@ const updateLeadStatus = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-};
+}
 
 module.exports = updateLeadStatus;

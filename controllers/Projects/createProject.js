@@ -1,17 +1,16 @@
 const schemas = require("../../mongodb/schemas/schemas");
-const sendEmail = require("../../middleware/mailingService")
+const sendEmail = require("../../middleware/mailingService");
 
-   createProject = async (req, res) => {
+const createProject = async (req, res) => {
     const {
         projectName,
         client_id,
-        progress,
-        billingType,
+        billingType, // Include if your schema has this field
         status,
         totalRate,
         estimatedHours,
         startDate,
-        endDate,
+        deadline, // Changed from endDate to deadline
         tags,
         description,
         employees
@@ -21,23 +20,23 @@ const sendEmail = require("../../middleware/mailingService")
         const newProject = new schemas.Project({
             projectName,
             client_id,
-            progress,
-            billingType,
+            billingType, // Include if your schema has this field and it's necessary for project creation
             status,
             totalRate,
             estimatedHours,
-            startDate,
-            endDate,
+            startDate: new Date(startDate), // Ensure date is correctly handled
+            deadline: deadline ? new Date(deadline) : undefined, // Ensure date is correctly handled
             tags,
             description,
             employees
         });
 
-       const project  = await newProject.save(); 
+        const project = await newProject.save();
 
-        await  notifyProjectStart(project.projectId, project.client_id, project.employees);
+        // Ensure notifyProjectStart properly handles the project_id, client_id, and employees
+        await notifyProjectStart(project.project_id, project.client_id, project.employees);
 
-        res.status(201).json({ message: "Project successfully created!", project: newProject });
+        res.status(201).json({ message: "Project successfully created!", project });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

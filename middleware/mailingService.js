@@ -13,8 +13,7 @@ var transporter = nodemailer.createTransport(smtpTransport({
 }));
 
 /**
- * Sends an email.
- * 
+
  * @param {string} to Recipient's email address
  * @param {string} subject Subject of the email
  * @param {string} textBody Plain text body of the email

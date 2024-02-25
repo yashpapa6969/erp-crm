@@ -2,15 +2,15 @@ const schemas = require("../../mongodb/schemas/schemas");
 
 
 const updateLead= async (req, res) => {
-    const { client_id } = req.params;
+    const { lead_id } = req.params;
     const updateData = req.body;
   
     try {
-      const updatedClient = await schemas.Client.find({client_id:client_id, updateData}, { new: true });
-      if (!updatedClient) {
+      const updatedLead = await schemas.Lead.find({lead_id:lead_id, updateData}, { new: true });
+      if (!updatedLead) {
         return res.status(404).send({ message: 'Client not found' });
       }
-      res.send(updatedClient);
+      res.send(updatedLead);
     } catch (error) {
       res.status(500).send({ message: error.message });
     }

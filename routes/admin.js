@@ -49,11 +49,13 @@ router.post('/createLead', uploadFields, apis.createLead);
   router.post('/createClient',(req,res) => {apis.createClient(req,res)});
   router.get('/getClientDetails/:client_id',(req,res) => {apis.getClientDetails(req,res)});
   router.get('/getAllClients',(req,res) => {apis.getAllClients(req,res)});
-  
+  router.patch('/updateClient/:client_id',(req,res) => {apis.updateClient(req,res)});
+
   
   router.get('/getAllLeads',(req,res) => {apis.getAllLeads(req,res)});
   router.get('/updateLeadStatus/:lead_id/:status',(req,res) => {apis.updateLeadStatus(req,res)});
+  router.patch('/updateLead/:leqd_id',(req,res) => {apis.updateLead(req,res)});
 
-
+  
 
 module.exports = router

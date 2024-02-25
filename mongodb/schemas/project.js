@@ -11,17 +11,15 @@ const projectSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    progress: { 
-        type: Number,
-        required: true,
-        default: 0 
-    },
-    billingType: {
+    brandName: {
         type: String,
-        required: true,
-        enum: ['Hourly', 'Fixed Price', 'Retainer'],
-        default: 'Hourly'
+        required: true
     },
+    priority: {
+        type: String,
+        required: true
+    },
+  
     status: {
         type: String,
         required: true,
@@ -37,12 +35,11 @@ const projectSchema = new mongoose.Schema({
         required: false 
     },
     startDate: {
-        type: Date,
+        type: String,
         required: true,
-        default: Date.now
     },
-    endDate: { 
-        type: Date
+    deadline: { 
+        type: String
     },
     tags: [{ 
         type: String
@@ -54,12 +51,6 @@ const projectSchema = new mongoose.Schema({
     employees: [{
         type: String,
         required: true,
-        validate: {
-            validator: function(v) {
-                return /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/.test(v);
-            },
-            message: props => `${props.value} is not a valid UUID format for employee_id`
-        }
     }]
 });
 
