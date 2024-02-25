@@ -17,6 +17,8 @@ const getAllClients = require("./Clients/getAllClients");
 
 
 const createLead = require("./Leads/createLead"); 
+const getAllLeads = require("./Leads/getAllLeads"); 
+const updateLeadStatus = require("./Leads/changeLeadStatus"); 
 
 
 
@@ -36,7 +38,9 @@ var apis = {
   LoginEmployee:LoginEmployee,
 
   createLead:createLead,
-  
+  getAllLeads:getAllLeads,
+  updateLeadStatus:updateLeadStatus,
+
 };
 
 module.exports = apis;

@@ -27,6 +27,8 @@ const upload = multer({ dest: '/tmp/' })
   
   
   router.post('/createLead',(req,res) => {apis.createLead(req,res)});
+  router.get('/getAllLeads',(req,res) => {apis.getAllLeads(req,res)});
+  router.get('/updateLeadStatus/:lead_id/:status',(req,res) => {apis.updateLeadStatus(req,res)});
 
 
 
