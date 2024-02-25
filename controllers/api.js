@@ -8,6 +8,8 @@ const getAllManagersbyDepartment = require("./Employee/getAllManagersByDepartmen
 const getManagersAllDetails = require("./Employee/getAllManagers"); 
 
 const createProject = require("./Projects/createProject"); 
+const getAllProjects = require("./Projects/getAllProjects"); 
+
 
 
 const createClient = require("./Clients/createClient"); 
@@ -21,7 +23,6 @@ const getAllLeads = require("./Leads/getAllLeads");
 const updateLeadStatus = require("./Leads/changeLeadStatus"); 
 
 
-
 var apis = {
   createEmployee:createEmployee,
   getAllEmployees:getAllEmployees,
@@ -31,6 +32,7 @@ var apis = {
   getManagersAllDetails:getManagersAllDetails,
 
   createProject:createProject,
+  getAllProjects:getAllProjects,
 
   createClient:createClient,
   getClientDetails:getClientDetails,

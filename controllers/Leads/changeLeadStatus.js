@@ -2,16 +2,17 @@ const schemas = require("../../mongodb/schemas/schemas");
 
 const updateLeadStatus = async (req, res) => {
     try {
-        const  lead_id  = req.params; 
-        const  status  = req.params; 
+        const { lead_id } = req.params;
+        const { status } = req.params;
 
-        const lead = await schemas.Lead.find({lead_id:lead_id});
+        const lead = await schemas.Lead.findOne({ lead_id: lead_id });
+        console.log(lead)
 
         if (!lead) {
             return res.status(404).json({ message: "Lead not found" });
         }
 
-        switch (status) {
+        switch (parseInt(status)) {
             case 0:
                 lead.status = 'Raw';
                 break;
@@ -20,12 +21,41 @@ const updateLeadStatus = async (req, res) => {
                 break;
             case 2:
                 lead.status = 'Converted';
+                const clientData = {
+                    enquiryDate: lead.enquiryDate,
+                    source: lead.source,
+                    brandName: lead.brandName,
+                    clientName: lead.clientName,
+                    phone1: lead.phone1,
+                    phone2: lead.phone2 || undefined,
+                    email1: lead.email1,
+                    email2: lead.email2 || undefined,
+                    website: lead.website || undefined,
+                    businessAddress: lead.businessAddress || undefined,
+                    city: lead.city || undefined,
+                    state: lead.state || undefined,
+                    pincode: lead.pincode || undefined,
+                    country: lead.country || undefined,
+                    requirement: lead.requirement || undefined,
+                    additionalInformation: lead.additionalInformation || undefined,
+                    singleFile: lead.singleFile || undefined,
+                    multipleFiles: lead.multipleFiles || [],
+                    clientBirthday: lead.clientBirthday || undefined,
+                    gstNo: lead.gstNo || undefined,
+                    clientAnniversary: lead.clientAnniversary || undefined,
+                    workStartDate: lead.workStartDate || undefined,
+                    companyAnniversary: lead.companyAnniversary || undefined,
+                }
+                const newClient = new schemas.Client(
+                    clientData
+                );
+                await newClient.save();
                 break;
             case 3:
                 lead.status = 'Lost';
                 break;
             default:
-                lead.status = 'Raw'; 
+                lead.status = 'Raw';
                 break;
         }
 

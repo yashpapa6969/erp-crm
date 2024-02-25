@@ -15,12 +15,12 @@ ConnectToDb();
 
 const app = express();
 
-// Add middleware to parse JSON requests
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 
@@ -28,7 +28,6 @@ const httpServer = createServer(app);
 
 const corsOptions = {
   origin: '*', // This should be the URL of your front-end app
-  // ... any other options you need
 };
 
 // Use CORS with the above options

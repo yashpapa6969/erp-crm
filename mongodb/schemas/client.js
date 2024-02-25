@@ -3,26 +3,36 @@ const { v4: uuidv4 } = require('uuid');
 
 const clientSchema = new mongoose.Schema({
     client_id: { type: String, default: uuidv4 },
+  
+    enquiryDate: {
+        type: String,
+        required: true
+    },
+    source: {
+        type: String,
+        required: true
+    },
+    brandName: {
+        type: String,
+        required: true
+    },
+   
     clientName: {
         type: String,
         required: true
     },
-    contactName: {
-        type: String,
-        required: false
-    },
-    email: {
+   
+    phone1: {
         type: String,
         required: true,
-        unique: true,
         validate: {
-            validator: function(email) {
-                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+            validator: function(phone) {
+                return /^\+?[1-9]\d{1,14}$/.test(phone);
             },
-            message: props => `${props.value} is not a valid email!`
+            message: props => `${props.value} is not a valid phone number!`
         }
     },
-    phone: {
+    phone2: {
         type: String,
         required: false,
         validate: {
@@ -32,33 +42,33 @@ const clientSchema = new mongoose.Schema({
             message: props => `${props.value} is not a valid phone number!`
         }
     },
-    industry: {
+    email1: {
         type: String,
-        required: false
+        required: false,
+        unique: true,
+        validate: {
+            validator: function(email) {
+                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+            },
+            message: props => `${props.value} is not a valid email!`
+        }
     },
-    notes: {
+    email2: {
         type: String,
-        required: false
+        required: false,
+        unique: false,
+        validate: {
+            validator: function(email) {
+                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+            },
+            message: props => `${props.value} is not a valid email!`
+        }
     },
- 
     website: {
         type: String,
         required: false
     },
-    groups: [{
-        type: String,
-        enum: ['High Budget', 'Low Budget', 'VIP', 'Wholesaler'],
-        required: false
-    }],
-    currency: {
-        type: String,
-        required: false
-    },
-    defaultLanguage: {
-        type: String,
-        required: false
-    },
-    address: {
+    businessAddress: {
         type: String,
         required: false
     },
@@ -70,7 +80,7 @@ const clientSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    zipCode: {
+    pincode: {
         type: String,
         required: false
     },
@@ -78,18 +88,44 @@ const clientSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    status: {
+    requirement: {
         type: String,
-        required: true,
-        enum: ['new', 'working', 'client', 'contacted','proposal'], // Add more statuses as needed
-        default: 'new' // Default status for new employees
+        required: false
     },
-    status: {
+    additionalInformation: {
         type: String,
-        required: true,
-        enum: ['Raw', 'In-Progress', 'Converted', 'Lost'],
-        default: 'new' // Default status for new employees
+        required: false
     },
+   
+    singleFile: {
+        type: String,
+        required: false // Set to true if it should be required
+    },
+    multipleFiles: [{
+        type: String,
+        required: false
+    }],
+    clientBirthday: {
+        type: String,
+        required: false
+    },
+    gstNo: {
+        type: String,
+        required: false
+    },
+    clientAnniversary: {
+        type: String,
+        required: false
+    },
+    workStartDate: {
+        type: String,
+        required: false
+    },
+    companyAnniversary: {
+        type: String,
+        required: false
+    },
+  
 });
 
 const Client = mongoose.model('Client', clientSchema);

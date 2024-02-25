@@ -17,14 +17,11 @@ const leadSchema = new mongoose.Schema({
         required: true
     },
    
-    firstName: {
+    clientName: {
         type: String,
         required: true
     },
-    lastName: {
-        type: String,
-        required: false
-    },
+   
     phone1: {
         type: String,
         required: true,
@@ -59,7 +56,7 @@ const leadSchema = new mongoose.Schema({
     email2: {
         type: String,
         required: false,
-        unique: true,
+        unique: false,
         validate: {
             validator: function(email) {
                 return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
@@ -105,6 +102,15 @@ const leadSchema = new mongoose.Schema({
         enum: ['Raw', 'In-Progress', 'Converted', 'Lost'],
         default: 'Raw'
     },
+    singleFile: {
+        type: String,
+        required: false // Set to true if it should be required
+    },
+    multipleFiles: [{
+        type: String,
+        required: false
+    }],
+
 }, );
 
 const Lead = mongoose.model('Lead', leadSchema);
