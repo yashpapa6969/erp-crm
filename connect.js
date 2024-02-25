@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 // MongoDB connection URL and database name
-const mongoURI = 'mongodb+srv://yashpapa:1234@cluster0.g9wrzbg.mongodb.net/?retryWrites=true&w=majority';
+const mongoURI = '';
 const dbName = 'dark';
 
 async function AddConnectionFromMongoDB(connectionId) {
