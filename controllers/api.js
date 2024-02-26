@@ -9,6 +9,7 @@ const getManagersAllDetails = require("./Employee/getAllManagers");
 
 const createProject = require("./Projects/createProject"); 
 const getAllProjects = require("./Projects/getAllProjects"); 
+const getProjectDetails = require("./Projects/getProjectById"); 
 
 
 
@@ -23,6 +24,13 @@ const getAllLeads = require("./Leads/getAllLeads");
 const updateLeadStatus = require("./Leads/changeLeadStatus"); 
 const updateLead = require("./Leads/updateDetails"); 
 
+const addTag = require("./Tags/addTags"); 
+const getAllTags = require("./Tags/getAllTags"); 
+const getTagsDetails = require("./Tags/getTagsbyID"); 
+
+
+
+
 
 
 var apis = {
@@ -35,6 +43,7 @@ var apis = {
 
   createProject:createProject,
   getAllProjects:getAllProjects,
+  getProjectDetails:getProjectDetails,
 
   createClient:createClient,
   getClientDetails:getClientDetails,
@@ -48,6 +57,10 @@ var apis = {
   updateLeadStatus:updateLeadStatus,
   updateLead:updateLead,
   
+  addTag:addTag,
+  getAllTags:getAllTags,
+  getTagsDetails:getTagsDetails,
+
 };
 
 module.exports = apis;

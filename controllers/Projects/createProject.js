@@ -20,7 +20,7 @@ const createProject = async (req, res) => {
         const newProject = new schemas.Project({
             projectName,
             client_id,
-            billingType, // Include if your schema has this field and it's necessary for project creation
+            billingType, 
             status,
             totalRate,
             estimatedHours,

@@ -30,6 +30,8 @@ const uploadFields = upload.fields([
 
 
 router.post('/createLead', uploadFields, apis.createLead);
+router.post('/createClient', uploadFields, apis.createClient);
+
 
 // router.patch('/changeScore/:team_id/:Score',(req,res)=>{apis.changeScore(req,res)});
 // router.delete('/deleteTeam/:team_id',(req,res)=>{apis.deleteTeam(req,res)});
@@ -54,8 +56,12 @@ router.post('/createLead', uploadFields, apis.createLead);
   
   router.get('/getAllLeads',(req,res) => {apis.getAllLeads(req,res)});
   router.get('/updateLeadStatus/:lead_id/:status',(req,res) => {apis.updateLeadStatus(req,res)});
-  router.patch('/updateLead/:leqd_id',(req,res) => {apis.updateLead(req,res)});
+  router.patch('/updateLead/:lead_id',(req,res) => {apis.updateLead(req,res)});
 
-  
+
+  router.post('/addTag',(req,res) => {apis.addTag(req,res)});
+  router.get('/getAllTags',(req,res) => {apis.getAllTags(req,res)});
+  router.get('/getTagsDetails/:tag_id',(req,res) => {apis.getTagsDetails(req,res)});
+
 
 module.exports = router
