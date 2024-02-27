@@ -3,18 +3,20 @@ const { v4: uuidv4 } = require('uuid');
 
 const taskSchema = new mongoose.Schema({
     task_id: { type: String, default: uuidv4 },
-    projectName: {
-        type: String,
-        required: true
-    },
-    client_id: { 
-        type: String,
-        required: true
-    },
     brandName: {
         type: String,
         required: true
     },
+
+    project_id: {
+        type: String,
+        required: true
+    },
+    employee_id: {
+        type: String,
+        required: true
+    },
+   
     priority: {
         type: String,
         required: true
@@ -22,36 +24,28 @@ const taskSchema = new mongoose.Schema({
   
     status: {
         type: String,
-        required: true,
-        enum: ['Not Started', 'In Progress', 'Completed', 'On Hold'],
+        required: false,
+        enum: ['Not Started', 'Working', 'Awaited Feedback', 'Completed'],
         default: 'Not Started'
     },
-    totalRate: {
-        type: Number, 
-        required: function() { return this.billingType !== 'Hourly'; } 
-    },
-    estimatedHours: { 
-        type: Number,
-        required: false 
-    },
+   
+
+
     startDate: {
         type: String,
         required: true,
     },
     deadline: { 
-        type: String
-    },
-    tags: [{ 
-        type: String
-    }],
-    description: {
-        type: String,
-        required: false
-    },
-    employees: [{
         type: String,
         required: true,
-    }]
+
+    },
+ 
+    description: {
+        type: String,
+        required: true
+    },
+  
 });
 
 const Task = mongoose.model('Task', taskSchema);
