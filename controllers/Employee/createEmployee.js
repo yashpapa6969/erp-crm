@@ -6,7 +6,7 @@ const hashPassword = async (password) => {
     const saltRounds = 10;
     return bcrypt.hash(password, saltRounds);
 };
-
+//TODO UPDTAE HERE AND POSTMAN
 const createEmployee = async (req, res) => {
     const {
         name,
@@ -17,6 +17,17 @@ const createEmployee = async (req, res) => {
         password,
         joiningDate,
         manager_id,
+        gender,
+        contactNo,
+        probationPeriod,
+        leavingDate,
+        permissions,
+        aadharNumber,
+        panNumber,
+        permanentAddress,
+        correspondenceAddress,
+        guardianDetails,
+        bankDetails
     } = req.body;
 
     try {
@@ -24,20 +35,40 @@ const createEmployee = async (req, res) => {
         const existingEmployee = await schemas.Employee.findOne({ email: email });
 
         if (existingEmployee) {
-            res.status(400).json({ message: "Employee with this email is already registered" });
-        } else {
-            const hashedPassword = await hashPassword(password);
+            return res.status(400).json({ message: "Employee with this email is already registered" });
+        }
 
-            const employee = new schemas.Employee({
-                name,
-                dob,
-                position,
-                department,
-                email,
-                password: hashedPassword,
-                joiningDate,
-                manager_id
-            });
+        const hashedPassword = await hashPassword(password);
+
+        const employee = new schemas.Employee({
+            name,
+            gender,
+            contactNo,
+            dob,
+            position,
+            department,
+            email,
+            password: hashedPassword,
+            joiningDate,
+            manager_id,
+            probationPeriod,
+            leavingDate,
+            permissions: permissions || ['read_access'], // Default permissions if not provided
+            aadharNumber,
+            panNumber,
+            permanentAddress,
+            correspondenceAddress,
+            guardianDetails: {
+                guardianName: guardianDetails.guardianName,
+                guardianContactNo: guardianDetails.guardianContactNo
+            },
+            bankDetails: {
+                bankName: bankDetails.bankName,
+                bankAccountNo: bankDetails.bankAccountNo,
+                bankIfscCode: bankDetails.bankIfscCode,
+                type: bankDetails.type
+            },
+        });
             await sendEmail(
                 email,
                 "Welcome to the Company",
@@ -79,7 +110,7 @@ const createEmployee = async (req, res) => {
                 message: "Employee successfully registered!",
             });
         }
-    } catch (error) {
+     catch (error) {
         res.status(400).json({ message: error.message });
     }
 };

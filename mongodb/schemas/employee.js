@@ -3,26 +3,27 @@ const { v4: uuidv4 } = require('uuid');
 
 const employeeSchema = new mongoose.Schema({
     name: { type: String, required: true },
+    gender: { type: String, required: true },
+    contactNo: { type: String, required: true },
     dob: {
         type: String,
         required: true,
         unique: false,
-    
     },
     position: {
         type: String,
         required: true,
-        enum: ['superadmin', 'admin', 'user',"manager"],
+        enum: ['superadmin', 'admin', 'user', "manager"],
     },
-    department: { type: String, required: true,},
+    department: { type: String, required: true, },
     employee_id: { type: String, default: uuidv4 },
-    manager_id:{ type: String, required: true,},
+    manager_id: { type: String, required: true, },
     email: {
         type: String,
         required: true,
         unique: true,
         validate: {
-            validator: function(email) {
+            validator: function (email) {
                 return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
             },
             message: props => `${props.value} is not a valid email!`
@@ -30,10 +31,55 @@ const employeeSchema = new mongoose.Schema({
     },
     password: { type: String, required: true },
     joiningDate: { type: String, required: true },
-    permissions: [{ 
+    probationPeriod: { type: String, required: true },
+    leavingDate: { type: String, required: false },
+
+
+    permissions: [{
         type: String,
         default: ['read_access']
-    }]
+    }],
+
+    aadharNumber: {
+        type: String,
+        required: true,
+        unique: false,
+    },
+    panNumber: {
+        type: String,
+        required: true,
+        unique: false,
+    },
+    permanentAddress: {
+        type: String,
+        required: true,
+        unique: false,
+    },
+    correspondenceAddress: {
+        type: String,
+        required: true,
+        unique: false,
+    },
+    guardianDetails: {
+        guardianName: {
+            type: String,
+            required: true,
+            unique: false,
+        },
+        guardianContactNo: { type: String, required: false },
+    },
+    bankDetails: {
+        bankName: {
+            type: String,
+            required: true,
+            unique: false,
+        },
+        bankAccountNo: { type: String, required: false },
+
+        bankIfscCode: { type: String, required: false },
+        type: { type: String, required: false },
+
+    },
 
 });
 
