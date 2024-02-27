@@ -1,6 +1,6 @@
 const schemas = require("../../mongodb/schemas/schemas");
 const sendEmail = require("../../middleware/mailingService")
-    const createClient = async (req, res) => {
+const createClient = async (req, res) => {
     const {
         companyName,
         enquiryDate,
@@ -12,7 +12,9 @@ const sendEmail = require("../../middleware/mailingService")
         email1,
         email2,
         website,
+        gstNo,
         businessAddress,
+        billingAddress,
         city,
         state,
         pincode,
@@ -36,7 +38,9 @@ const sendEmail = require("../../middleware/mailingService")
             email1,
             email2,
             website,
+            gstNo,
             businessAddress,
+            billingAddress,
             city,
             state,
             pincode,
@@ -50,11 +54,11 @@ const sendEmail = require("../../middleware/mailingService")
 
         const client = await newClient.save();
 
-await sendEmail(
-    email1,
-    "Welcome to the Company",
-    `Welcome ${clientName}!`,
-    `<!DOCTYPE html>
+        await sendEmail(
+            email1,
+            "Welcome to the Company",
+            `Welcome ${clientName}!`,
+            `<!DOCTYPE html>
     <html lang="en">
     <head>
     <meta charset="UTF-8">
@@ -88,17 +92,19 @@ await sendEmail(
     </body>
     </html>
     `
-);
+        );
 
-      
+
         res.status(201).json({
-            message: "Lead successfully created!",
-            lead, // Your lead object
+            message: "client successfully created!",
+            client, // Your lead object
             singleFileInformation: singleFile,
             multipleFilesInformation: multipleFiles
-          });    } catch (error) {
+        });
+    } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
 module.exports = createClient;
+//TODO UPDATE POSTMAN

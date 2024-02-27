@@ -1,14 +1,12 @@
 const schemas = require("../../mongodb/schemas/schemas");
 const sendEmail = require("../../middleware/mailingService");
-
+//TODO UPDATE POSTMAN
 const createProject = async (req, res) => {
     const {
         projectName,
         client_id,
-        billingType,
         status,
         totalRate,
-        estimatedHours,
         startDate,
         deadline,
         tags,
@@ -17,7 +15,7 @@ const createProject = async (req, res) => {
         priority,
         brandName,
     } = req.body;
-
+ 
     try {
         const newProject = new schemas.Project({
             projectName,
@@ -25,9 +23,8 @@ const createProject = async (req, res) => {
             billingType, 
             status,
             totalRate,
-            estimatedHours,
-            startDate: startDate,
-            deadline: deadline,
+           startDate,
+           deadline,
             tags,
             description,
             employees,

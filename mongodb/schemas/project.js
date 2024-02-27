@@ -28,12 +28,9 @@ const projectSchema = new mongoose.Schema({
     },
     totalRate: {
         type: Number, 
-        required: function() { return this.billingType !== 'Hourly'; } 
+        required:false,
     },
-    estimatedHours: { 
-        type: Number,
-        required: false 
-    },
+  
     startDate: {
         type: String,
         required: true,
@@ -51,9 +48,11 @@ const projectSchema = new mongoose.Schema({
     employees: [{
         type: String,
         required: true,
-    }]
+    }],
+
 });
 
 const Project = mongoose.model('Project', projectSchema);
 
 module.exports = Project;
+//TODO UPDATE POSTMAN

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
-const clientSchema = new mongoose.Schema({
+const clientSchema = new mongoose.Schema(
+    {
     client_id: { type: String, default: uuidv4 },
   
     enquiryDate: {
@@ -129,6 +130,12 @@ const clientSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    billingAddress: {
+        type: String,
+        required: false
+    },
+
+    
   
 });
 

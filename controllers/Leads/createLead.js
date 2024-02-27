@@ -12,6 +12,7 @@ const schemas = require("../../mongodb/schemas/schemas");
         email1,
         email2,
         website,
+        gstNo,
         businessAddress,
         city,
         state,
@@ -36,7 +37,9 @@ const schemas = require("../../mongodb/schemas/schemas");
             email1,
             email2,
             website,
+            gstNo,
             businessAddress,
+            billingAddress,
             city,
             state,
             pincode,
@@ -62,3 +65,4 @@ const schemas = require("../../mongodb/schemas/schemas");
 };
 
 module.exports = createLead;
+//TODO UPDATE POSTMAN

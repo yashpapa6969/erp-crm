@@ -7,7 +7,6 @@ async function updateTaskStatus(req, res) {
         const { status } = req.params;
 
         const task = await schemas.Task.findOne({ task_id: task_id });
-        console.log(lead);
 
         if (!task) {
             return res.status(404).json({ message: "task not found" });
@@ -15,20 +14,20 @@ async function updateTaskStatus(req, res) {
 
         switch (parseInt(status)) {
             case 0:
-                lead.status = 'Not Started';
+                task.status = 'Not Started';
                 break;
             case 1:
-                lead.status = 'Working';
+                task.status = 'Working';
                 break;
             case 2:
-                lead.status = 'Awaited Feedback';
+                task.status = 'Awaited Feedback';
                
                 break;
             case 3:
-                lead.status = 'Completed';
+                task.status = 'Completed';
                 break;
             default:
-                lead.status = 'Not Started';
+                task.status = 'Not Started';
                 break;
         }
 

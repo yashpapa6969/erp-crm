@@ -15,6 +15,10 @@ const leadSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    gstNo: {
+        type: String,
+        required: false
+    },
     brandName: {
         type: String,
         required: true
@@ -107,12 +111,19 @@ const leadSchema = new mongoose.Schema({
     },
     singleFile: {
         type: String,
-        required: false // Set to true if it should be required
+        required: false 
     },
     multipleFiles: [{
         type: String,
         required: false
     }],
+    billingAddress: {
+        type: String,
+        required: false
+    },
+
+
+//TODO TAGS INDIVIDUALLY
 
 }, );
 

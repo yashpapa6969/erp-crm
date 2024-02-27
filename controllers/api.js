@@ -77,8 +77,8 @@ var apis = {
   updateTaskStatus,
   addTask:addTask,
   getAllTasks:getAllTasks,
-  getTasksByEmployeeID:getAllTasks,
-  getTasksByTaskID:getAllTasks,
+  getTasksByEmployeeID:getTasksByEmployeeID,
+  getTasksByTaskID:getTasksByTaskID,
 
 };
 

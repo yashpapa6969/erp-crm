@@ -47,7 +47,7 @@ router.post('/createClient', uploadFields, apis.createClient);
   router.post('/createProject',(req,res) => {apis.createProject(req,res)});
   router.get('/getAllProjects',(req,res) => {apis.getAllProjects(req,res)});
   
-  router.get('/getProjectsByBrandName/:brandName',(req,res) => {apis.getProjectsByBrandName(req,res)});
+  router.post('/getProjectsByBrandName',(req,res) => {apis.getProjectsByBrandName(req,res)});
 
 
   
@@ -69,11 +69,11 @@ router.post('/createClient', uploadFields, apis.createClient);
 
   
 
-router.post('/addTask',(req,res) => {apis.addTag(req,res)});
-router.get('/updateTaskStatus/:task_id/:status',(req,res) => {apis.updateTaskStatus(req,res)});
-router.get('/getAllTasks',(req,res) => {apis.getAllTasks(req,res)});
-router.get('/getTasksByEmployeeID/:employee_id',(req,res) => {apis.getTasksByEmployeeID(req,res)});
-router.get('/getTasksByTaskID/:task_id',(req,res) => {apis.getTasksByTaskID(req,res)});
+ router.post('/addTask',(req,res) => {apis.addTask(req,res)});
+ router.get('/updateTaskStatus/:task_id/:status',(req,res) => {apis.updateTaskStatus(req,res)});
+ router.get('/getAllTasks',(req,res) => {apis.getAllTasks(req,res)});
+ router.get('/getTasksByEmployeeID/:employee_id',(req,res) => {apis.getTasksByEmployeeID(req,res)});
+ router.get('/getTasksByTaskID/:task_id',(req,res) => {apis.getTasksByTaskID(req,res)});
 
 
 
