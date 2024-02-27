@@ -23,6 +23,7 @@ async function updateLeadStatus(req, res) {
             case 2:
                 lead.status = 'Converted';
                 const clientData = {
+                    companyName:lead.companyName,
                     enquiryDate: lead.enquiryDate,
                     source: lead.source,
                     brandName: lead.brandName,

@@ -5,15 +5,17 @@ const createProject = async (req, res) => {
     const {
         projectName,
         client_id,
-        billingType, // Include if your schema has this field
+        billingType,
         status,
         totalRate,
         estimatedHours,
         startDate,
-        deadline, // Changed from endDate to deadline
+        deadline,
         tags,
         description,
-        employees
+        employees,
+        priority,
+        brandName,
     } = req.body;
 
     try {
@@ -28,7 +30,9 @@ const createProject = async (req, res) => {
             deadline: deadline,
             tags,
             description,
-            employees
+            employees,
+            priority,
+            brandName,
         });
 
         const project = await newProject.save();

@@ -2,6 +2,7 @@ const schemas = require("../../mongodb/schemas/schemas");
 const sendEmail = require("../../middleware/mailingService")
     const createClient = async (req, res) => {
     const {
+        companyName,
         enquiryDate,
         source,
         brandName,
@@ -25,6 +26,7 @@ const sendEmail = require("../../middleware/mailingService")
         const singleFile = req.files.singleFile ? req.files.singleFile[0] : null;
         const multipleFiles = req.files.multipleFiles || [];
         const newClient = new schemas.Client({
+            companyName,
             enquiryDate,
             source,
             brandName,
