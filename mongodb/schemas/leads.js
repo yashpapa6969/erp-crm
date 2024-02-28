@@ -21,6 +21,10 @@ const leadSchema = new mongoose.Schema({
         required: true
     },
     source: {
+        type: Array,
+        required: false
+    },
+    sourceInformation: {
         type: String,
         required: false
     },
@@ -105,7 +109,7 @@ const leadSchema = new mongoose.Schema({
         required: false
     },
     requirement: {
-        type: String,
+        type: Array,
         required: false
     },
     additionalInformation: {

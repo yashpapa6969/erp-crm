@@ -75,6 +75,11 @@ router.post('/createClient', uploadFields, apis.createClient);
  router.get('/getTasksByEmployeeID/:employee_id',(req,res) => {apis.getTasksByEmployeeID(req,res)});
  router.get('/getTasksByTaskID/:task_id',(req,res) => {apis.getTasksByTaskID(req,res)});
 
+ router.post('/sourceAddTag',(req,res) => {apis.sourceAddTag(req,res)});
+ router.get('/sourceGetAllTags',(req,res) => {apis.sourceGetAllTags(req,res)});
+ router.get('/sourceGetTagsDetails/:tag_id',(req,res) => {apis.sourceGetTagsDetails(req,res)});
+
+
 
 
 module.exports = router

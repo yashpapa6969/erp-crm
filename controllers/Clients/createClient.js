@@ -23,7 +23,10 @@ const createClient = async (req, res) => {
         country,
         requirement,
         additionalInformation,
-        status
+        clientBirthday,
+        clientAnniversary,
+        companyAnniversary,
+        workStartDate,
     } = req.body;
 
     try {
@@ -51,9 +54,13 @@ const createClient = async (req, res) => {
             country,
             requirement,
             additionalInformation,
-            status,
             singleFile: singleFile ? singleFile.path : undefined,
-            multipleFiles: multipleFiles.map(file => file.path)
+            multipleFiles: multipleFiles.map(file => file.path),
+            clientBirthday,
+            clientAnniversary,
+            companyAnniversary,
+            workStartDate,
+
         });
 
         const client = await newClient.save();
@@ -101,7 +108,7 @@ const createClient = async (req, res) => {
 
         res.status(201).json({
             message: "client successfully created!",
-            client, // Your lead object
+            client,
             singleFileInformation: singleFile,
             multipleFilesInformation: multipleFiles
         });

@@ -29,14 +29,15 @@ const addTag = require("./Tags/addTags");
 const getAllTags = require("./Tags/getAllTags"); 
 const getTagsDetails = require("./Tags/getTagsbyID"); 
 
+const sourceAddTag = require("./sourceTags/addTags"); 
+const sourceGetAllTags = require("./sourceTags/getAllTags"); 
+const sourceGetTagsDetails = require("./sourceTags/getTagsbyID"); 
 
 const addTask = require("./Tasks/createTask"); 
 const updateTaskStatus = require("./Tasks/changeTaskStatus"); 
 const getAllTasks = require("./Tasks/getAllTasks"); 
 const getTasksByEmployeeID = require("./Tasks/getTaskByEmpId"); 
 const getTasksByTaskID = require("./Tasks/getTaskByTaskId"); 
-
-
 
 
 
@@ -79,6 +80,11 @@ var apis = {
   getAllTasks:getAllTasks,
   getTasksByEmployeeID:getTasksByEmployeeID,
   getTasksByTaskID:getTasksByTaskID,
+
+
+sourceGetTagsDetails:sourceGetTagsDetails,
+sourceAddTag:sourceAddTag,
+sourceGetAllTags:sourceGetAllTags,
 
 };
 

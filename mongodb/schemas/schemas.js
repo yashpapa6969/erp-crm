@@ -5,6 +5,8 @@ const LeaveRequest = require('./leaveManagement');
 const Lead = require('./leads');
 const Task = require('./tasks');
 const Tag = require('./tags');
+const sourceTag = require('./sourceTags');
+
 var schemas =
  {
     Project:Project,
@@ -14,6 +16,7 @@ var schemas =
     Lead:Lead,
     Task:Task,
     Tag:Tag,
+    sourceTag:sourceTag,
     
 
    

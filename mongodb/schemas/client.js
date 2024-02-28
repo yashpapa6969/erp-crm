@@ -18,8 +18,12 @@ const clientSchema = new mongoose.Schema(
         required: true
     },
     source: {
-        type: String,
+        type: Array,
         required: true
+    },
+    sourceInformation: {
+        type: String,
+        required: false
     },
     brandName: {
         type: String,
@@ -102,7 +106,7 @@ const clientSchema = new mongoose.Schema(
         required: false
     },
     requirement: {
-        type: String,
+        type: Array,
         required: false
     },
     additionalInformation: {
