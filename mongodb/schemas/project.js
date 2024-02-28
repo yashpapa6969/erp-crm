@@ -39,7 +39,12 @@ const projectSchema = new mongoose.Schema({
         type: String
     },
     tags: [{ 
-        type: String
+        tag_id: { type: String, default: uuidv4 },
+  
+   tagName: {
+        type: String,
+        required: true
+    },
     }],
     description: {
         type: String,
