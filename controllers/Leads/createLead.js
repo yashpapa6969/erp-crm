@@ -72,4 +72,3 @@ const schemas = require("../../mongodb/schemas/schemas");
 };
 
 module.exports = createLead;
-//TODO UPDATE POSTMAN

@@ -136,7 +136,6 @@ const leadSchema = new mongoose.Schema({
     },
 
 
-//TODO TAGS INDIVIDUALLY
 
 }, );
 

@@ -77,9 +77,7 @@ router.post('/createClient', uploadFields, apis.createClient);
 
  router.post('/sourceAddTag',(req,res) => {apis.sourceAddTag(req,res)});
  router.get('/sourceGetAllTags',(req,res) => {apis.sourceGetAllTags(req,res)});
- router.get('/sourceGetTagsDetails/:tag_id',(req,res) => {apis.sourceGetTagsDetails(req,res)});
-
-
+ router.get('/sourceGetTagsDetails/:source_tag_id',(req,res) => {apis.sourceGetTagsDetails(req,res)});
 
 
 module.exports = router
