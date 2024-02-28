@@ -21,11 +21,13 @@ const createProject = async (req, res) => {
       status,
       startDate,
       deadline,
-      tags: {
-        tag_id: tags.tag_id,
+      tags:[
+        {
+          tagName: tags.tagName,
+          tag_id: tags.tag_id,
+      }
 
-        tagName: tags.tagName,
-      },
+      ],
       description,
       employees,
       priority,
