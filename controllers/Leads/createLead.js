@@ -2,6 +2,8 @@ const schemas = require("../../mongodb/schemas/schemas");
 
     const createLead = async (req, res) => {
     const {
+        title,
+        gender,
         companyName,
         enquiryDate,
         source,
@@ -14,6 +16,7 @@ const schemas = require("../../mongodb/schemas/schemas");
         website,
         gstNo,
         businessAddress,
+        billingAddress,
         city,
         state,
         pincode,
@@ -27,6 +30,8 @@ const schemas = require("../../mongodb/schemas/schemas");
         const singleFile = req.files.singleFile ? req.files.singleFile[0] : null;
         const multipleFiles = req.files.multipleFiles || [];
         const newLead = new schemas.Lead({
+            title,
+            gender,
             companyName,
             enquiryDate,
             source,

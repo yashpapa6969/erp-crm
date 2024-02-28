@@ -44,6 +44,7 @@ const createEmployee = async (req, res) => {
             name,
             gender,
             contactNo,
+            title,
             dob,
             position,
             department,
@@ -61,6 +62,10 @@ const createEmployee = async (req, res) => {
             guardianDetails: {
                 guardianName: guardianDetails.guardianName,
                 guardianContactNo: guardianDetails.guardianContactNo
+                //relation
+                //docs
+                //TODO
+                //designation fill
             },
             bankDetails: {
                 bankName: bankDetails.bankName,

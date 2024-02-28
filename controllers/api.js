@@ -74,7 +74,7 @@ var apis = {
   getTagsDetails:getTagsDetails,
 
   addTask:addTask,
-  updateTaskStatus,
+  updateTaskStatus:updateTaskStatus,
   addTask:addTask,
   getAllTasks:getAllTasks,
   getTasksByEmployeeID:getTasksByEmployeeID,

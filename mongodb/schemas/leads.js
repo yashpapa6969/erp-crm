@@ -7,13 +7,22 @@ const leadSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    gender: {
+        type: String,
+        required: true
+    },
+   
+    title: {
+        type: String,
+        required: true
+    },
     enquiryDate: {
         type: String,
         required: true
     },
     source: {
         type: String,
-        required: true
+        required: false
     },
     gstNo: {
         type: String,
