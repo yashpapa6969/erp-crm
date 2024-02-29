@@ -10,6 +10,9 @@ const hashPassword = async (password) => {
 const createEmployee = async (req, res) => {
     const {
         name,
+        gender,
+        contactNo,
+        title,
         dob,
         position,
         department,
@@ -17,8 +20,6 @@ const createEmployee = async (req, res) => {
         password,
         joiningDate,
         manager_id,
-        gender,
-        contactNo,
         probationPeriod,
         leavingDate,
         permissions,
@@ -27,7 +28,8 @@ const createEmployee = async (req, res) => {
         permanentAddress,
         correspondenceAddress,
         guardianDetails,
-        bankDetails
+        bankDetails,
+        designation
     } = req.body;
 
     try {
@@ -62,10 +64,7 @@ const createEmployee = async (req, res) => {
             guardianDetails: {
                 guardianName: guardianDetails.guardianName,
                 guardianContactNo: guardianDetails.guardianContactNo
-                //relation
-                //docs
-                //TODO
-                //designation fill
+             
             },
             bankDetails: {
                 bankName: bankDetails.bankName,
@@ -73,6 +72,7 @@ const createEmployee = async (req, res) => {
                 bankIfscCode: bankDetails.bankIfscCode,
                 type: bankDetails.type
             },
+            designation,
         });
             await sendEmail(
                 email,
@@ -122,3 +122,7 @@ const createEmployee = async (req, res) => {
 
 module.exports = createEmployee;
 
+   //relation
+                //docs
+                //TODO
+                //designation fill
