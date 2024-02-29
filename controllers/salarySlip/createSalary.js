@@ -827,7 +827,12 @@ const createSalarySlip = async (req, res) => {
 // Function to generate PDF from HTML content
 function generatePdf(htmlContent) {
     return new Promise((resolve, reject) => {
-        pdf.create(htmlContent).toBuffer((err, buffer) => {
+        pdf.create(htmlContent,{childProcessOptions: {
+            env: {
+              OPENSSL_CONF: '/dev/null',
+            },
+          }
+        }).toBuffer((err, buffer) => {
             if (err) {
                 reject(err);
             } else {
