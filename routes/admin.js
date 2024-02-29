@@ -79,5 +79,12 @@ router.post('/createClient', uploadFields, apis.createClient);
  router.get('/sourceGetAllTags',(req,res) => {apis.sourceGetAllTags(req,res)});
  router.get('/sourceGetTagsDetails/:source_tag_id',(req,res) => {apis.sourceGetTagsDetails(req,res)});
 
+ router.post('/createSalarySlip',(req,res) => {apis.createSalarySlip(req,res)});
+ router.get('/getAllSlips',(req,res) => {apis.getAllSlips(req,res)});
+ router.get('/getAllSlipsByEmployee/:slip_id',(req,res) => {apis.sourceGetTagsDetails(req,res)});
+
+ 
+
+
 
 module.exports = router

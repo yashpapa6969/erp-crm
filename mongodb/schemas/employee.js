@@ -16,6 +16,8 @@ const employeeSchema = new mongoose.Schema({
         enum: ['superadmin', 'admin', 'user', "manager"],
     },
     department: { type: String, required: true, },
+    designation: { type: String, required: true, },
+
     employee_id: { type: String, default: uuidv4 },
     manager_id: { type: String, required: true, },
     email: {
@@ -78,6 +80,8 @@ const employeeSchema = new mongoose.Schema({
 
         bankIfscCode: { type: String, required: false },
         type: { type: String, required: false },
+        branch: { type: String, required: false },
+
 
     },
 
