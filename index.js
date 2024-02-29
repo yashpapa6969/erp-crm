@@ -32,6 +32,11 @@ const corsOptions = {
 
 // Use CORS with the above options
 app.use(cors(corsOptions));
+app.get('/', (req, res) => {
+  // Send the response with a JSON object containing the "message"
+  res.json({ message: 'Hello World!' });
+});
+
 app.use('/api/admin', adminRoutes);
 
 const port = 3000;
