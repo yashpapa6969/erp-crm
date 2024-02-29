@@ -34,7 +34,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.get('/', (req, res) => {
   // Send the response with a JSON object containing the "message"
-  res.json({ message: '!welcome home 101' });
+  res.json({ message: '!welcome home 1d01' });
 });
 
 app.use('/api/admin', adminRoutes);
