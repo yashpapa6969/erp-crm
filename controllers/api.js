@@ -42,7 +42,9 @@ const getTasksByTaskID = require("./Tasks/getTaskByTaskId");
 
 const getAllSlipsByEmployee = require("./salarySlip/getSlipsbyEmployeeId"); 
 const getAllSlips = require("./salarySlip/getAllSlips"); 
-const createSalarySlip = require("./salarySlip//createSalary"); 
+const createSalarySlip = require("./salarySlip/createSalary"); 
+
+const downloadSalarySlip = require("./salarySlip/salarySlipDownload"); 
 
 
 
@@ -95,6 +97,7 @@ sourceGetAllTags:sourceGetAllTags,
 getAllSlipsByEmployee:getAllSlipsByEmployee,
 getAllSlips:getAllSlips,
 createSalarySlip:createSalarySlip,
+downloadSalarySlip:downloadSalarySlip,
 };
 
 module.exports = apis;

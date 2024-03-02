@@ -1,22 +1,21 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
-const salarySlipSchema = new mongoose.Schema({
-    slip_id: { type: String, default: uuidv4 },
-    employee_id: { type: String, required: true, },
-    basicPay: { type: String, required: true, },
-    travelPay: { type: String, required: true, },
-    bonus: { type: String, required: true, },
-    paidLeave: { type: String, required: true, },
-    totalIncome: { type: String, required: false, },
-
-
-    tds: { type: String, required: true, },
-    totalLeaves: { type: String, required: true, },
-    advanceSalary: { type: String, required: true, },
-    totalDeductions: { type: String, required: false, },
-    netSalary: { type: String, required: false, },
-
+const invoiceSchema = new mongoose.Schema({
+    invoive_id: { type: String, default: uuidv4 },
+    client_id: { type: String, required: true, },
+    services:{
+        serviceDescription: String,
+        duration: String,
+        quantity: Number,
+        unitPrice: Number,
+        total: Number,
+        startDate:String,
+        endDate:String,
+    },
+    subtotal:{ type: Number, required: true, },
+    gst:{ type: Number, required: true, },
+    total:{ type: Number, required: true, },
     date1: {
         type: String,
         default: function () {
@@ -45,8 +44,11 @@ const salarySlipSchema = new mongoose.Schema({
         unique: false,
       },
     
+
+
+
 });
 
-const salarySlip = mongoose.model('salarySlip', salarySlipSchema);
+const Invoice = mongoose.model('invoice', invoiceSchema);
 
-module.exports = salarySlip;
+module.exports = Invoice ;

@@ -7,6 +7,7 @@ const Task = require('./tasks');
 const Tag = require('./tags');
 const sourceTag = require('./sourceTags');
 const salarySlip = require('./salarySlip');
+const Invoice = require('./invoice');
 
 var schemas =
  {
@@ -19,6 +20,7 @@ var schemas =
     Tag:Tag,
     sourceTag:sourceTag,
     salarySlip:salarySlip,
+    Invoice:Invoice,
     
 
    
