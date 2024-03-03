@@ -17,8 +17,6 @@ const productServicesSchema = new mongoose.Schema({
         required: true, // Make the unit price a required field
      
     }
-}, {
-    timestamps: true // Add createdAt and updatedAt timestamps to each document
 });
 
 const productServices = mongoose.model('productServices', productServicesSchema);

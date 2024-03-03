@@ -2,14 +2,18 @@ const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
 const invoiceSchema = new mongoose.Schema({
-    invoive_id: { type: String, default: uuidv4, index: true  },
-    client_id: { type: String, required: true,index: true  },
+    invoive_id: { type: String, default: uuidv4 ,  index: true },
+    client_id: { type: String, required: true,   index: true },
     services:{
+
+        product: {
+            type: String,
+            required: true, // Make the product name a required field
+        },
         serviceDescription: String,
         duration: String,
         quantity: Number,
         unitPrice: Number,
-        total: Number,
         startDate:String,
         endDate:String,
     },

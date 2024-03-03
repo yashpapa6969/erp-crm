@@ -84,7 +84,9 @@ router.post('/createClient', uploadFields, apis.createClient);
  router.get('/getAllSlipsByEmployee/:employee_id',(req,res) => {apis.getAllSlipsByEmployee(req,res)});
  router.get('/downloadSalarySlip/:slip_id',(req,res) => {apis.downloadSalarySlip(req,res)});
 
- 
+ router.post('/addProducts',(req,res) => {apis.addProducts(req,res)});
+ router.get('/getAllProducts',(req,res) => {apis.getAllProducts(req,res)});
+ router.get('/getProductDetails/:product_id',(req,res) => {apis.getProductDetails(req,res)});
 
 
 
