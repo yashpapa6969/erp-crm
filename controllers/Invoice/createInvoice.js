@@ -3,6 +3,7 @@ const pdf = require("html-pdf");
 const fs = require("fs");
 const ejs = require("ejs");
 const { promisify } = require("util");
+        const ejs = require("ejs");
 
 const writeFileAsync = promisify(fs.writeFile);
 const createInvoice = async (req, res) => {
@@ -30,6 +31,17 @@ const createInvoice = async (req, res) => {
         });
 
         await salary.save();
+
+
+const invoiceTemplate = `invoice_template.ejs`; 
+
+const htmlContent = await ejs.render(invoiceTemplate, {
+    client: client, // assuming 'client' contains fields like 'name', 'address', etc.
+    services: services, // details from req.body
+    invoiceNumber: "12345", // Example, generate or fetch as needed
+    dueDate: "MM/DD/YYYY", // Example, set accordingly
+    total: services.unitPrice * services.quantity + gst // Example calculation, adjust as needed
+});
         
         // Generate PDF from HTML content
         const pdfBuffer = await generatePdf(htmlContent);
