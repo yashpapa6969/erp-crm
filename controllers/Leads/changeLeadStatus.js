@@ -47,6 +47,8 @@ async function updateLeadStatus(req, res) {
                     clientAnniversary: lead.clientAnniversary || undefined,
                     workStartDate: lead.workStartDate || undefined,
                     companyAnniversary: lead.companyAnniversary || undefined,
+                    title:lead.title,
+                    gender:lead.gender,
                     
                 };
                 const newClient = new schemas.Client(
