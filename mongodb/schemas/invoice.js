@@ -13,9 +13,9 @@ const invoiceSchema = new mongoose.Schema({
         startDate:String,
         endDate:String,
     },
-    subtotal:{ type: Number, required: true, },
-    gst:{ type: Number, required: true, },
-    total:{ type: Number, required: true, },
+    subtotal:{ type: Number, required: false, },
+    gst:{ type: Number, required: false, },
+    total:{ type: Number, required: false, },
     date1: {
         type: String,
         default: function () {
