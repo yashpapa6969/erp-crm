@@ -58,9 +58,9 @@ const getProductDetails = require("./productServices/getProductsbyID");
 
 
 const createInvoice = require("./Invoice/createInvoice"); 
-const getAllInvoices = require("./Invoice/createInvoice"); 
-const getAllInvoiceByClient = require("./Invoice/createInvoice"); 
-const downloadInvoice = require("./Invoice/createInvoice"); 
+const getAllInvoices = require("./Invoice/getAllInvoices"); 
+const getAllInvoiceByClient = require("./Invoice/getInvoicebyClientId"); 
+const downloadInvoice = require("./Invoice/invoiceDownload"); 
 
 
 
