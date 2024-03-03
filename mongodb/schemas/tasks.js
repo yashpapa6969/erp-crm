@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
 const taskSchema = new mongoose.Schema({
-    task_id: { type: String, default: uuidv4 },
+    task_id: { type: String, default: uuidv4 ,        index: true 
+    },
     
     brandName: {
         type: String,
@@ -10,15 +11,18 @@ const taskSchema = new mongoose.Schema({
     },
 client_id: {
         type: String,
-        required: true
+        required: true,        index: true 
+
     },
     project_id: {
         type: String,
-        required: true
+        required: true,         index: true 
+
     },
     employee_id: {
         type: String,
-        required: true
+        required: true,        index: true 
+
     },
    
     priority: {

@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const clientSchema = new mongoose.Schema(
     {
-    client_id: { type: String, default: uuidv4 },
+    client_id: { type: String, default: uuidv4 ,        index: true     },
     gender: {
         type: String,
         required: true

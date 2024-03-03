@@ -18,7 +18,7 @@ const employeeSchema = new mongoose.Schema({
     department: { type: String, required: true, },
     designation: { type: String, required: true, },
 
-    employee_id: { type: String, default: uuidv4 },
+    employee_id: { type: String, default: uuidv4,index: true },
     manager_id: { type: String, required: true, },
     email: {
         type: String,

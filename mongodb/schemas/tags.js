@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
 const tagSchema = new mongoose.Schema({
-    tag_id: { type: String, default: uuidv4 },
+    tag_id: { type: String, default: uuidv4,        index: true 
+    },
   
    tagName: {
         type: String,

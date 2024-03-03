@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
 const salarySlipSchema = new mongoose.Schema({
-    slip_id: { type: String, default: uuidv4 },
-    employee_id: { type: String, required: true, },
+    slip_id: { type: String, default: uuidv4,        index: true     },
+    employee_id: { type: String, required: true,        index: true 
+    },
     basicPay: { type: String, required: true, },
     travelPay: { type: String, required: true, },
     bonus: { type: String, required: true, },

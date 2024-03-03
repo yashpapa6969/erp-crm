@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
 const leadSchema = new mongoose.Schema({
-    lead_id: { type: String, default: uuidv4 },
+    lead_id: { type: String, default: uuidv4,        index: true     },
     companyName: {
         type: String,
         required: true
