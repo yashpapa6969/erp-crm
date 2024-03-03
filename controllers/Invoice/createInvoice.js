@@ -30,17 +30,17 @@ const createInvoice = async (req, res) => {
          
         });
 
-        await salary.save();
+       const invoices =  await invoice.save();
 
 
 const invoiceTemplate = `invoice_template.ejs`; 
 
 const htmlContent = await ejs.render(invoiceTemplate, {
-    client: client, // assuming 'client' contains fields like 'name', 'address', etc.
-    services: services, // details from req.body
-    invoiceNumber: "12345", // Example, generate or fetch as needed
-    dueDate: "MM/DD/YYYY", // Example, set accordingly
-    total: services.unitPrice * services.quantity + gst // Example calculation, adjust as needed
+    client: client,
+    services: services, 
+    invoiceNumber: invoices.invoice_id, 
+    dueDate: "MM/DD/YYYY", 
+    total: services.unitPrice * services.quantity + gst 
 });
         
         // Generate PDF from HTML content
