@@ -57,6 +57,13 @@ const getProductDetails = require("./productServices/getProductsbyID");
 
 
 
+const createInvoice = require("./Invoice/createInvoice"); 
+const getAllInvoices = require("./Invoice/createInvoice"); 
+const getAllInvoiceByClient = require("./Invoice/createInvoice"); 
+const downloadInvoice = require("./Invoice/createInvoice"); 
+
+
+
 
 
 var apis = {
@@ -110,6 +117,11 @@ downloadSalarySlip:downloadSalarySlip,
 addProducts:addProducts,
 getAllProducts:getAllProducts,
 getProductDetails:getProductDetails,
+
+createInvoice:createInvoice,
+getAllInvoices:getAllInvoices,
+getAllInvoiceByClient:getAllInvoiceByClient,
+downloadInvoice:downloadInvoice,
 
 };
 

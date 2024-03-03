@@ -8,7 +8,7 @@ const invoiceSchema = new mongoose.Schema({
 
         product: {
             type: String,
-            required: true, // Make the product name a required field
+            required: true, 
         },
         serviceDescription: String,
         duration: String,

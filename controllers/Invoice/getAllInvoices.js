@@ -1,12 +1,12 @@
 const schemas = require("../../mongodb/schemas/schemas");
 
-getAllSlips= async (req, res) => {
+getAllInvoices= async (req, res) => {
     try {
-        const slips = await schemas.salarySlip.find({});
+        const slips = await schemas.Invoice.find({});
         res.status(200).json(slips);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-module.exports = getAllSlips;
+module.exports = getAllInvoices;

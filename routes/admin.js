@@ -33,7 +33,6 @@ router.post('/createLead', uploadFields, apis.createLead);
 router.post('/createClient', uploadFields, apis.createClient);
 
 
-// router.patch('/changeScore/:team_id/:Score',(req,res)=>{apis.changeScore(req,res)});
 // router.delete('/deleteTeam/:team_id',(req,res)=>{apis.deleteTeam(req,res)});
 
   router.post('/createEmployee',(req,res) => {apis.createEmployee(req,res)});
@@ -88,6 +87,11 @@ router.post('/createClient', uploadFields, apis.createClient);
  router.get('/getAllProducts',(req,res) => {apis.getAllProducts(req,res)});
  router.get('/getProductDetails/:product_id',(req,res) => {apis.getProductDetails(req,res)});
 
+
+ router.post('/createInvoice',(req,res) => {apis.createInvoice(req,res)});
+ router.get('/getAllInvoices',(req,res) => {apis.getAllInvoices(req,res)});
+ router.get('/getAllInvoiceByClient/:client_id',(req,res) => {apis.getAllInvoiceByClient(req,res)});
+ router.get('/downloadInvoice/:invoice_id',(req,res) => {apis.downloadInvoice(req,res)});
 
 
 module.exports = router
