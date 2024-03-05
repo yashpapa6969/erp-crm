@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 const invoiceSchema = new mongoose.Schema({
     invoive_id: { type: String, default: uuidv4 ,  index: true },
     client_id: { type: String, required: true,   index: true },
-    services:{
+    services:[{
 
         product: {
             type: String,
@@ -17,6 +17,7 @@ const invoiceSchema = new mongoose.Schema({
         startDate:String,
         endDate:String,
     },
+],
     subtotal:{ type: Number, required: false, },
     gst:{ type: Number, required: false, },
     total:{ type: Number, required: false, },
