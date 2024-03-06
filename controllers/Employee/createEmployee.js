@@ -29,7 +29,8 @@ const createEmployee = async (req, res) => {
         correspondenceAddress,
         guardianDetails,
         bankDetails,
-        designation
+        designation,
+        type,
     } = req.body;
 
     try {
@@ -73,6 +74,7 @@ const createEmployee = async (req, res) => {
                 type: bankDetails.type
             },
             designation,
+            type,
         });
             await sendEmail(
                 email,

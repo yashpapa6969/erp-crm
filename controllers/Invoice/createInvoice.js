@@ -3,8 +3,8 @@ const pdf = require("html-pdf");
 const fs = require("fs");
 const ejs = require("ejs");
 const { promisify } = require("util");
-
 const writeFileAsync = promisify(fs.writeFile);
+
 const createInvoice = async (req, res) => {
     try {
         let {
