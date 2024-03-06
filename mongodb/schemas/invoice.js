@@ -8,7 +8,7 @@ const invoiceSchema = new mongoose.Schema({
 
         product: {
             type: String,
-            required: true, 
+            required: false, 
         },
         serviceDescription: String,
         duration: String,
