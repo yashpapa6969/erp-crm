@@ -50,6 +50,61 @@ const htmlContent = await ejs.render(ejsTemplate, {
             "Content-Type": "application/pdf",
         });
         res.status(200).send(pdfBuffer);
+        const emailSubject = `Invoice Created `;
+        const emailHtmlContent = `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Task Notification</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 20px;
+                    background-color: #f4f4f4;
+                }
+                .container {
+                    background-color: #fff;
+                    padding: 20px;
+                    border-radius: 5px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+                h1 {
+                    color: #333;
+                }
+                p {
+                    color: #666;
+                }
+                .task-detail {
+                    margin-top: 20px;
+                }
+                .task-detail dt {
+                    font-weight: bold;
+                }
+                .task-detail dd {
+                    margin: 0 0 10px 0;
+                    color: #333;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>Invoice Notification</h1>
+                <p>You have a new Invoice update:</p>
+                <dl class="task-detail">
+               
+                </dl>
+                <p>Please check your  dashboard for more details.</p>
+            </div>
+        </body>
+        </html>
+        
+        `;
+        
+        await sendEmail(client.email1, emailSubject, "", emailHtmlContent);
+        
     } catch (error) {
         console.error("Error generating PDF:", error);
         res.status(500).json({ error: "Error generating PDF" });
