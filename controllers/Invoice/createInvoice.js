@@ -16,15 +16,7 @@ const createInvoice = async (req, res) => {
         const client = await schemas.Client.findOne({ client_id: client_id });
         const invoice = new schemas.Invoice({
             client_id,
-            services:{
-                product:services.product, 
-                serviceDescription: services.serviceDescription,
-                duration: services.duration,
-                quantity: services.quantity,
-                unitPrice: services.unitPrice,
-                startDate:services.startDate,
-                endDate: services.endDate,
-            },
+            services,
             gst,
          
         });
