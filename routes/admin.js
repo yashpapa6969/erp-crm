@@ -46,6 +46,8 @@ router.post('/createClient', uploadFields, apis.createClient);
   router.post('/createProject',(req,res) => {apis.createProject(req,res)});
   router.get('/getAllProjects',(req,res) => {apis.getAllProjects(req,res)});
   
+  router.get('/getProjectDetails/:project_id',(req,res) => {apis.getProjectDetails(req,res)});
+
   router.post('/getProjectsByBrandName',(req,res) => {apis.getProjectsByBrandName(req,res)});
 
 
