@@ -50,7 +50,6 @@ const createSalarySlip = async (req, res) => {
         });
 
         await salary.save();
-        salary
         const htmlContent = `
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link type="text/css" rel="stylesheet" href="resources/sheet.css">

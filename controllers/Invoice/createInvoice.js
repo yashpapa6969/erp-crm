@@ -24,22 +24,56 @@ const createInvoice = async (req, res) => {
        const invoices =  await invoice.save();
 
 
-const invoiceTemplate = `invoice_template.ejs`; 
+const ejsTemplate = `
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        /* Your CSS styles */
+    </style>
+</head>
+<body>
+    <div class="invoice-box">
+        <!-- Invoice content -->
+            <tr class="heading">
+                <td>Item</td>
+                <td>Price</td>
+            </tr>
+            
+            <% services.forEach(function(service) { %>
+                <tr class="item">
+                    <td><%= service.product %>, <%= service.serviceDescription %></td>
+                    <td>$<%= service.unitPrice.toFixed(2) %></td>
+                </tr>
+            <% }); %>
+            
+            <tr class="total">
+                <td></td>
+                <td>Total: $<%= total.toFixed(2) %></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+`;
 
-const htmlContent = await ejs.render(invoiceTemplate, {
+const htmlContent = await ejs.render(ejsTemplate, {
     client: client,
-    services: services, 
-    invoiceNumber: invoices.invoice_id, 
-    dueDate: "MM/DD/YYYY", 
-    total: services.unitPrice * services.quantity + gst 
+    services: services,
+    invoiceNumber: invoices.invoice_id,
+    dueDate: "MM/DD/YYYY",
+    total: services.reduce((acc, service) => acc + (service.unitPrice * service.quantity), 0) + gst
 });
-        
+
+     
         // Generate PDF from HTML content
         const pdfBuffer = await generatePdf(htmlContent);
 
         // Respond with the generated PDF
         res.set({
-            "Content-Disposition": 'attachment; filename="salary_slip.pdf"',
+            "Content-Disposition": 'attachment; filename="invoice_slip.pdf"',
             "Content-Type": "application/pdf",
         });
         res.status(200).send(pdfBuffer);
