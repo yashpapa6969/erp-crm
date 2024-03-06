@@ -74,7 +74,6 @@ const htmlContent = await ejs.render(ejsTemplate, {
             "Content-Disposition": 'attachment; filename="salary_slip.pdf"',
             "Content-Type": "application/pdf",
         });
-        res.status(200).send(pdfBuffer);
 
 const emailSubject = `Your Monthly Salary Slip - [Your Company Name]`;
 const emailHtmlContent = `
@@ -111,6 +110,7 @@ const emailHtmlContent = `
 `;
 
 await sendEmail(employee.email, emailSubject, "", emailHtmlContent);
+res.status(200).send(pdfBuffer);
 
 // Then respond with the PDF or any confirmation message
 

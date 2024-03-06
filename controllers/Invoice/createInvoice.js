@@ -5,6 +5,7 @@ const ejs = require("ejs");
 const { promisify } = require("util");
 const writeFileAsync = promisify(fs.writeFile);
 const path = require('path');
+const sendEmail = require("../../middleware/mailingService")
 
 const createInvoice = async (req, res) => {
     try {
@@ -15,7 +16,7 @@ const createInvoice = async (req, res) => {
         } = req.body;
 
         const client = await schemas.Client.findOne({ client_id: client_id });
-        
+        console.log(client)
         const invoice = new schemas.Invoice({
             client_id,
             services,
@@ -49,7 +50,6 @@ const htmlContent = await ejs.render(ejsTemplate, {
             "Content-Disposition": 'attachment; filename="invoice_slip.pdf"',
             "Content-Type": "application/pdf",
         });
-        res.status(200).send(pdfBuffer);
         const emailSubject = `Invoice Created `;
         const emailHtmlContent = `
         <!DOCTYPE html>
@@ -104,7 +104,8 @@ const htmlContent = await ejs.render(ejsTemplate, {
         `;
         
         await sendEmail(client.email1, emailSubject, "", emailHtmlContent);
-        
+        res.status(200).send(pdfBuffer);
+
     } catch (error) {
         console.error("Error generating PDF:", error);
         res.status(500).json({ error: "Error generating PDF" });
