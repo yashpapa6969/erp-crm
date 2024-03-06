@@ -4,6 +4,7 @@ const fs = require("fs");
 const ejs = require("ejs");
 const { promisify } = require("util");
 const writeFileAsync = promisify(fs.writeFile);
+const path = require('path');
 
 const createInvoice = async (req, res) => {
     try {
@@ -14,6 +15,7 @@ const createInvoice = async (req, res) => {
         } = req.body;
 
         const client = await schemas.Client.findOne({ client_id: client_id });
+        
         const invoice = new schemas.Invoice({
             client_id,
             services,
