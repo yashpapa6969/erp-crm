@@ -24,40 +24,11 @@ const createInvoice = async (req, res) => {
        const invoices =  await invoice.save();
 
 
-const ejsTemplate = `
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Invoice</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        /* Your CSS styles */
-    </style>
-</head>
-<body>
-    <div class="invoice-box">
-        <!-- Invoice content -->
-            <tr class="heading">
-                <td>Item</td>
-                <td>Price</td>
-            </tr>
-            
-            <% services.forEach(function(service) { %>
-                <tr class="item">
-                    <td><%= service.product %>, <%= service.serviceDescription %></td>
-                    <td>$<%= service.unitPrice.toFixed(2) %></td>
-                </tr>
-            <% }); %>
-            
-            <tr class="total">
-                <td></td>
-                <td>Total: $<%= total.toFixed(2) %></td>
-            </tr>
-        </table>
-    </div>
-</body>
-</html>
-`;
+       const ejsTemplatePath = path.join(__dirname, 'invoice_template.ejs');
+
+       // Read the template content synchronously; for asynchronous reading, use fs.readFile() with await
+       const ejsTemplate = fs.readFileSync(ejsTemplatePath, 'utf-8');
+       
 
 const htmlContent = await ejs.render(ejsTemplate, {
     client: client,

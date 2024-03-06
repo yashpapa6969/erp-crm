@@ -207,10 +207,10 @@
 
 <body style="width: 890px;">
     <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 20px;">
-        <img src="./long.png" width="500px" height="50px" />
+        <img src="./assets/long.png" width="500px" height="50px" />
         <div>
-            <h2 style="padding-top: 6pt;padding-left: 15pt;text-indent: 0pt;text-align: left; font-size: 24px;">Payslip for the month of June,
-                2020</h2>
+            <h2 style="padding-top: 6pt;padding-left: 15pt;text-indent: 0pt;text-align: left; font-size: 24px;">Payslip for <b>Employee name:</b> <%= salary.date1 %> <br />
+            </h2>
             <h3 style="padding-top: 7pt; padding-bottom: 20px;padding-left: 15pt;text-indent: 0pt;text-align: left;">Employee
                 Pay Summary</h3>
         </div>
@@ -290,9 +290,7 @@
                 <p class="s7" style="padding-top: 13pt;padding-right: 21pt;text-indent: 0pt;text-align: right;">AMOUNT
                 </p>
             </td>
-            <td style="width:112pt" bgcolor="#F5F5F5">
-                <p class="s7" style="padding-top: 12pt;padding-right: 21pt;text-indent: 0pt;text-align: right;">YTD</p>
-            </td>
+          
             <td style="width:169pt" bgcolor="#F5F5F5">
                 <p class="s7" style="padding-top: 13pt;padding-left: 22pt;text-indent: 0pt;text-align: left;">DEDUCTIONS
                 </p>
@@ -301,9 +299,7 @@
                 <p class="s7" style="padding-top: 13pt;padding-right: 17pt;text-indent: 0pt;text-align: right;">AMOUNT
                 </p>
             </td>
-            <td style="width:93pt" bgcolor="#F5F5F5">
-                <p class="s7" style="padding-top: 13pt;padding-right: 8pt;text-indent: 0pt;text-align: right;">YTD</p>
-            </td>
+         
         </tr>
         <tr style="height:50pt">
             <td style="width:190pt">
@@ -314,10 +310,7 @@
                 <p style="text-indent: 0pt;text-align: left;"><br /></p>
                 <p class="s8" style="padding-right: 21pt;text-indent: 0pt;text-align: right;">₹<%= salary.basicPay %></p>
             </td>
-            <td style="width:112pt">
-                <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                <p class="s8" style="padding-right: 21pt;text-indent: 0pt;text-align: right;">₹0.00</p>
-            </td>
+          
             <td style="width:169pt">
                 <p style="text-indent: 0pt;text-align: left;"><br /></p>
                 <p class="s8" style="padding-left: 22pt;text-indent: 0pt;text-align: left;">TDS</p>
@@ -326,39 +319,32 @@
                 <p style="text-indent: 0pt;text-align: left;"><br /></p>
                 <p class="s8" style="padding-right: 18pt;text-indent: 0pt;text-align: right;">₹<%= salary.tds %></p>
             </td>
-            <td style="width:93pt">
-                <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                <p class="s8" style="padding-right: 9pt;text-indent: 0pt;text-align: right;">₹0.00</p>
-            </td>
+        
         </tr>
         <tr style="height:38pt">
             <td style="width:190pt">
                 <p class="s8" style="padding-top: 10pt;padding-left: 10pt;text-indent: 0pt;text-align: left;">Travel
                     Allowance</p>
             </td>
-            ,
-            ,
-          
-           
+            
+        
             <td style="width:103pt">
                 <p class="s8" style="padding-top: 10pt;padding-right: 21pt;text-indent: 0pt;text-align: right;">
                     ₹<%= salary.travelPay %></p>
             </td>
-            <td style="width:112pt">
-                <p class="s8" style="padding-top: 9pt;padding-right: 21pt;text-indent: 0pt;text-align: right;">
-                    ₹0.00</p>
-            </td>
+
+         
             <td style="width:169pt">
-                <p class="s8" style="padding-top: 10pt;padding-left: 22pt;text-indent: 0pt;text-align: left;">Leaves
+                <p class="s8" style="padding-top: 10pt;padding-left: 22pt;text-indent: 0pt;text-align: left;">Unpaid Leaves
                 </p>
             </td>
-            <td style="width:126pt">
-                <p class="s8" style="padding-top: 10pt;padding-right: 17pt;text-indent: 0pt;text-align: right;">₹<%= salary.tds %></p>
+            <td style="width:103pt">
+                <p class="s8" style="padding-top: 10pt;padding-right: 21pt;text-indent: 0pt;text-align: right;">
+                    ₹<%= deductionPerLeave%></p>
             </td>
-            <td style="width:93pt">
-                <p class="s8" style="padding-top: 10pt;padding-right: 8pt;text-indent: 0pt;text-align: right;">₹0.00
-                </p>
-            </td>
+            
+            
+           
         </tr>
         <tr style="height:38pt">
             <td style="width:190pt">
@@ -368,10 +354,7 @@
                 <p class="s8" style="padding-top: 10pt;padding-right: 21pt;text-indent: 0pt;text-align: right;">
                     ₹<%= salary.bonus %></p>
             </td>
-            <td style="width:112pt">
-                <p class="s8" style="padding-top: 9pt;padding-right: 21pt;text-indent: 0pt;text-align: right;">₹0.00
-                </p>
-            </td>
+           
             <td style="width:169pt">
                 <p class="s8" style="padding-top: 10pt;padding-left: 22pt;text-indent: 0pt;text-align: left;">Advance Salary
                 </p>
@@ -379,25 +362,20 @@
             <td style="width:126pt">
                 <p class="s8" style="padding-top: 10pt;padding-right: 17pt;text-indent: 0pt;text-align: right;">₹<%= salary.advanceSalary %></p>
             </td>
-            <td style="width:93pt">
-                <p class="s8" style="padding-top: 10pt;padding-right: 8pt;text-indent: 0pt;text-align: right;">₹0.00
-                </p>
-            </td>
+     
         </tr>
         <tr style="height:57pt">
             <td style="width:190pt">
                 <p class="s8"
                     style="padding-top: 10pt;padding-left: 10pt;padding-right: 56pt;text-indent: 0pt;line-height: 111%;text-align: left;">
-                    Leaves</p>
+                Paid Leaves</p>
             </td>
             <td style="width:103pt">
-                <p class="s8" style="padding-top: 10pt;padding-right: 21pt;text-indent: 0pt;text-align: right;">₹<%= salary.tds %>
-                </p>
+                <p class="s8" style="padding-top: 10pt;padding-right: 21pt;text-indent: 0pt;text-align: right;">
+                    ₹<%= additionPerLeave%></p>
             </td>
-            <td style="width:112pt">
-                <p class="s8" style="padding-top: 9pt;padding-right: 21pt;text-indent: 0pt;text-align: right;">₹0.00
-                </p>
-            </td>
+    
+           
             <td style="width:169pt">
                 <p style="text-indent: 0pt;text-align: left;"><br /></p>
             </td>
@@ -437,7 +415,7 @@
     </table>
     <p style="text-indent: 0pt;text-align: left;"><br /></p>
     <p class="s10" style="padding-top: 8pt;text-indent: 0pt;text-align: left;">| <span style=" color: #000;">Total Net
-            Payable </span><span class="s12">₹</span><span class="s13"><%= salary.netSalary %><</span><span class="s14">
+            Payable </span><span class="s12">₹</span><span class="s13"><%= salary.netSalary %></span><span class="s14">
     <p style="padding-left: 5pt;text-indent: 0pt;text-align: left;" />
   
     <p style="text-indent: 0pt;text-align: left;"><br /></p>

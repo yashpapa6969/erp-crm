@@ -16,10 +16,14 @@ const downloadInvoice = async (req, res) => {
 
         const client = await schemas.Client.findOne({ client_id: slips.client_id });
 
+        const ejsTemplatePath = path.join(__dirname, 'invoice_template.ejs');
+
+        // Read the template content synchronously; for asynchronous reading, use fs.readFile() with await
+        const ejsTemplate = fs.readFileSync(ejsTemplatePath, 'utf-8');
         
         
         // Generate PDF from HTML content
-        const pdfBuffer = await generatePdf(htmlContent);
+        const pdfBuffer = await generatePdf(ejsTemplate);
 
         // Respond with the generated PDF
         res.set({

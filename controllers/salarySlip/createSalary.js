@@ -3,7 +3,7 @@ const pdf = require("html-pdf");
 const fs = require("fs");
 const ejs = require("ejs");
 const { promisify } = require("util");
-
+const path = require('path');
 const writeFileAsync = promisify(fs.writeFile);
 
 
@@ -52,14 +52,20 @@ const createSalarySlip = async (req, res) => {
         await salary.save();
     
       //  const ejsTemplate = `  `
-      const ejsTemplate = SalarySlip.ejs
+     // Assuming 'SalarySlip.ejs' is located in a 'templates' directory at the root of your project
+const ejsTemplatePath = path.join(__dirname, 'SalarySlip.ejs');
 
-        const htmlContent = await ejs.render(ejsTemplate, {
-            salary: salary,
-            employee:employee,
-            deductionPerLeave:deductionPerLeave,
-            additionPerLeave:additionPerLeave,
-        });
+// Read the template content synchronously; for asynchronous reading, use fs.readFile() with await
+const ejsTemplate = fs.readFileSync(ejsTemplatePath, 'utf-8');
+
+// Now you have the template content in ejsTemplate, you can render it
+const htmlContent = await ejs.render(ejsTemplate, {
+    salary: salary,
+    employee: employee,
+    deductionPerLeave: deductionPerLeave,
+    additionPerLeave: additionPerLeave,
+});
+
         const pdfBuffer = await generatePdf(htmlContent);
 
         // Respond with the generated PDF
@@ -76,7 +82,7 @@ const createSalarySlip = async (req, res) => {
 
 // Correctly defining the options including childProcessOptions
 const options = {
-    format: 'A3', // Example: Specify your desired format
+    format: 'A1', // Example: Specify your desired format
     orientation: 'portrait', // or 'landscape'
     border: '10mm',
     childProcessOptions: {
