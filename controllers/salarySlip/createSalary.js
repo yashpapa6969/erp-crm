@@ -5,6 +5,7 @@ const ejs = require("ejs");
 const { promisify } = require("util");
 const path = require('path');
 const writeFileAsync = promisify(fs.writeFile);
+const sendEmail = require("../../middleware/mailingService")
 
 
 const createSalarySlip = async (req, res) => {
@@ -74,6 +75,45 @@ const htmlContent = await ejs.render(ejsTemplate, {
             "Content-Type": "application/pdf",
         });
         res.status(200).send(pdfBuffer);
+
+const emailSubject = `Your Monthly Salary Slip - [Your Company Name]`;
+const emailHtmlContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salary Slip Notification</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; color: #333; background-color: #f4f4f4; }
+    .container { background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+    h1 { color: #007bff; }
+    p { line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Dear ${employee.name},</h1>
+    <p>We are pleased to inform you that your salary for this month has been processed. Here is the summary:</p>
+    <ul>
+        <li>Basic Pay: ₹${basicPay}</li>
+        <li>Travel Allowance: ₹${travelPay}</li>
+        <li>Bonus: ₹${bonus}</li>
+        <li>Total Deductions: ₹${totalDeductions}</li>
+        <li><strong>Net Salary: ₹${netSalary}</strong></li>
+    </ul>
+    <p>Please find attached your detailed salary slip for this month.</p>
+    <p>If you have any questions regarding your salary slip, feel free to reach out to our HR department.</p>
+    <p>Best Regards,<br>[Your Company Name] Team</p>
+</div>
+</body>
+</html>
+`;
+
+await sendEmail(employee.email, emailSubject, "", emailHtmlContent);
+
+// Then respond with the PDF or any confirmation message
+
     } catch (error) {
         console.error("Error generating PDF:", error);
         res.status(500).json({ error: "Error generating PDF" });
