@@ -33,7 +33,6 @@ router.post('/createLead', uploadFields, apis.createLead);
 router.post('/createClient', uploadFields, apis.createClient);
 
 
-// router.delete('/deleteTeam/:team_id',(req,res)=>{apis.deleteTeam(req,res)});
 
   router.post('/createEmployee',(req,res) => {apis.createEmployee(req,res)});
   router.get('/getAllEmployees',(req,res) => {apis.getAllEmployees(req,res)});
@@ -96,16 +95,25 @@ router.post('/createClient', uploadFields, apis.createClient);
  router.get('/downloadInvoice/:invoice_id',(req,res) => {apis.downloadInvoice(req,res)});
 
 
+ router.delete('/deleteClientById/:client_id',(req,res)=>{apis.deleteClientById(req,res)});
+ router.delete('/deleteEmployeeById/:employee_id',(req,res)=>{apis.deleteEmployeeById(req,res)});
+ router.delete('/deleteInvoiceById/:invoice_id',(req,res)=>{apis.deleteInvoiceById(req,res)});
+ router.delete('/deleteLeadById/:lead_id',(req,res)=>{apis.deleteLeadById(req,res)});
+ router.delete('/deleteProductById/:product_id',(req,res)=>{apis.deleteProductById(req,res)});
+ router.delete('/deleteProjectById/:project_id',(req,res)=>{apis.deleteProjectById(req,res)});
+ router.delete('/deleteSlipById/:slip_id',(req,res)=>{apis.deleteSlipById(req,res)});
+ router.delete('/deleteSourceTagById/:source_tag_id',(req,res)=>{apis.deleteSourceTagById(req,res)});
+ router.delete('/deleteTagById/:tag_id',(req,res)=>{apis.deleteTagById(req,res)});
+ router.delete('/deleteTaskById/:task_id',(req,res)=>{apis.deleteTaskById(req,res)});
 
- DeleteClientById
-DeleteEmployeeById
-DeleteInvoiceById
-DeleteLeadById
-DeleteProductById
-DeleteProjectById
-DeleteSlipById
-DeleteSourceTagById
-DeleteTagById
-DeleteTaskById
+
+
+
+
+
+
+
+
+
 
 module.exports = router
