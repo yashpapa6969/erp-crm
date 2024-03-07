@@ -38,9 +38,7 @@ const projectSchema = new mongoose.Schema({
     deadline: { 
         type: String
     },
-    tags: [{ 
-        tag_id: { type: String, default: uuidv4 },
-  
+    tags: [{   
    tagName: {
         type: String,
         required: true
