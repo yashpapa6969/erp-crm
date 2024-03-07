@@ -38,12 +38,11 @@ const projectSchema = new mongoose.Schema({
     deadline: { 
         type: String
     },
-    tags: [{   
-   tagName: {
-        type: String,
+    tags: {   
+        type: Array,
         required: true
+
     },
-    }],
     description: {
         type: String,
         required: false
