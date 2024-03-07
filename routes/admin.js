@@ -96,4 +96,16 @@ router.post('/createClient', uploadFields, apis.createClient);
  router.get('/downloadInvoice/:invoice_id',(req,res) => {apis.downloadInvoice(req,res)});
 
 
+
+ DeleteClientById
+DeleteEmployeeById
+DeleteInvoiceById
+DeleteLeadById
+DeleteProductById
+DeleteProjectById
+DeleteSlipById
+DeleteSourceTagById
+DeleteTagById
+DeleteTaskById
+
 module.exports = router

@@ -15,7 +15,7 @@ const downloadInvoice = async (req, res) => {
 
         const invoice = await schemas.Invoice.findOne({invoice_id:invoice_id});
 
-        const client = await schemas.Client.findOne({ client_id: slips.client_id });
+        const client = await schemas.Client.findOne({ client_id: invoice.client_id });
 
         const ejsTemplatePath = path.join(__dirname, 'invoice_template.ejs');
 
