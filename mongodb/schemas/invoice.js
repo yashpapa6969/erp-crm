@@ -30,7 +30,7 @@ const invoiceSchema = new mongoose.Schema({
           const year = istDate.getFullYear();
           const month = (istDate.getMonth() + 1).toString().padStart(2, "0"); // Zero-padded
           const day = istDate.getDate().toString().padStart(2, "0"); // Zero-padded
-          return `${year}-${month}-${day}`;
+          return `${day}-${month}-${year}`;
         },
         unique: false,
       },
@@ -48,7 +48,8 @@ const invoiceSchema = new mongoose.Schema({
         },
         unique: false,
       },
-    
+      createdAt: { type: Date, default: Date.now }, // Added createdAt field
+
 
 
 

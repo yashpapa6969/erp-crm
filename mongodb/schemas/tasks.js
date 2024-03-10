@@ -53,7 +53,8 @@ client_id: {
         type: String,
         required: true
     },
-  
+    createdAt: { type: Date, default: Date.now }, // Added createdAt field
+
 });
 
 const Task = mongoose.model('Task', taskSchema);

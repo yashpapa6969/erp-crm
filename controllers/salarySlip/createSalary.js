@@ -37,6 +37,7 @@ const createSalarySlip = async (req, res) => {
         const netSalary = totalIncome - totalDeductions;
         const employee = await schemas.Employee.findOne({ employee_id: employee_id });
         const salary = new schemas.salarySlip({
+            name:employee.name,
             employee_id,
             basicPay,
             travelPay,

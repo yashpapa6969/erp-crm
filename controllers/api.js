@@ -77,6 +77,7 @@ const getAllInvoices = require("./Invoice/getAllInvoices");
 const getAllInvoiceByClient = require("./Invoice/getInvoicebyClientId");
 const downloadInvoice = require("./Invoice/invoiceDownload");
 const deleteInvoiceById = require("./Invoice/deleteInvoice");
+const getAllInvoicesFilter = require("./Invoice/getInvoiceFilter");
 
 
 
@@ -137,6 +138,7 @@ var apis = {
   getAllInvoices: getAllInvoices,
   getAllInvoiceByClient: getAllInvoiceByClient,
   downloadInvoice: downloadInvoice,
+  getAllInvoicesFilter:getAllInvoicesFilter,
 
 
 

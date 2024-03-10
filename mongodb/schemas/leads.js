@@ -135,6 +135,7 @@ const leadSchema = new mongoose.Schema({
         required: false
     },
 
+    createdAt: { type: Date, default: Date.now }, // Added createdAt field
 
 
 }, );

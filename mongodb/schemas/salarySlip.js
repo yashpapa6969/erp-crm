@@ -7,6 +7,7 @@ const salarySlipSchema = new mongoose.Schema({
     },
     basicPay: { type: String, required: true, },
     travelPay: { type: String, required: true, },
+    name: { type: String, required: false, },
     bonus: { type: String, required: true, },
     paidLeave: { type: String, required: true, },
     totalIncome: { type: String, required: false, },
@@ -31,7 +32,8 @@ const salarySlipSchema = new mongoose.Schema({
         },
         unique: false,
       },
-    
+      createdAt: { type: Date, default: Date.now }, // Added createdAt field
+
       time1: {
         type: String,
         default: function () {
