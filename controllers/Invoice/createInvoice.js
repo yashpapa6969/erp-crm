@@ -15,15 +15,37 @@ const createInvoice = async (req, res) => {
             gst,
         } = req.body;
 
+
+
         const client = await schemas.Client.findOne({ client_id: client_id });
         console.log(client)
+        const convertDateFormat = (dateString) => {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) {
+                return dateString; // Return original if parsing fails
+            }
+            let day = date.getDate().toString().padStart(2, '0');
+            let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-indexed
+            let year = date.getFullYear().toString().slice(-2);
+
+            return `${day}-${month}-${year}`;
+        };
+
+        // Convert dates within each service object
+        const formattedServices = services.map(service => ({
+            ...service,
+            startDate: convertDateFormat(service.startDate),
+            endDate: convertDateFormat(service.endDate),
+        }));
+
+
         const invoice = new schemas.Invoice({
             client_id,
-            services,
+            services: formattedServices,
             gst,
-         
         });
 
+       
        const invoices =  await invoice.save();
 
 

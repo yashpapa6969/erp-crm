@@ -5,10 +5,24 @@ const addTask =  async (req, res) => {
     try {
       const taskData = req.body;
       const savedTask= await schemas.Task(taskData);
+      const convertDateFormat = (dateString) => {
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) {
+            return dateString; // Return original if parsing fails
+        }
+        let day = date.getUTCDate().toString().padStart(2, '0'); // Using getUTCDate to avoid timezone issues
+        let month = (date.getUTCMonth() + 1).toString().padStart(2, '0'); // Month is 0-indexed, using getUTCMonth
+        let year = date.getUTCFullYear().toString().slice(-2);
+    
+        return `${day}-${month}-${year}`;
+    };
+    savedTask.startDate = convertDateFormat(savedTask.startDate);
+    savedTask.deadline = convertDateFormat(savedTask.deadline);
       const result = await savedTask.save();
       console.log(result);
       const employee = await schemas.Employee.findOne({ employee_id: result.employee_id });
       const emailSubject = `Your Tasks `;
+      
       const emailHtmlContent = `
       <!DOCTYPE html>
       <html lang="en">

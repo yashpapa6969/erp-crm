@@ -28,8 +28,24 @@ const createClient = async (req, res) => {
         companyAnniversary,
         workStartDate,
     } = req.body;
-
+    
     try {
+        const convertDateFormat = (dateString) => {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) {
+                return dateString; 
+            }
+            let day = date.getDate().toString().padStart(2, '0');
+            let month = (date.getMonth() + 1).toString().padStart(2, '0'); 
+            let year = date.getFullYear().toString().slice(-2);
+        
+            return `${day}-${month}-${year}`;
+        };
+        enquiryDate = convertDateFormat(enquiryDate);
+        clientBirthday = convertDateFormat(clientBirthday);
+        clientAnniversary = convertDateFormat(clientAnniversary);
+        companyAnniversary = convertDateFormat(companyAnniversary);
+        workStartDate = convertDateFormat(workStartDate);
         const singleFile = req.files.singleFile ? req.files.singleFile[0] : null;
         const multipleFiles = req.files.multipleFiles || [];
         const newClient = new schemas.Client({
@@ -104,9 +120,7 @@ const createClient = async (req, res) => {
     </html>
     `
         );
-
-
-        res.status(201).json({
+      res.status(201).json({
             message: "client successfully created!",
             client,
             singleFileInformation: singleFile,
@@ -118,4 +132,3 @@ const createClient = async (req, res) => {
 };
 
 module.exports = createClient;
-//TODO UPDATE POSTMAN

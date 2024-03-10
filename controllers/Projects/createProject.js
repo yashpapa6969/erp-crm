@@ -34,7 +34,21 @@ const createProject = async (req, res) => {
       priority,
       brandName,
     });
+    const convertDateFormat = (dateString) => {
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) {
+          return dateString; // Return original if parsing fails
+      }
+      let day = date.getUTCDate().toString().padStart(2, '0'); // Using getUTCDate to avoid timezone issues
+      let month = (date.getUTCMonth() + 1).toString().padStart(2, '0'); // Month is 0-indexed, using getUTCMonth
+      let year = date.getUTCFullYear().toString().slice(-2);
+  
+      return `${day}-${month}-${year}`;
+  };
+  startDate = convertDateFormat(startDate);
+  deadline = convertDateFormat(deadline);
 
+  
     const project = await newProject.save();
 
     // Ensure notifyProjectStart properly handles the project_id, client_id, and employees

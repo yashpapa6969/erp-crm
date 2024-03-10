@@ -34,6 +34,20 @@ const createEmployee = async (req, res) => {
     } = req.body;
 
     try {
+        const convertDateFormat = (dateString) => {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) {
+                return dateString; 
+            }
+            let day = date.getDate().toString().padStart(2, '0');
+            let month = (date.getMonth() + 1).toString().padStart(2, '0'); 
+            let year = date.getFullYear().toString().slice(-2);
+        
+            return `${day}-${month}-${year}`;
+        };
+        dob = convertDateFormat(dob);
+        joiningDate = convertDateFormat(joiningDate);
+
         // Check for an existing employee with the same email
         const existingEmployee = await schemas.Employee.findOne({ email: email });
 
