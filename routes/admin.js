@@ -55,6 +55,7 @@ router.post('/createClient', uploadFields, apis.createClient);
   router.get('/getClientDetails/:client_id',(req,res) => {apis.getClientDetails(req,res)});
   router.get('/getAllClients',(req,res) => {apis.getAllClients(req,res)});
   router.patch('/updateClient/:client_id',(req,res) => {apis.updateClient(req,res)});
+  router.get('/specialDates',(req,res) => {apis.specialDates(req,res)});
 
   
   router.get('/getAllLeads',(req,res) => {apis.getAllLeads(req,res)});

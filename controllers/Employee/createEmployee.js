@@ -8,7 +8,7 @@ const hashPassword = async (password) => {
 };
 //TODO UPDTAE HERE AND POSTMAN
 const createEmployee = async (req, res) => {
-    const {
+    var {
         name,
         gender,
         contactNo,

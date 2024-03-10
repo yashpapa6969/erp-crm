@@ -1,7 +1,7 @@
 const schemas = require("../../mongodb/schemas/schemas");
 
     const createLead = async (req, res) => {
-    const {
+    var {
         title,
         gender,
         companyName,

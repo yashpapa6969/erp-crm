@@ -21,6 +21,8 @@ const getClientDetails = require("./Clients/getClientDetails");
 const getAllClients = require("./Clients/getAllClients");
 const updateClient = require("./Clients/updateDetails");
 const deleteClientById = require("./Clients/deleteClient");
+const specialDates = require("./Clients/clientDateReminder");
+
 
 
 const createLead = require("./Leads/createLead");
@@ -95,6 +97,7 @@ var apis = {
   getClientDetails: getClientDetails,
   getAllClients: getAllClients,
   updateClient: updateClient,
+  specialDates:specialDates,
 
 
 

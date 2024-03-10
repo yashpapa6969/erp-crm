@@ -1,7 +1,7 @@
 const schemas = require("../../mongodb/schemas/schemas");
 const sendEmail = require("../../middleware/mailingService");
 const createProject = async (req, res) => {
-  const {
+  var {
     projectName,
     client_id,
     status,
