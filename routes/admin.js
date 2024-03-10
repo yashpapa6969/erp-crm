@@ -94,7 +94,7 @@ router.post('/createClient', uploadFields, apis.createClient);
  router.get('/getAllInvoices',(req,res) => {apis.getAllInvoices(req,res)});
  router.get('/getAllInvoiceByClient/:client_id',(req,res) => {apis.getAllInvoiceByClient(req,res)});
  router.get('/downloadInvoice/:invoice_id',(req,res) => {apis.downloadInvoice(req,res)});
- router.get('/getAllInvoicesFilter/:financialYear/:month',(req,res) => {apis.getAllInvoicesFilter(req,res)});
+ router.get('/getAllInvoicesFilter/:financialYear/:month?',(req,res) => {apis.getAllInvoicesFilter(req,res)});
 
 
  router.delete('/deleteClientById/:client_id',(req,res)=>{apis.deleteClientById(req,res)});
