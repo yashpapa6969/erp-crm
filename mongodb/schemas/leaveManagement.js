@@ -33,8 +33,7 @@ const leaveRequestSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    createdAt: { type: Date, default: Date.now }, // Added createdAt field
-
+    createdAt: { type: Date, default: Date.now },
 });
 
 const LeaveRequest = mongoose.model('LeaveRequest', leaveRequestSchema);
