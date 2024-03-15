@@ -67,8 +67,8 @@ const schemas = require("../../mongodb/schemas/schemas");
             requirement,
             additionalInformation,
             status,
-            singleFile: singleFile ? singleFile.path : undefined,
-            multipleFiles: multipleFiles.map(file => file.path)
+            singleFile: singleFile ? singleFile.filename : undefined,
+            multipleFiles: multipleFiles.map(file => file.filename),
         });
 
         const lead = await newLead.save();
