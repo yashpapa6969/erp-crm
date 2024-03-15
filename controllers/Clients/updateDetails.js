@@ -4,15 +4,60 @@ const path = require('path');
 
 const updateClient = async (req, res) => {
   const { client_id } = req.params;
-  let { singleFileToRemove, multipleFilesToRemove, ...updateBody } = req.body;
+  let { singleFileToRemove, multipleFilesToRemove, enquiryDate, clientBirthday, clientAnniversary, companyAnniversary, workStartDate, ...updateBody } = req.body;
   try {
+    const convertDateFormat = (dateString) => {
+      if (!dateString) return dateString; // If dateString is null or undefined, return it as is
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) {
+        return dateString;
+      }
+      let day = date.getDate().toString().padStart(2, '0');
+      let month = (date.getMonth() + 1).toString().padStart(2, '0');
+      let year = date.getFullYear().toString().slice(-2);
+
+      return `${day}-${month}-${year}`;
+    };
+
     // Check if the client exists
     const existingClient = await schemas.Client.findOne({ client_id: client_id });
     if (!existingClient) {
       return res.status(404).send({ message: 'Client not found' });
     }
 
+    if (enquiryDate) {
+      enquiryDate = convertDateFormat(enquiryDate);
+    }
+    else {
+      enquiryDate = existingClient.enquiryDate;
+    }
+    // Convert clientBirthday
+    if (clientBirthday) {
+      clientBirthday = convertDateFormat(clientBirthday);
+    } else {
+      clientBirthday = existingClient.clientBirthday;
+    }
 
+    // Convert clientAnniversary
+    if (clientAnniversary) {
+      clientAnniversary = convertDateFormat(clientAnniversary);
+    } else {
+      clientAnniversary = existingClient.clientAnniversary;
+    }
+
+    // Convert companyAnniversary
+    if (companyAnniversary) {
+      companyAnniversary = convertDateFormat(companyAnniversary);
+    } else {
+      companyAnniversary = existingClient.companyAnniversary;
+    }
+
+    // Convert workStartDate
+    if (workStartDate) {
+      workStartDate = convertDateFormat(workStartDate);
+    } else {
+      workStartDate = existingClient.workStartDate;
+    }
     // Delete single file if specified
     if (singleFileToRemove != null && typeof singleFileToRemove === 'string') {
       const singleFilePath = path.join(__dirname, '../../uploads', singleFileToRemove);
@@ -78,7 +123,12 @@ const updateClient = async (req, res) => {
       {
         ...updateBody,
         singleFile: singleFile ? singleFile.filename : undefined,
-        multipleFiles: allMultipleFiles
+        multipleFiles: allMultipleFiles,
+        workStartDate,
+        enquiryDate,
+        clientBirthday,
+        clientAnniversary,
+        companyAnniversary
       },
       { new: true }
     );
