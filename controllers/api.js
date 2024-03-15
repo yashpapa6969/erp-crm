@@ -27,6 +27,7 @@ const specialDates = require("./Clients/clientDateReminder");
 
 const createLead = require("./Leads/createLead");
 const getAllLeads = require("./Leads/getAllLeads");
+const getLeadDetails= require("./Leads/getLeadDetails");
 const updateLeadStatus = require("./Leads/changeLeadStatus");
 const updateLead = require("./Leads/updateDetails");
 const deleteLeadById = require("./Leads/deleteLead");
@@ -106,6 +107,7 @@ var apis = {
   getAllLeads: getAllLeads,
   updateLeadStatus: updateLeadStatus,
   updateLead: updateLead,
+  getLeadDetails : getLeadDetails,
 
   addTag: addTag,
   getAllTags: getAllTags,

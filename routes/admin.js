@@ -31,7 +31,7 @@ const uploadFields = upload.fields([
 router.patch('/updateClient/:client_id', uploadFields, apis.updateClient);
 router.post('/createLead', uploadFields, apis.createLead);
 router.post('/createClient', uploadFields, apis.createClient);
-
+router.patch('/updateLead/:lead_id', uploadFields,(req, res) => { apis.updateLead(req, res) });
 
 
 router.post('/createEmployee', (req, res) => { apis.createEmployee(req, res) });
@@ -59,7 +59,7 @@ router.get('/specialDates', (req, res) => { apis.specialDates(req, res) });
 
 router.get('/getAllLeads', (req, res) => { apis.getAllLeads(req, res) });
 router.get('/updateLeadStatus/:lead_id/:status', (req, res) => { apis.updateLeadStatus(req, res) });
-router.patch('/updateLead/:lead_id', (req, res) => { apis.updateLead(req, res) });
+router.get('/getLeadDetails/:lead_id', (req, res) => { apis.getLeadDetails(req, res) });
 
 
 router.post('/addTag', (req, res) => { apis.addTag(req, res) });
