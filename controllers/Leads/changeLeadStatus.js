@@ -55,7 +55,7 @@ async function updateLeadStatus(req, res) {
                     clientData
                 );
                 await newClient.save();
-                await schemas.Lead.deleteOne({lead_id});
+                lead.status = 'Client'
 
                 break;
             case 3:
