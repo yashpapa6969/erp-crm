@@ -118,6 +118,12 @@ router.get('/getProjectCountByBrand', (req, res) => { apis.getProjectCountsByBra
 router.get('/getProjectsByDeadlineRange', (req, res) => { apis.getProjectsByDeadlineRange(req, res) });
 
 
+router.post('/createNewLeave', (req, res) => { apis.createNewLeave(req, res) });
+router.get('/getLeaveById/:leave_id', apis.getLeaveById);
+router.get('/getAllLeaves', apis.getAllLeaves);
+router.delete('/deleteLeaveById/:leave_id', apis.deleteLeaveById);
+router.patch('/updateLeave/:leave_id', apis.updateLeave);
+router.get('/updateLeaveStatus/:leave_id/:status', apis.updateLeaveStatus);
 
 
 

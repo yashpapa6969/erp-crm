@@ -87,6 +87,12 @@ const downloadInvoice = require("./Invoice/invoiceDownload");
 const deleteInvoiceById = require("./Invoice/deleteInvoice");
 const getAllInvoicesFilter = require("./Invoice/getInvoiceFilter");
 
+const createNewLeave = require("./leaveManagement/createLeave");
+const getLeaveById= require("./leaveManagement/getLeaveById");
+const deleteLeaveById= require("./leaveManagement/deleteLeaveById");
+const getAllLeaves= require("./leaveManagement/getAllLeaves");
+const updateLeave= require("./leaveManagement/updateLeave");
+const updateLeaveStatus= require("./leaveManagement/updateLeaveStatus");
 
 
 var apis = {
@@ -169,6 +175,13 @@ var apis = {
   deleteSourceTagById: deleteSourceTagById,
   deleteTagById: deleteTagById,
   deleteTaskById: deleteTaskById,
+
+  createNewLeave : createNewLeave,
+  getLeaveById : getLeaveById,
+  getAllLeaves : getAllLeaves,
+  deleteLeaveById: deleteLeaveById ,
+  updateLeave : updateLeave,
+  updateLeaveStatus : updateLeaveStatus
 
 };
 
