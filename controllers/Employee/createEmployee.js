@@ -31,7 +31,6 @@ const createEmployee = async (req, res) => {
         bankDetails,
         designation,
         type,
-        relation,
     } = req.body;
 
     try {
@@ -80,14 +79,16 @@ const createEmployee = async (req, res) => {
             guardianDetails: {
                 guardianName: guardianDetails.guardianName,
                 guardianContactNo: guardianDetails.guardianContactNo,
-                relation:guardianDetails.relation
+                relation: guardianDetails.relation,
              
             },
             bankDetails: {
                 bankName: bankDetails.bankName,
                 bankAccountNo: bankDetails.bankAccountNo,
                 bankIfscCode: bankDetails.bankIfscCode,
-                type: bankDetails.type
+                type: bankDetails.type,
+                branch: bankDetails.branch,
+
             },
             designation,
             type,
