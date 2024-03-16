@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+const { v4: uuidv4 } = require('uuid');
 
 const leaveRequestSchema = new mongoose.Schema({
-    employee_id: { type: String, required:true },
+    employee_id: { type: String, required: true },
 
+    leave_id: { type: String, default: uuidv4, index: true },
     type: {
         type: String,
         required: true,
@@ -33,7 +35,7 @@ const leaveRequestSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    createdAt: { type: Date, default: Date.now },
+
 });
 
 const LeaveRequest = mongoose.model('LeaveRequest', leaveRequestSchema);

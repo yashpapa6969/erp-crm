@@ -60,6 +60,8 @@ router.get('/specialDates', (req, res) => { apis.specialDates(req, res) });
 router.get('/getAllLeads', (req, res) => { apis.getAllLeads(req, res) });
 router.get('/updateLeadStatus/:lead_id/:status', (req, res) => { apis.updateLeadStatus(req, res) });
 router.get('/getLeadDetails/:lead_id', (req, res) => { apis.getLeadDetails(req, res) });
+router.get('/getLeadsByStatus', (req, res) => { apis.getLeadsByStatus(req, res) });
+router.get('/getTotalLeads', (req, res) => { apis.getTotalLeadCount(req, res) });
 
 
 router.post('/addTag', (req, res) => { apis.addTag(req, res) });
@@ -109,8 +111,19 @@ router.delete('/deleteTaskById/:task_id', (req, res) => { apis.deleteTaskById(re
 
 
 
+router.get('/getTotalProjects', (req, res) => { apis.getTotalProjects(req, res) });
+router.get('/getProjectCountByStatus', (req, res) => { apis.getProjectCountsByStatus(req, res) });
+router.get('/getProjectCountByClient', (req, res) => { apis.getProjectCountsByClient(req, res) });
+router.get('/getProjectCountByBrand', (req, res) => { apis.getProjectCountsByBrand(req, res) });
+router.get('/getProjectsByDeadlineRange', (req, res) => { apis.getProjectsByDeadlineRange(req, res) });
 
 
+router.post('/createNewLeave', (req, res) => { apis.createNewLeave(req, res) });
+router.get('/getLeaveById/:leave_id', apis.getLeaveById);
+router.get('/getAllLeaves', apis.getAllLeaves);
+router.delete('/deleteLeaveById/:leave_id', apis.deleteLeaveById);
+router.patch('/updateLeave/:leave_id', apis.updateLeave);
+router.get('/updateLeaveStatus/:leave_id/:status', apis.updateLeaveStatus);
 
 
 

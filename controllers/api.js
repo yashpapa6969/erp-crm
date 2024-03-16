@@ -31,6 +31,8 @@ const getLeadDetails= require("./Leads/getLeadDetails");
 const updateLeadStatus = require("./Leads/changeLeadStatus");
 const updateLead = require("./Leads/updateDetails");
 const deleteLeadById = require("./Leads/deleteLead");
+const getLeadsByStatus = require("./Leads/getLeadsByStatus");
+const getTotalLeadCount = require("./Leads/getTotalLeadCount");
 
 
 const addTag = require("./Tags/addTags");
@@ -69,6 +71,11 @@ const addProducts = require("./productServices/addProducts");
 const getAllProducts = require("./productServices/getAllProducts");
 const getProductDetails = require("./productServices/getProductsbyID");
 const deleteProductById = require("./productServices/deleteProduct");
+const getTotalProjects = require("./Projects/getTotalProjects");
+const getProjectCountsByStatus = require("./Projects/getProjectCountByStatus");
+const getProjectCountsByClient = require("./Projects/getProjectCountsByClient");
+const getProjectCountsByBrand = require("./Projects/getProjectCountsByBrand");
+const getProjectsByDeadlineRange = require("./Projects/getProjectsByDeadlineRange");
 
 
 
@@ -80,6 +87,12 @@ const downloadInvoice = require("./Invoice/invoiceDownload");
 const deleteInvoiceById = require("./Invoice/deleteInvoice");
 const getAllInvoicesFilter = require("./Invoice/getInvoiceFilter");
 
+const createNewLeave = require("./leaveManagement/createLeave");
+const getLeaveById= require("./leaveManagement/getLeaveById");
+const deleteLeaveById= require("./leaveManagement/deleteLeaveById");
+const getAllLeaves= require("./leaveManagement/getAllLeaves");
+const updateLeave= require("./leaveManagement/updateLeave");
+const updateLeaveStatus= require("./leaveManagement/updateLeaveStatus");
 
 
 var apis = {
@@ -108,6 +121,8 @@ var apis = {
   updateLeadStatus: updateLeadStatus,
   updateLead: updateLead,
   getLeadDetails : getLeadDetails,
+  getLeadsByStatus : getLeadsByStatus,
+  getTotalLeadCount : getTotalLeadCount,
 
   addTag: addTag,
   getAllTags: getAllTags,
@@ -135,6 +150,11 @@ var apis = {
   addProducts: addProducts,
   getAllProducts: getAllProducts,
   getProductDetails: getProductDetails,
+  getTotalProjects : getTotalProjects,
+  getProjectCountsByStatus : getProjectCountsByStatus,
+  getProjectCountsByClient : getProjectCountsByClient,
+  getProjectCountsByBrand : getProjectCountsByBrand,
+  getProjectsByDeadlineRange : getProjectsByDeadlineRange,
 
   createInvoice: createInvoice,
   getAllInvoices: getAllInvoices,
@@ -155,6 +175,13 @@ var apis = {
   deleteSourceTagById: deleteSourceTagById,
   deleteTagById: deleteTagById,
   deleteTaskById: deleteTaskById,
+
+  createNewLeave : createNewLeave,
+  getLeaveById : getLeaveById,
+  getAllLeaves : getAllLeaves,
+  deleteLeaveById: deleteLeaveById ,
+  updateLeave : updateLeave,
+  updateLeaveStatus : updateLeaveStatus
 
 };
 

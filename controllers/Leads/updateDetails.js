@@ -4,7 +4,19 @@ const path = require('path');
 
 const updateLead = async (req, res) => {
   const { lead_id } = req.params;
-  let { singleFileToRemove, multipleFilesToRemove, ...updateBody } = req.body;
+  let { singleFileToRemove, multipleFilesToRemove, enquiryDate, ...updateBody } = req.body;
+  const convertDateFormat = (dateString) => {
+    if (!dateString) return dateString; // If dateString is null or undefined, return it as is
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      return dateString;
+    }
+    let day = date.getDate().toString().padStart(2, '0');
+    let month = (date.getMonth() + 1).toString().padStart(2, '0');
+    let year = date.getFullYear().toString().slice(-2);
+
+    return `${day}-${month}-${year}`;
+  };
   try {
     // Check if the client exists
     const existingLead = await schemas.Lead.findOne({ lead_id: lead_id });
@@ -12,6 +24,12 @@ const updateLead = async (req, res) => {
       return res.status(404).send({ message: 'Lead not found' });
     }
 
+    if (enquiryDate) {
+      enquiryDate = convertDateFormat(enquiryDate);
+    }
+    else {
+      enquiryDate = existingClient.enquiryDate;
+    }
 
     // Delete single file if specified
     if (singleFileToRemove != null && typeof singleFileToRemove === 'string') {
@@ -78,7 +96,8 @@ const updateLead = async (req, res) => {
       {
         ...updateBody,
         singleFile: singleFile ? singleFile.filename : undefined,
-        multipleFiles: allMultipleFiles
+        multipleFiles: allMultipleFiles,
+        enquiryDate
       },
       { new: true }
     );
