@@ -31,6 +31,7 @@ const createEmployee = async (req, res) => {
         bankDetails,
         designation,
         type,
+        relation,
     } = req.body;
 
     try {
@@ -78,7 +79,8 @@ const createEmployee = async (req, res) => {
             correspondenceAddress,
             guardianDetails: {
                 guardianName: guardianDetails.guardianName,
-                guardianContactNo: guardianDetails.guardianContactNo
+                guardianContactNo: guardianDetails.guardianContactNo,
+                relation:guardianDetails.relation
              
             },
             bankDetails: {
