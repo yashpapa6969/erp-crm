@@ -88,8 +88,10 @@ const addTask =  async (req, res) => {
       
       `;
       
-      await sendEmail(employee.email, emailSubject, "", emailHtmlContent);
-      
+      if (employee.email) {
+        await sendEmail(employee.email, emailSubject, "", emailHtmlContent);
+      }
+            
       res.status(200).json({ result });
 
     } catch (error) {
