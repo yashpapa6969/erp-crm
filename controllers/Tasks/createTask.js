@@ -88,7 +88,7 @@ const addTask =  async (req, res) => {
       
       `;
       
-      if (employee.email) {
+      if (employee && employee.email) {
         await sendEmail(employee.email, emailSubject, "", emailHtmlContent);
       }
             
@@ -96,7 +96,7 @@ const addTask =  async (req, res) => {
 
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Server Error' });
+      res.status(500).json({ message: error});
     }
   };
 
