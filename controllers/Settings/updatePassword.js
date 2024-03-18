@@ -1,4 +1,3 @@
-const express = require('express');
 const bcrypt = require('bcrypt');
 const schemas = require("../../mongodb/schemas/schemas");
 

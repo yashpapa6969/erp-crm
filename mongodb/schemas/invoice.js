@@ -4,6 +4,10 @@ const { v4: uuidv4 } = require('uuid');
 const invoiceSchema = new mongoose.Schema({
     invoive_id: { type: String, default: uuidv4 ,  index: true },
     client_id: { type: String, required: true,   index: true },
+    brandName: {
+      type: String,
+      required: false
+  },
     services:[{
 
         product: {

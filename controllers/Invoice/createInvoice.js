@@ -22,7 +22,7 @@ const createInvoice = async (req, res) => {
         const convertDateFormat = (dateString) => {
             const date = new Date(dateString);
             if (isNaN(date.getTime())) {
-                return dateString; // Return original if parsing fails
+                return dateString; 
             }
             let day = date.getDate().toString().padStart(2, '0');
             let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-indexed
@@ -43,6 +43,7 @@ const createInvoice = async (req, res) => {
             client_id,
             services: formattedServices,
             gst,
+            brandName: client.brandName,
         });
 
        
