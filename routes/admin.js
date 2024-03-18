@@ -129,6 +129,7 @@ router.get('/getTotalLeaves', (req, res) => { apis.getTotalLeaveCount(req, res) 
 
 
 
+router.post('/updatePassword', (req, res) => { apis.updatePassword(req, res) });
 
 
 

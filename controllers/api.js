@@ -97,6 +97,11 @@ const getLeaveByStatus = require("./leaveManagement/getLeaveByStatus");
 const getTotalLeaveCount = require("./leaveManagement/getTotalLeaveCount");
 
 
+
+const updatePassword = require("./Settings/updatePassword");
+
+
+
 var apis = {
   createEmployee: createEmployee,
   getAllEmployees: getAllEmployees,
@@ -185,7 +190,11 @@ var apis = {
   updateLeave : updateLeave,
   updateLeaveStatus : updateLeaveStatus,
   getLeavesByStatus : getLeaveByStatus,
-  getTotalLeaveCount : getTotalLeaveCount
+  getTotalLeaveCount : getTotalLeaveCount,
+
+
+
+  updatePassword:updatePassword,
 
 };
 
