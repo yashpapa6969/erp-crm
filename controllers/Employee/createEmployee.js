@@ -78,14 +78,17 @@ const createEmployee = async (req, res) => {
             correspondenceAddress,
             guardianDetails: {
                 guardianName: guardianDetails.guardianName,
-                guardianContactNo: guardianDetails.guardianContactNo
+                guardianContactNo: guardianDetails.guardianContactNo,
+                relation: guardianDetails.relation,
              
             },
             bankDetails: {
                 bankName: bankDetails.bankName,
                 bankAccountNo: bankDetails.bankAccountNo,
                 bankIfscCode: bankDetails.bankIfscCode,
-                type: bankDetails.type
+                type: bankDetails.type,
+                branch: bankDetails.branch,
+
             },
             designation,
             type,

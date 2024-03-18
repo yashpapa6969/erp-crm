@@ -119,7 +119,7 @@ const leadSchema = new mongoose.Schema({
     status: {
         type: String,
         required: true,
-        enum: ['Raw', 'In-Progress', 'Converted', 'Lost'],
+        enum: ['Raw', 'In-Progress', 'Converted', 'Lost',"Client"],
         default: 'Raw'
     },
     singleFile: {

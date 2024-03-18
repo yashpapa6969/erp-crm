@@ -88,13 +88,15 @@ const addTask =  async (req, res) => {
       
       `;
       
-      await sendEmail(employee.email, emailSubject, "", emailHtmlContent);
-      
+      if (employee && employee.email) {
+        await sendEmail(employee.email, emailSubject, "", emailHtmlContent);
+      }
+            
       res.status(200).json({ result });
 
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Server Error' });
+      res.status(500).json({ message: error});
     }
   };
 

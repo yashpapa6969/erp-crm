@@ -70,6 +70,12 @@ const employeeSchema = new mongoose.Schema({
             required: true,
             unique: false,
         },
+        relation: {
+            type: String,
+            required: true,
+            unique: false,
+        },
+
         guardianContactNo: { type: String, required: false },
     },
     bankDetails: {
