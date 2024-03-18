@@ -93,6 +93,8 @@ const deleteLeaveById= require("./leaveManagement/deleteLeaveById");
 const getAllLeaves= require("./leaveManagement/getAllLeaves");
 const updateLeave= require("./leaveManagement/updateLeave");
 const updateLeaveStatus= require("./leaveManagement/updateLeaveStatus");
+const getLeaveByStatus = require("./leaveManagement/getLeaveByStatus");
+const getTotalLeaveCount = require("./leaveManagement/getTotalLeaveCount");
 
 
 var apis = {
@@ -181,7 +183,9 @@ var apis = {
   getAllLeaves : getAllLeaves,
   deleteLeaveById: deleteLeaveById ,
   updateLeave : updateLeave,
-  updateLeaveStatus : updateLeaveStatus
+  updateLeaveStatus : updateLeaveStatus,
+  getLeavesByStatus : getLeaveByStatus,
+  getTotalLeaveCount : getTotalLeaveCount
 
 };
 
