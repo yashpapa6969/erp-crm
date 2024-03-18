@@ -7,6 +7,7 @@ const createLeave = async (req, res) => {
       type,
       startDate,
       endDate,
+      createdAt,
       status,
       reason
     } = req.body;

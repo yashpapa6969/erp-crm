@@ -124,6 +124,8 @@ router.get('/getAllLeaves', apis.getAllLeaves);
 router.delete('/deleteLeaveById/:leave_id', apis.deleteLeaveById);
 router.patch('/updateLeave/:leave_id', apis.updateLeave);
 router.get('/updateLeaveStatus/:leave_id/:status', apis.updateLeaveStatus);
+router.get('/getLeavesByStatus', (req, res) => { apis.getLeavesByStatus(req, res) });
+router.get('/getTotalLeaves', (req, res) => { apis.getTotalLeaveCount(req, res) });
 
 
 
