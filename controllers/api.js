@@ -97,6 +97,12 @@ const getLeaveByStatus = require("./leaveManagement/getLeaveByStatus");
 const getTotalLeaveCount = require("./leaveManagement/getTotalLeaveCount");
 
 
+const createLetter = require("./Letters/createLetter");
+const getAllLetters = require("./Letters/getAllLetters");
+const updateLetter = require("./Letters/updateLetter");
+const getLetterById = require("./Letters/getLetterById");
+const deleteLetterById = require("./Letters/deleteLetterById");
+
 var apis = {
   createEmployee: createEmployee,
   getAllEmployees: getAllEmployees,
@@ -185,7 +191,14 @@ var apis = {
   updateLeave : updateLeave,
   updateLeaveStatus : updateLeaveStatus,
   getLeavesByStatus : getLeaveByStatus,
-  getTotalLeaveCount : getTotalLeaveCount
+  getTotalLeaveCount : getTotalLeaveCount,
+
+
+  createLetter : createLetter,
+  getAllLetters : getAllLetters ,
+  updateLetter:updateLetter, 
+  getLetterById:getLetterById,
+  deleteLetterById : deleteLetterById
 
 };
 
