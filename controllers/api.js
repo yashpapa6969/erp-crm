@@ -97,6 +97,11 @@ const getLeaveByStatus = require("./leaveManagement/getLeaveByStatus");
 const getTotalLeaveCount = require("./leaveManagement/getTotalLeaveCount");
 
 
+
+const updatePassword = require("./Settings/updatePassword");
+
+
+
 const createLetter = require("./Letters/createLetter");
 const getAllLetters = require("./Letters/getAllLetters");
 const updateLetter = require("./Letters/updateLetter");
@@ -192,6 +197,10 @@ var apis = {
   updateLeaveStatus : updateLeaveStatus,
   getLeavesByStatus : getLeaveByStatus,
   getTotalLeaveCount : getTotalLeaveCount,
+
+
+
+  updatePassword:updatePassword,,
 
 
   createLetter : createLetter,

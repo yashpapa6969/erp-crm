@@ -134,5 +134,8 @@ router.get('/getAllLetters', apis.getAllLetters);
 router.get('/getLetterById/:letter_id', apis.getLetterById);
 router.delete('/deleteLetterById/:letter_id', apis.deleteLetterById);
 
+router.post('/updatePassword', (req, res) => { apis.updatePassword(req, res) });
+
+
 
 module.exports = router
