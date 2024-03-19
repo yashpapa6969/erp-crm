@@ -200,7 +200,7 @@ var apis = {
 
 
 
-  updatePassword:updatePassword,,
+  updatePassword:updatePassword,
 
 
   createLetter : createLetter,
