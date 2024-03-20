@@ -111,7 +111,7 @@ router.delete('/deleteTaskById/:task_id', (req, res) => { apis.deleteTaskById(re
 
 
 router.get('/getTotalProjects', (req, res) => { apis.getTotalProjects(req, res) });
-router.get('/getProjectCountByStatus/:financialYear/:month?', (req, res) => { apis.getProjectCountsByStatus(req, res) });
+router.get('/getProjectCountByStatus/:financialYear?/:month?', (req, res) => { apis.getProjectCountsByStatus(req, res) });
 router.get('/getProjectCountByClient', (req, res) => { apis.getProjectCountsByClient(req, res) });
 router.get('/getProjectCountByBrand', (req, res) => { apis.getProjectCountsByBrand(req, res) });
 router.get('/getProjectsByDeadlineRange', (req, res) => { apis.getProjectsByDeadlineRange(req, res) });
@@ -123,7 +123,7 @@ router.get('/getAllLeaves', apis.getAllLeaves);
 router.delete('/deleteLeaveById/:leave_id', apis.deleteLeaveById);
 router.patch('/updateLeave/:leave_id', apis.updateLeave);
 router.get('/updateLeaveStatus/:leave_id/:status', apis.updateLeaveStatus);
-router.get('/getLeavesByStatus/:financialYear/:month?', (req, res) => { apis.getLeavesByStatus(req, res) });
+router.get('/getLeavesByStatus/:financialYear?/:month?', (req, res) => { apis.getLeavesByStatus(req, res) });
 router.get('/getTotalLeaves', (req, res) => { apis.getTotalLeaveCount(req, res) });
 
 

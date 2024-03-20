@@ -1,10 +1,10 @@
 const schemas = require("../../mongodb/schemas/schemas");
 
 const getProjectCountsByStatus = async (req, res) => {
-    // Extract financialYear and month from query parameters
-    const { financialYear, month } = req.query;
+    const { financialYear, month } = req.params; // Use req.params here
 
     let pipeline = [];
+    let startDate, endDate;
 
     if (financialYear) {
         // Parse the financialYear to a number
@@ -15,7 +15,6 @@ const getProjectCountsByStatus = async (req, res) => {
             return res.status(400).json({ message: 'Invalid financialYear provided.' });
         }
 
-        let startDate, endDate;
 
         if (month) {
             // If a specific month is provided
@@ -26,12 +25,10 @@ const getProjectCountsByStatus = async (req, res) => {
             startDate = new Date(year, monthInt - 1, 1); // Month is 0-indexed
             endDate = new Date(year, monthInt, 0); // Last day of the month
         } else {
-            // If only the year is provided, consider the entire year
             startDate = new Date(year, 0, 1); // Start from January
             endDate = new Date(year + 1, 0, 0); // Up to the end of December
         }
 
-        // Add a match stage to the pipeline to filter documents by date
         pipeline.push({
             $match: {
                 createdAt: { $gte: startDate, $lte: endDate }
@@ -39,7 +36,6 @@ const getProjectCountsByStatus = async (req, res) => {
         });
     }
 
-    // Add the grouping stage to the pipeline
     pipeline.push({
         $group: {
             _id: "$status",
@@ -48,6 +44,9 @@ const getProjectCountsByStatus = async (req, res) => {
     });
 
     try {
+        console.log({ startDate, endDate });
+        console.log(JSON.stringify(pipeline, null, 2));
+
         const statusCounts = await schemas.Project.aggregate(pipeline);
         res.json(statusCounts);
     } catch (err) {
