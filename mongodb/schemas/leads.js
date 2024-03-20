@@ -34,7 +34,9 @@ const leadSchema = new mongoose.Schema({
     },
     brandName: {
         type: String,
-        required: true
+        required: true,
+        unique:true,
+
     },
    
     clientName: {

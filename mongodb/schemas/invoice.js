@@ -8,6 +8,15 @@ const invoiceSchema = new mongoose.Schema({
       type: String,
       required: false
   },
+  billType: {
+    type: String,
+    required: false
+},
+
+discount: {
+  type: String,
+  required: false
+},
     services:[{
 
         product: {

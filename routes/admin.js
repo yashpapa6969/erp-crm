@@ -61,7 +61,7 @@ router.get('/getAllLeads', (req, res) => { apis.getAllLeads(req, res) });
 router.get('/updateLeadStatus/:lead_id/:status', (req, res) => { apis.updateLeadStatus(req, res) });
 router.get('/getLeadDetails/:lead_id', (req, res) => { apis.getLeadDetails(req, res) });
 router.get('/getLeadsByStatus', (req, res) => { apis.getLeadsByStatus(req, res) });
-router.get('/getTotalLeads', (req, res) => { apis.getTotalLeadCount(req, res) });
+router.get('/getTotalLeads/:financialYear?/:month?', (req, res) => { apis.getTotalLeadCount(req, res) });
 
 
 router.post('/addTag', (req, res) => { apis.addTag(req, res) });

@@ -13,6 +13,8 @@ const createInvoice = async (req, res) => {
             client_id,
             services,
             gst,
+            discount,
+billType,
         } = req.body;
 
 
@@ -44,6 +46,8 @@ const createInvoice = async (req, res) => {
             services: formattedServices,
             gst,
             brandName: client.brandName,
+            discount,
+billType,
         });
 
        
@@ -52,7 +56,6 @@ const createInvoice = async (req, res) => {
 
        const ejsTemplatePath = path.join(__dirname, 'invoice_template.ejs');
 
-       // Read the template content synchronously; for asynchronous reading, use fs.readFile() with await
        const ejsTemplate = fs.readFileSync(ejsTemplatePath, 'utf-8');
        
 
