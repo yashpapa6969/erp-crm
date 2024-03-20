@@ -4,6 +4,7 @@ const getLeaveByStatus = async (req, res) => {
     const { financialYear, month } = req.query; // Assuming financialYear and month are query parameters
 
     let matchStage = {}; // Initialize match stage as empty, which matches all documents by default
+    let startDate, endDate;
 
     // Only add filtering logic if financialYear is provided and is valid
     if (financialYear) {
@@ -13,7 +14,6 @@ const getLeaveByStatus = async (req, res) => {
             return res.status(400).json({ message: 'Invalid financialYear provided.' });
         }
 
-        let startDate, endDate;
 
         if (month) {
             // If month is specified, calculate the date range for that month
