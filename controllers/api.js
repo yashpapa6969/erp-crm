@@ -102,6 +102,12 @@ const updatePassword = require("./Settings/updatePassword");
 
 
 
+const createLetter = require("./Letters/createLetter");
+const getAllLetters = require("./Letters/getAllLetters");
+const updateLetter = require("./Letters/updateLetter");
+const getLetterById = require("./Letters/getLetterById");
+const deleteLetterById = require("./Letters/deleteLetterById");
+
 var apis = {
   createEmployee: createEmployee,
   getAllEmployees: getAllEmployees,
@@ -195,6 +201,13 @@ var apis = {
 
 
   updatePassword:updatePassword,
+
+
+  createLetter : createLetter,
+  getAllLetters : getAllLetters ,
+  updateLetter:updateLetter, 
+  getLetterById:getLetterById,
+  deleteLetterById : deleteLetterById
 
 };
 

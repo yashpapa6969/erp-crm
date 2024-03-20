@@ -9,6 +9,7 @@ const sourceTag = require('./sourceTags');
 const salarySlip = require('./salarySlip');
 const Invoice = require('./invoice');
 const productServices = require('./productServices');
+const letter = require('./letter');
 
 var schemas =
  {
@@ -23,7 +24,7 @@ var schemas =
     salarySlip:salarySlip,
     Invoice:Invoice,
     productServices:productServices,
-    
+    Letter:letter
   }
 
 module.exports = schemas;

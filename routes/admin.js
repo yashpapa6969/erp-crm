@@ -128,6 +128,11 @@ router.get('/getLeavesByStatus', (req, res) => { apis.getLeavesByStatus(req, res
 router.get('/getTotalLeaves', (req, res) => { apis.getTotalLeaveCount(req, res) });
 
 
+router.post('/createLetter', uploadFields,apis.createLetter);
+router.patch('/updateLetter/:letter_id', uploadFields,apis.updateLetter);
+router.get('/getAllLetters', apis.getAllLetters);
+router.get('/getLetterById/:letter_id', apis.getLetterById);
+router.delete('/deleteLetterById/:letter_id', apis.deleteLetterById);
 
 router.post('/updatePassword', (req, res) => { apis.updatePassword(req, res) });
 
