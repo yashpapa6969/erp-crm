@@ -11,7 +11,7 @@ const getProjectCountsByClient = async (req, res) => {
             },
             {
                 $project: {
-                    _id: 0, // Exclude _id field
+                    _id: 0, 
                     client_id: "$_id",
                     count: 1
                 }
