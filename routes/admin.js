@@ -39,6 +39,8 @@ router.get('/getAllEmployees', (req, res) => { apis.getAllEmployees(req, res) })
 router.get('/getEmployeeByID/:employee_id', (req, res) => { apis.getEmployeeDetails(req, res) });
 router.post('/loginEmployee', (req, res) => { apis.LoginEmployee(req, res) });
 
+router.get('/EmployeespecialDates', (req, res) => { apis.EmployeespecialDates(req, res) });
+
 router.get('/getAllManagersbyDepartment/:department', (req, res) => { apis.getAllManagersbyDepartment(req, res) });
 router.get('/getManagersAllDetails/', (req, res) => { apis.getManagersAllDetails(req, res) });
 
@@ -95,6 +97,7 @@ router.get('/getAllInvoices', (req, res) => { apis.getAllInvoices(req, res) });
 router.get('/getAllInvoiceByClient/:client_id', (req, res) => { apis.getAllInvoiceByClient(req, res) });
 router.get('/downloadInvoice/:invoice_id', (req, res) => { apis.downloadInvoice(req, res) });
 router.get('/getAllInvoicesFilter/:financialYear/:month?', (req, res) => { apis.getAllInvoicesFilter(req, res) });
+router.get('/getTotalInvoiceCount/:financialYear?/:month?', (req, res) => { apis.getTotalInvoiceCount(req, res) });
 
 
 router.delete('/deleteClientById/:client_id', (req, res) => { apis.deleteClientById(req, res) });

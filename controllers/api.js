@@ -4,6 +4,8 @@ const getAllEmployees = require("./Employee/getAllEmployees");
 const getEmployeeDetails = require("./Employee/getEmployeebyId");
 const LoginEmployee = require("./Employee/login");
 const deleteEmployeeById = require("./Employee/DeleteEmployee");
+const EmployeespecialDates = require("./Employee/employeeDateReminder");
+
 
 const getAllManagersbyDepartment = require("./Employee/getAllManagersByDepartment");
 const getManagersAllDetails = require("./Employee/getAllManagers");
@@ -86,6 +88,8 @@ const getAllInvoiceByClient = require("./Invoice/getInvoicebyClientId");
 const downloadInvoice = require("./Invoice/invoiceDownload");
 const deleteInvoiceById = require("./Invoice/deleteInvoice");
 const getAllInvoicesFilter = require("./Invoice/getInvoiceFilter");
+const getTotalInvoiceCount = require("./Invoice/getTotalInvoiceCount");
+
 
 const createNewLeave = require("./leaveManagement/createLeave");
 const getLeaveById= require("./leaveManagement/getLeaveById");
@@ -115,6 +119,7 @@ var apis = {
   LoginEmployee: LoginEmployee,
   getAllManagersbyDepartment: getAllManagersbyDepartment,
   getManagersAllDetails: getManagersAllDetails,
+  EmployeespecialDates:EmployeespecialDates,
 
   createProject: createProject,
   getAllProjects: getAllProjects,
@@ -174,6 +179,7 @@ var apis = {
   getAllInvoiceByClient: getAllInvoiceByClient,
   downloadInvoice: downloadInvoice,
   getAllInvoicesFilter:getAllInvoicesFilter,
+  getTotalInvoiceCount:getTotalInvoiceCount,
 
 
 

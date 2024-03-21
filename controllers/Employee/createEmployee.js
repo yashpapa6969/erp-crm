@@ -32,7 +32,7 @@ const createEmployee = async (req, res) => {
         designation,
         type,
     } = req.body;
-
+  
     try {
         const convertDateFormat = (dateString) => {
             const date = new Date(dateString);
