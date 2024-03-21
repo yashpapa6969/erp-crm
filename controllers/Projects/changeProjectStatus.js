@@ -3,37 +3,37 @@ const schemas = require("../../mongodb/schemas/schemas");
 async function updateProjectStatus(req, res) {
 
     try {
-        const { task_id } = req.params;
+        const { project_id } = req.params;
         const { status } = req.params;
 
-        const task = await schemas.Task.findOne({ task_id: task_id });
+        const project = await schemas.Project.findOne({ project_id: project_id });
 
-        if (!task) {
-            return res.status(404).json({ message: "task not found" });
+        if (!project) {
+            return res.status(404).json({ message: "project not found" });
         }
 
         switch (parseInt(status)) {
             case 0:
-                task.status = 'Not Started';
+                project.status = 'Not Started';
                 break;
             case 1:
-                task.status = 'Working';
+                project.status = 'Working';
                 break;
             case 2:
-                task.status = 'Awaited Feedback';
+                project.status = 'Awaited Feedback';
                
                 break;
             case 3:
-                task.status = 'Completed';
+                project.status = 'Completed';
                 break;
             default:
-                task.status = 'Not Started';
+                project.status = 'Not Started';
                 break;
         }
 
-        await task.save();
+        await project.save();
 
-        res.status(200).json(task);
+        res.status(200).json(project);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

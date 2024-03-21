@@ -6,7 +6,6 @@ const LoginEmployee = require("./Employee/login");
 const deleteEmployeeById = require("./Employee/DeleteEmployee");
 const EmployeespecialDates = require("./Employee/employeeDateReminder");
 
-
 const getAllManagersbyDepartment = require("./Employee/getAllManagersByDepartment");
 const getManagersAllDetails = require("./Employee/getAllManagers");
 
@@ -16,6 +15,8 @@ const getProjectDetails = require("./Projects/getProjectById");
 const getProjectsByBrandName = require("./Projects/getProjectsByBrandName");
 const deleteProjectById = require("./Projects/deleteProject");
 
+const updateProjectStatus = require("./Projects/changeProjectStatus");
+
 
 
 const createClient = require("./Clients/createClient");
@@ -24,6 +25,8 @@ const getAllClients = require("./Clients/getAllClients");
 const updateClient = require("./Clients/updateDetails");
 const deleteClientById = require("./Clients/deleteClient");
 const specialDates = require("./Clients/clientDateReminder");
+const getLeadByBrandName = require("./Clients/getLeadInfoBybrandName");
+
 
 
 
@@ -131,7 +134,7 @@ var apis = {
   getAllClients: getAllClients,
   updateClient: updateClient,
   specialDates:specialDates,
-
+  getLeadByBrandName:getLeadByBrandName,
 
 
   createLead: createLead,
@@ -173,7 +176,8 @@ var apis = {
   getProjectCountsByClient : getProjectCountsByClient,
   getProjectCountsByBrand : getProjectCountsByBrand,
   getProjectsByDeadlineRange : getProjectsByDeadlineRange,
-
+  updateProjectStatus:updateProjectStatus,
+  
   createInvoice: createInvoice,
   getAllInvoices: getAllInvoices,
   getAllInvoiceByClient: getAllInvoiceByClient,
