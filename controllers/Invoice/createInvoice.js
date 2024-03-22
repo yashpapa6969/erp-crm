@@ -9,24 +9,22 @@ const sendEmail = require("../../middleware/mailingService")
 
 const createInvoice = async (req, res) => {
     try {
-        let {  
+        let {
             discount,
             billType,
-        
             client_id,
             services,
             gst,
-      
+
         } = req.body;
 
 
 
         const client = await schemas.Client.findOne({ client_id: client_id });
-        console.log(client)
         const convertDateFormat = (dateString) => {
             const date = new Date(dateString);
             if (isNaN(date.getTime())) {
-                return dateString; 
+                return dateString;
             }
             let day = date.getDate().toString().padStart(2, '0');
             let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-indexed
@@ -49,7 +47,7 @@ const createInvoice = async (req, res) => {
         const totalBeforeGST = subtotal - discountAmount;
         const gstAmount = (totalBeforeGST * gst) / 100;
         const total = totalBeforeGST + gstAmount;
-
+        console.log(client.brandName)
 
         const invoice = new schemas.Invoice({
             client_id,
@@ -59,19 +57,20 @@ const createInvoice = async (req, res) => {
             billType,
             subtotal,
             total,
+            brandName: client.brandName,
         });
 
-       
-       const invoices =  await invoice.save();
+
+        const invoices = await invoice.save();
 
 
 
-       let addressParts = [client.billingAddress, client.state, client.city, client.pincode];
-       let validAddressParts = addressParts.filter(part =>part&& part != null && part.trim() !== ''&&part != undefined);
-       let addressString = validAddressParts.join(', ');
-        
+        let addressParts = [client.billingAddress, client.state, client.city, client.pincode];
+        let validAddressParts = addressParts.filter(part => part && part != null && part.trim() !== '' && part != undefined);
+        let addressString = validAddressParts.join(', ');
 
-const htmlContent =`
+
+        const htmlContent = `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -217,8 +216,7 @@ const htmlContent =`
             </thead>
             <tbody>
          
-            startDate:String,
-            endDate:String,
+          
             ${services.map((service, index) => `
             <tr>
                 <td>${index + 1}</td>
@@ -277,16 +275,14 @@ const htmlContent =`
 </html>
 `
 
-     
-        // Generate PDF from HTML content
+
         const pdfBuffer = await generatePdf(htmlContent);
 
-        // Respond with the generated PDF
         res.set({
             "Content-Disposition": 'attachment; filename="invoice_slip.pdf"',
             "Content-Type": "application/pdf",
         });
-        const emailSubject = `Invoice Created `;
+        const emailSubject = `Invoice Created`;
         const emailHtmlContent = `
         <!DOCTYPE html>
         <html lang="en">
@@ -338,7 +334,7 @@ const htmlContent =`
         </html>
         
         `;
-        
+
         await sendEmail(client.email1, emailSubject, "", emailHtmlContent);
         res.status(200).send(pdfBuffer);
 
@@ -351,11 +347,12 @@ const htmlContent =`
 // Function to generate PDF from HTML content
 function generatePdf(htmlContent) {
     return new Promise((resolve, reject) => {
-        pdf.create(htmlContent,{childProcessOptions: {
-            env: {
-              OPENSSL_CONF: '/dev/null',
-            },
-          }
+        pdf.create(htmlContent, {
+            childProcessOptions: {
+                env: {
+                    OPENSSL_CONF: '/dev/null',
+                },
+            }
         }).toBuffer((err, buffer) => {
             if (err) {
                 reject(err);

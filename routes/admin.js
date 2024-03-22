@@ -101,7 +101,7 @@ router.get('/downloadInvoice/:invoice_id', (req, res) => { apis.downloadInvoice(
 router.get('/getAllInvoicesFilter/:financialYear/:month?', (req, res) => { apis.getAllInvoicesFilter(req, res) });
 router.get('/getTotalInvoiceCount/:financialYear?/:month?', (req, res) => { apis.getTotalInvoiceCount(req, res) });
 router.post('/handleCumulativeInvoices', (req, res) => { apis.handleCumulativeInvoices(req, res) });
-router.get('/getAllInvoiceByBrand', (req, res) => { apis.getAllInvoiceByBrand(req, res) });
+router.post('/getAllInvoiceByBrand', (req, res) => { apis.getAllInvoiceByBrand(req, res) });
 
 
 router.delete('/deleteClientById/:client_id', (req, res) => { apis.deleteClientById(req, res) });
@@ -139,6 +139,7 @@ router.patch('/updateLetter/:letter_id', uploadFields,apis.updateLetter);
 router.get('/getAllLetters', apis.getAllLetters);
 router.get('/getLetterById/:letter_id', apis.getLetterById);
 router.delete('/deleteLetterById/:letter_id', apis.deleteLetterById);
+
 
 router.post('/updatePassword', (req, res) => { apis.updatePassword(req, res) });
 

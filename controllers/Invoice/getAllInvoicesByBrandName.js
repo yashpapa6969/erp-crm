@@ -2,9 +2,10 @@ const schemas = require("../../mongodb/schemas/schemas");
 
 getAllInvoiceByBrand= async (req, res) => {
     try {
-        const { brandName } = req.params; 
+        const { brandName } = req.body; 
 
         const invoices = await schemas.Invoice.find({brandName:brandName});
+        console.log(invoices)
         const invoiceIds = invoices.map(invoice => invoice.invoice_id);
 
         res.status(200).json({invoices,invoiceIds});
