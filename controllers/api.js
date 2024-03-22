@@ -91,6 +91,8 @@ const downloadInvoice = require("./Invoice/invoiceDownload");
 const deleteInvoiceById = require("./Invoice/deleteInvoice");
 const getAllInvoicesFilter = require("./Invoice/getInvoiceFilter");
 const getTotalInvoiceCount = require("./Invoice/getTotalInvoiceCount");
+const handleCumulativeInvoices = require("./Invoice/cummulativeInvoice");
+const getAllInvoiceByBrand = require("./Invoice/getAllInvoicesByBrandName");
 
 
 const createNewLeave = require("./leaveManagement/createLeave");
@@ -179,19 +181,19 @@ var apis = {
   updateProjectPriority:updateProjectPriority,
 
 
-  
+
   createInvoice: createInvoice,
   getAllInvoices: getAllInvoices,
   getAllInvoiceByClient: getAllInvoiceByClient,
   downloadInvoice: downloadInvoice,
   getAllInvoicesFilter:getAllInvoicesFilter,
   getTotalInvoiceCount:getTotalInvoiceCount,
-
-
+  handleCumulativeInvoices:handleCumulativeInvoices,
+  getAllInvoiceByBrand:getAllInvoiceByBrand,
 
 
   deleteClientById: deleteClientById,
-  deleteEmployeeById: deleteInvoiceById,
+  deleteEmployeeById: deleteEmployeeById,
   deleteInvoiceById: deleteInvoiceById,
   deleteLeadById: deleteLeadById,
   deleteProductById: deleteProductById,
