@@ -2,7 +2,7 @@ const schemas = require("../../mongodb/schemas/schemas");
 
 getLeadByBrandName= async (req, res) => {
     try {
-const brandName = req.params.brandName
+const brandName = req.body.brandName
         const clients = await schemas.Lead.find({brandName:brandName});
         res.status(200).json(clients);
 
