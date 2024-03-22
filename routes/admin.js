@@ -46,10 +46,10 @@ router.get('/getManagersAllDetails/', (req, res) => { apis.getManagersAllDetails
 
 router.post('/createProject', (req, res) => { apis.createProject(req, res) });
 router.get('/getAllProjects', (req, res) => { apis.getAllProjects(req, res) });
-
 router.get('/getProjectDetails/:project_id', (req, res) => { apis.getProjectDetails(req, res) });
-
 router.post('/getProjectsByBrandName', (req, res) => { apis.getProjectsByBrandName(req, res) });
+router.get('/updateProjectStatus/:project_id/:status', (req, res) => { apis.updateProjectStatus(req, res) });
+router.get('/updateProjectPriority/:project_id/:priority', (req, res) => { apis.updateProjectPriority(req, res) });
 
 
 router.post('/createClient', (req, res) => { apis.createClient(req, res) });

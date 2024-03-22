@@ -14,9 +14,8 @@ const getAllProjects = require("./Projects/getAllProjects");
 const getProjectDetails = require("./Projects/getProjectById");
 const getProjectsByBrandName = require("./Projects/getProjectsByBrandName");
 const deleteProjectById = require("./Projects/deleteProject");
-
 const updateProjectStatus = require("./Projects/changeProjectStatus");
-
+const updateProjectPriority = require("./Projects/changeProjectPriority");
 
 
 const createClient = require("./Clients/createClient");
@@ -177,6 +176,9 @@ var apis = {
   getProjectCountsByBrand : getProjectCountsByBrand,
   getProjectsByDeadlineRange : getProjectsByDeadlineRange,
   updateProjectStatus:updateProjectStatus,
+  updateProjectPriority:updateProjectPriority,
+
+
   
   createInvoice: createInvoice,
   getAllInvoices: getAllInvoices,
