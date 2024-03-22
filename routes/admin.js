@@ -57,7 +57,7 @@ router.get('/getClientDetails/:client_id', (req, res) => { apis.getClientDetails
 router.get('/getAllClients', (req, res) => { apis.getAllClients(req, res) });
 router.get('/specialDates', (req, res) => { apis.specialDates(req, res) });
 
-router.post('/getLeadByBrandName/:brandName', (req, res) => { apis.getLeadByBrandName(req, res) });
+router.post('/getLeadByBrandName', (req, res) => { apis.getLeadByBrandName(req, res) });
 
 
 router.get('/getAllLeads', (req, res) => { apis.getAllLeads(req, res) });
