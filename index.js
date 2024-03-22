@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/admin', adminRoutes);
 
-const port = 6000;
+const port = 3000;
 
 
 httpServer.listen(port, () => {
