@@ -79,7 +79,7 @@ router.get('/updateTaskStatus/:task_id/:status', (req, res) => { apis.updateTask
 router.get('/getAllTasks', (req, res) => { apis.getAllTasks(req, res) });
 router.get('/getTasksByEmployeeID/:employee_id', (req, res) => { apis.getTasksByEmployeeID(req, res) });
 router.get('/getTasksByTaskID/:task_id', (req, res) => { apis.getTasksByTaskID(req, res) });
-router.get('/updateTaskPriority/:task_id/:priority', (req, res) => { apis.updateProjectPriority(req, res) });
+router.get('/updateTaskPriority/:task_id/:priority', (req, res) => { apis.updateTaskPriority(req, res) });
 
 
 router.post('/sourceAddTag', (req, res) => { apis.sourceAddTag(req, res) });

@@ -20,7 +20,7 @@ async function updateTaskPriority(req, res) {
                 tasks.priority = 'Medium';
                 break;
             case 2:
-                tasks.priority = 'Hight';
+                tasks.priority = 'High';
                
                 break;
            
