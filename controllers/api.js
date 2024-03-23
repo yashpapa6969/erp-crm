@@ -57,6 +57,7 @@ const getAllTasks = require("./Tasks/getAllTasks");
 const getTasksByEmployeeID = require("./Tasks/getTaskByEmpId");
 const getTasksByTaskID = require("./Tasks/getTaskByTaskId");
 const deleteTaskById = require("./Tasks/deleteTask");
+const updateTaskPriority = require("./Tasks/changeTaskPriority");
 
 
 
@@ -156,7 +157,7 @@ var apis = {
   getAllTasks: getAllTasks,
   getTasksByEmployeeID: getTasksByEmployeeID,
   getTasksByTaskID: getTasksByTaskID,
-
+  updateTaskPriority:updateTaskPriority,
 
   sourceGetTagsDetails: sourceGetTagsDetails,
   sourceAddTag: sourceAddTag,
