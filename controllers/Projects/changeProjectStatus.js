@@ -17,14 +17,14 @@ async function updateProjectStatus(req, res) {
                 project.status = 'Not Started';
                 break;
             case 1:
-                project.status = 'Working';
+                project.status = 'In Progress';
                 break;
+           
             case 2:
-                project.status = 'Awaited Feedback';
-               
-                break;
-            case 3:
                 project.status = 'Completed';
+                break;
+                case 3:
+                project.status = 'On Hold';
                 break;
             default:
                 project.status = 'Not Started';
