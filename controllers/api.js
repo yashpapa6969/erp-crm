@@ -105,6 +105,11 @@ const updateLeaveStatus= require("./leaveManagement/updateLeaveStatus");
 const getLeaveByStatus = require("./leaveManagement/getLeaveByStatus");
 const getTotalLeaveCount = require("./leaveManagement/getTotalLeaveCount");
 
+const addYears = require("./Years/addYear");
+const deleteYearById = require("./Years/deleteYear");
+const getAllYears = require("./Years/addYear");
+
+
 
 
 const updatePassword = require("./Settings/updatePassword");
@@ -222,7 +227,11 @@ var apis = {
   getAllLetters : getAllLetters ,
   updateLetter:updateLetter, 
   getLetterById:getLetterById,
-  deleteLetterById : deleteLetterById
+  deleteLetterById : deleteLetterById,
+
+  addYears:addYears,
+getAllYears:getAllYears,
+deleteYearById:deleteYearById,
 
 };
 

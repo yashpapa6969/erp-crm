@@ -12,11 +12,7 @@ const productServicesSchema = new mongoose.Schema({
         type: String,
         required: true, // Make the product name a required field
     },
-    unitPrice: {
-        type: Number,
-        required: true, // Make the unit price a required field
-     
-    }
+   
 });
 
 const productServices = mongoose.model('productServices', productServicesSchema);

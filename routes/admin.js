@@ -147,4 +147,9 @@ router.post('/updatePassword', (req, res) => { apis.updatePassword(req, res) });
 
 
 
+
+router.post('/addYears', (req, res) => { apis.addYears(req, res) });
+router.get('/getAllYears', (req, res) => { apis.getAllYears(req, res) });
+router.delete('/deleteYearById/:year_id', apis.deleteYearById);
+
 module.exports = router
