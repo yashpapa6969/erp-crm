@@ -62,6 +62,9 @@ discount: {
         unique: false,
       },
       createdAt: { type: Date, default: Date.now }, // Added createdAt field
+      collectionHistory:{
+        amountCollected:String,
+      }
 
 
 
