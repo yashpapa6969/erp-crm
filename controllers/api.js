@@ -107,7 +107,7 @@ const getTotalLeaveCount = require("./leaveManagement/getTotalLeaveCount");
 
 const addYears = require("./Years/addYear");
 const deleteYearById = require("./Years/deleteYear");
-const getAllYears = require("./Years/addYear");
+const getAllYears = require("./Years/getAllYears");
 
 
 
@@ -230,7 +230,7 @@ var apis = {
   deleteLetterById : deleteLetterById,
 
   addYears:addYears,
-getAllYears:getAllYears,
+  getAllYears:getAllYears,
 deleteYearById:deleteYearById,
 
 };
