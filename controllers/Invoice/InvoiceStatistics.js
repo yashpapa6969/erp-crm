@@ -5,7 +5,7 @@ const schemas = require("../../mongodb/schemas/schemas");
 
 const getTotalPaidInvoicesCount = async (req, res) => {
     try {
-      const count = await Invoice.countDocuments({ paid: true });
+      const count = await schemas.Invoice.countDocuments({ paid: true });
       res.json({ totalPaidInvoices: count });
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -16,7 +16,7 @@ const getTotalPaidInvoicesCount = async (req, res) => {
 
 const getTotalUnpaidInvoicesCount = async (req, res) => {
     try {
-      const count = await Invoice.countDocuments({ paid: false });
+      const count = await schemas.Invoice.countDocuments({ paid: false });
       res.json({ totalUnpaidInvoices: count });
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -25,7 +25,7 @@ const getTotalUnpaidInvoicesCount = async (req, res) => {
   
   const getLifetimeSales = async (req, res) => {
     try {
-      const result = await Invoice.aggregate([
+      const result = await schemas.Invoice.aggregate([
         { $group: { _id: null, totalSales: { $sum: "$totalCollected" } } }
       ]);
       res.json({ totalLifetimeSales: result.length ? result[0].totalSales : 0 });
@@ -38,7 +38,7 @@ const getTotalUnpaidInvoicesCount = async (req, res) => {
 
 const getAverageInvoiceAmount  = async (req, res) => {
     try {
-      const result = await Invoice.aggregate([
+      const result = await schemas.Invoice.aggregate([
         { $group: { _id: null, averageInvoiceAmount: { $avg: "$total" } } }
       ]);
       res.json({ averageInvoiceAmount: result.length ? result[0].averageInvoiceAmount : 0 });
@@ -51,7 +51,7 @@ const getAverageInvoiceAmount  = async (req, res) => {
 
 const getMonthlySalesReport =  async (req, res) => {
     try {
-      const result = await Invoice.aggregate([
+      const result = await schemas.Invoice.aggregate([
         {
           $group: {
             _id: { month: { $month: "$createdAt" }, year: { $year: "$createdAt" } },
