@@ -1,9 +1,18 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
+const collectionHistorySchema = new mongoose.Schema({
+  amountCollected: { type: Number, required: true },
+  collectedOn: { type: Date, default: Date.now }
+}, { _id: false }); // _id: false to prevent MongoDB from automatically adding an _id field to sub-documents
 
 const invoiceSchema = new mongoose.Schema({
+  collectionHistory: [collectionHistorySchema], // Updated to use the defined sub-schema
+  // Add a field to track the total amount collected so far
+  totalCollected: { type: Number, default: 0 },
     invoice_id: { type: String, default: uuidv4 ,  index: true },
     client_id: { type: String, required: true,   index: true },
+    paid: { type: Boolean, required: true,default:false},
+
     brandName: {
       type: String,
       required: false

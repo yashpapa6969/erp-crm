@@ -105,6 +105,8 @@ router.get('/getAllInvoicesFilter/:financialYear/:month?', (req, res) => { apis.
 router.get('/getTotalInvoiceCount/:financialYear?/:month?', (req, res) => { apis.getTotalInvoiceCount(req, res) });
 router.post('/handleCumulativeInvoices', (req, res) => { apis.handleCumulativeInvoices(req, res) });
 router.post('/getAllInvoiceByBrand', (req, res) => { apis.getAllInvoiceByBrand(req, res) });
+router.patch('/invoice/:invoice_id', (req, res) => { apis.collectedInvoice(req, res) });
+router.get('/getAllPaidInvoices', (req, res) => { apis.getAllPaidInvoices(req, res) });
 
 
 router.delete('/deleteClientById/:client_id', (req, res) => { apis.deleteClientById(req, res) });
