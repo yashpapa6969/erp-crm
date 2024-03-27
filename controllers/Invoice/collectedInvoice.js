@@ -24,7 +24,7 @@ const collectedInvoice = async (req, res) => {
     }
 
    
-    if (invoice.totalCollected >= invoice.amountDue) {
+    if (invoice.totalCollected >= invoice.total) {
       // Update the document to mark it as paid
       await schemas.Invoice.updateOne({ invoice_id: invoice_id }, { $set: { paid: true } });
       // Reflect this change in the response
