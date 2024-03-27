@@ -99,6 +99,14 @@ const collectedInvoice = require("./Invoice/collectedInvoice");
 const getAllPaidInvoices = require("./Invoice/getAllPaidInvoices");
 
 
+const {
+  getTotalPaidInvoicesCount,
+  getTotalUnpaidInvoicesCount,
+  getLifetimeSales,
+  getAverageInvoiceAmount,
+  getMonthlySalesReport
+} = require('./Invoice/InvoiceStatistics');
+
 const createNewLeave = require("./leaveManagement/createLeave");
 const getLeaveById= require("./leaveManagement/getLeaveById");
 const deleteLeaveById= require("./leaveManagement/deleteLeaveById");
@@ -202,7 +210,12 @@ var apis = {
   collectedInvoice:collectedInvoice,
   getAllPaidInvoices:getAllPaidInvoices,
 
-  
+  getTotalPaidInvoicesCount,
+  getTotalUnpaidInvoicesCount,
+  getLifetimeSales,
+  getAverageInvoiceAmount,
+  getMonthlySalesReport,
+
   deleteClientById: deleteClientById,
   deleteEmployeeById: deleteEmployeeById,
   deleteInvoiceById: deleteInvoiceById,

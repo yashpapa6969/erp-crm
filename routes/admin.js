@@ -109,6 +109,13 @@ router.patch('/invoice/:invoice_id', (req, res) => { apis.collectedInvoice(req, 
 router.get('/getAllPaidInvoices', (req, res) => { apis.getAllPaidInvoices(req, res) });
 
 
+router.get('/getTotalPaidInvoicesCount', (req, res) => { apis.getTotalPaidInvoicesCount(req, res) });
+router.get('/getTotalUnpaidInvoicesCount', (req, res) => { apis.getTotalUnpaidInvoicesCount(req, res) });
+router.get('/getLifetimeSales', (req, res) => { apis.getLifetimeSales(req, res) });
+router.get('/getAverageInvoiceAmount', (req, res) => { apis.getAverageInvoiceAmount(req, res) });
+router.get('/getMonthlySalesReport', (req, res) => { apis.getMonthlySalesReport(req, res) });
+
+
 router.delete('/deleteClientById/:client_id', (req, res) => { apis.deleteClientById(req, res) });
 router.delete('/deleteEmployeeById/:employee_id', (req, res) => { apis.deleteEmployeeById(req, res) });
 router.delete('/deleteInvoiceById/:invoice_id', (req, res) => { apis.deleteInvoiceById(req, res) });
