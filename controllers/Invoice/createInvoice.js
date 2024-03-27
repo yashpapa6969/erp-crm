@@ -15,7 +15,6 @@ const createInvoice = async (req, res) => {
             client_id,
             services,
             gst,
-
         } = req.body;
 
 

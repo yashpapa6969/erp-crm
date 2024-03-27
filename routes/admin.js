@@ -50,6 +50,7 @@ router.get('/getProjectDetails/:project_id', (req, res) => { apis.getProjectDeta
 router.post('/getProjectsByBrandName', (req, res) => { apis.getProjectsByBrandName(req, res) });
 router.get('/updateProjectStatus/:project_id/:status', (req, res) => { apis.updateProjectStatus(req, res) });
 router.get('/updateProjectPriority/:project_id/:priority', (req, res) => { apis.updateProjectPriority(req, res) });
+router.get('/getAllCompletedProjects', (req, res) => { apis.getAllCompletedProjects(req, res) });
 
 
 router.post('/createClient', (req, res) => { apis.createClient(req, res) });

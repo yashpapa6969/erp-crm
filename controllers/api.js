@@ -81,6 +81,7 @@ const getProjectCountsByStatus = require("./Projects/getProjectCountByStatus");
 const getProjectCountsByClient = require("./Projects/getProjectCountsByClient");
 const getProjectCountsByBrand = require("./Projects/getProjectCountsByBrand");
 const getProjectsByDeadlineRange = require("./Projects/getProjectsByDeadlineRange");
+const getAllCompletedProjects = require("./Projects/getAllCompletedProjects");
 
 
 
@@ -185,7 +186,7 @@ var apis = {
   getProjectsByDeadlineRange : getProjectsByDeadlineRange,
   updateProjectStatus:updateProjectStatus,
   updateProjectPriority:updateProjectPriority,
-
+  getAllCompletedProjects:getAllCompletedProjects,
 
 
   createInvoice: createInvoice,

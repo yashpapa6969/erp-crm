@@ -1,13 +1,13 @@
 const schemas = require("../../mongodb/schemas/schemas");
 
-const getAllProjects = async (req, res) => {
+const getAllCompletedProjects = async (req, res) => {
     try {
         // Build the aggregation pipeline
         let pipeline = [
             {
-                // Exclude projects with a status of "completed"
+                // Select projects with a status of "Completed"
                 $match: {
-                    status: { $ne: "Completed" }
+                    status: "Completed"
                 }
             },
             {
@@ -40,4 +40,4 @@ const getAllProjects = async (req, res) => {
     }
 };
 
-module.exports = getAllProjects;
+module.exports = getAllCompletedProjects;
