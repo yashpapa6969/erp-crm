@@ -1,18 +1,15 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
-const supplyTagSchema = new mongoose.Schema({
-    supply_id: { type: String, default: uuidv4,        index: true     },
-  
-   supplyTagName: {
+const expenseSchema = new mongoose.Schema({
+
+    expense_id: { type: String, default: uuidv4 ,  index: true },
+    amountReceived: { type: Number, default: 0 }, // The total amount given to the employee
+    categories: [{supplyTagName: {
         type: String,
         required: true
     },
-
-
-}, );const expenseSchema = new mongoose.Schema({
-    expense_id: { type: String, default: uuidv4 ,  index: true },
-    amountReceived: { type: Number, default: 0 }, // The total amount given to the employee
-    categories: [supplyTagSchema], // Array of expense categories
+}
+], // Array of expense categories
     totalSpent: { type: Number, default: 0 }, 
 
 description: {

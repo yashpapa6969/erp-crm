@@ -110,7 +110,6 @@ const {getAllExpenses,getExpenseById,createExpenses,updateExpense,deleteExpense,
 
 const addSupply = require("./supplyManagement/addSupply");
 const getAllSupplys = require("./supplyManagement/getAllSupply");
-
 const deleteSupplyById = require("./supplyManagement/deleteSupplyByID");
 
 
