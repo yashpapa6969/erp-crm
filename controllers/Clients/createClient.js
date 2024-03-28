@@ -124,7 +124,7 @@ const createClient = async (req, res) => {
             message: "client successfully created!",
             client,
             singleFileInformation: singleFile,
-            multipleFilesInformation: multipleFiles
+            multipleFilesInformation: multipleFiles,
         });
     } catch (error) {
         res.status(400).json({ message: error.message });

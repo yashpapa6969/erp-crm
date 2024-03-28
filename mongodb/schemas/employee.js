@@ -93,6 +93,15 @@ const employeeSchema = new mongoose.Schema({
 
     },
 
+    singleFile: {
+        type: String,
+        required: false // Set to true if it should be required
+    },
+    multipleFiles: [{
+        type: String,
+        required: false
+    }],
+
 });
 
 const Employee = mongoose.model('Employee', employeeSchema);

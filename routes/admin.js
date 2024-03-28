@@ -41,6 +41,8 @@ router.post('/loginEmployee', (req, res) => { apis.LoginEmployee(req, res) });
 
 router.get('/EmployeespecialDates', (req, res) => { apis.EmployeespecialDates(req, res) });
 
+router.patch('/updateEmployee', (req, res) => { apis.updateEmployee(req, res) });
+
 router.get('/getAllManagersbyDepartment/:department', (req, res) => { apis.getAllManagersbyDepartment(req, res) });
 router.get('/getManagersAllDetails/', (req, res) => { apis.getManagersAllDetails(req, res) });
 

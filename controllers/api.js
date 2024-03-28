@@ -6,6 +6,8 @@ const LoginEmployee = require("./Employee/login");
 const deleteEmployeeById = require("./Employee/DeleteEmployee");
 const EmployeespecialDates = require("./Employee/employeeDateReminder");
 
+const updateEmployee = require("./Employee/updateEmployee");
+
 const getAllManagersbyDepartment = require("./Employee/getAllManagersByDepartment");
 const getManagersAllDetails = require("./Employee/getAllManagers");
 
@@ -245,6 +247,7 @@ var apis = {
 
 
   updatePassword:updatePassword,
+  updateEmployee:updateEmployee,
 
 
   createLetter : createLetter,

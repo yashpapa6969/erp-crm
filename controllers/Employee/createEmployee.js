@@ -57,6 +57,9 @@ const createEmployee = async (req, res) => {
 
         const hashedPassword = await hashPassword(password);
 
+        const singleFile = req.files.singleFile ? req.files.singleFile[0] : null;
+        const multipleFiles = req.files.multipleFiles || [];
+
         const employee = new schemas.Employee({
             name,
             gender,
@@ -92,6 +95,8 @@ const createEmployee = async (req, res) => {
             },
             designation,
             type,
+            singleFile: singleFile ? singleFile.filename : undefined,
+            multipleFiles: multipleFiles.map(file => file.filename),
         });
             await sendEmail(
                 email,
@@ -132,6 +137,9 @@ const createEmployee = async (req, res) => {
           
             res.status(200).json({
                 message: "Employee successfully registered!",
+                employee,
+                singleFileInformation: singleFile,
+                multipleFilesInformation: multipleFiles,
             });
         }
      catch (error) {
