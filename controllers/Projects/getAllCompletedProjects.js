@@ -2,16 +2,13 @@ const schemas = require("../../mongodb/schemas/schemas");
 
 const getAllCompletedProjects = async (req, res) => {
     try {
-        // Build the aggregation pipeline
         let pipeline = [
             {
-                // Select projects with a status of "Completed"
                 $match: {
                     status: "Completed"
                 }
             },
             {
-                // Add a field that represents the custom sort order based on priority
                 $addFields: {
                     sortPriority: {
                         $switch: {

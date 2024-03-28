@@ -21,6 +21,11 @@ async function updateProjectPriority(req, res) {
                 break;
             case 2:
                 project.priority = 'High';
+                break;
+                case 3:
+                    project.priority = 'Urgent';
+
+                
                
                 break;
            

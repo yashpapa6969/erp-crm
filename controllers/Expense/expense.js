@@ -10,10 +10,10 @@ const getAllExpenses= async (req, res) => {
   };
   
 
-  
+
 const getExpenseById=async (req, res) => {
     try {
-      const expense = await schemas.Expense.findById( { expense_id: req.params.expense_id },);
+      const expense = await schemas.Expense.find( { expense_id: req.params.expense_id },);
       res.json(expense);
     } catch (error) {
       res.status(500).send(error);
@@ -34,7 +34,7 @@ const getExpenseById=async (req, res) => {
 
   const updateExpense = async (req, res) => {
     try {
-      const updatedExpense = await schemas.Expense.findByIdAndUpdate({ expense_id: req.params.expense_id }, // Query by expense_id
+      const updatedExpense = await schemas.Expense.findOneAndUpdate({ expense_id: req.params.expense_id }, 
       req.body, { new: true });
       res.json(updatedExpense);
     } catch (error) {
