@@ -103,8 +103,8 @@ router.post('/createInvoice', (req, res) => { apis.createInvoice(req, res) });
 router.get('/getAllInvoices', (req, res) => { apis.getAllInvoices(req, res) });
 router.get('/getAllInvoiceByClient/:client_id', (req, res) => { apis.getAllInvoiceByClient(req, res) });
 router.get('/downloadInvoice/:invoice_id', (req, res) => { apis.downloadInvoice(req, res) });
-router.get('/getAllInvoicesFilter/:financialYear/:month?', (req, res) => { apis.getAllInvoicesFilter(req, res) });
-router.get('/getTotalInvoiceCount/:financialYear?/:month?', (req, res) => { apis.getTotalInvoiceCount(req, res) });
+router.post('/getAllInvoicesFilter', (req, res) => { apis.getAllInvoicesFilter(req, res) });
+router.post('/getTotalInvoiceCount', (req, res) => { apis.getTotalInvoiceCount(req, res) });
 router.post('/handleCumulativeInvoices', (req, res) => { apis.handleCumulativeInvoices(req, res) });
 router.post('/getAllInvoiceByBrand', (req, res) => { apis.getAllInvoiceByBrand(req, res) });
 router.patch('/invoice/:invoice_id', (req, res) => { apis.collectedInvoice(req, res) });
@@ -132,7 +132,9 @@ router.delete('/deleteTaskById/:task_id', (req, res) => { apis.deleteTaskById(re
 
 
 router.get('/getTotalProjects', (req, res) => { apis.getTotalProjects(req, res) });
-router.get('/getProjectCountByStatus/:financialYear?/:month?', (req, res) => { apis.getProjectCountsByStatus(req, res) });
+
+router.post('/getProjectCountByStatus/:financialYear?/:month?', (req, res) => { apis.getProjectCountsByStatus(req, res) });
+
 router.get('/getProjectCountByClient', (req, res) => { apis.getProjectCountsByClient(req, res) });
 router.get('/getProjectCountByBrand', (req, res) => { apis.getProjectCountsByBrand(req, res) });
 router.get('/getProjectsByDeadlineRange', (req, res) => { apis.getProjectsByDeadlineRange(req, res) });
@@ -144,8 +146,9 @@ router.get('/getAllLeaves', apis.getAllLeaves);
 router.delete('/deleteLeaveById/:leave_id', apis.deleteLeaveById);
 router.patch('/updateLeave/:leave_id', apis.updateLeave);
 router.get('/updateLeaveStatus/:leave_id/:status', apis.updateLeaveStatus);
-router.get('/getLeavesByStatus/:financialYear?/:month?', (req, res) => { apis.getLeavesByStatus(req, res) });
-router.get('/getTotalLeaves/:financialYear?/:month?', (req, res) => { apis.getTotalLeaveCount(req, res) });
+
+router.post('/getLeavesByStatus/:financialYear?/:month?', (req, res) => { apis.getLeavesByStatus(req, res) });
+router.post('/getTotalLeaves/:financialYear?/:month?', (req, res) => { apis.getTotalLeaveCount(req, res) });
 
 
 router.post('/createLetter', uploadFields,apis.createLetter);
