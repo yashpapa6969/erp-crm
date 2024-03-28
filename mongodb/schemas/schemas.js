@@ -11,6 +11,8 @@ const Invoice = require('./invoice');
 const productServices = require('./productServices');
 const letter = require('./letter');
 const Year = require('./Years');
+const supplyTag = require('./supply');
+const Expense = require('./expense');
 
 var schemas =
  {
@@ -27,6 +29,8 @@ var schemas =
     productServices:productServices,
     Letter:letter,
     Year:Year,
+    supplyTag:supplyTag,
+    Expense:Expense,
   }
 
 module.exports = schemas;

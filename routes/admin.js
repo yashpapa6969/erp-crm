@@ -162,4 +162,23 @@ router.post('/addYears', (req, res) => { apis.addYears(req, res) });
 router.get('/getAllYears', (req, res) => { apis.getAllYears(req, res) });
 router.delete('/deleteYearById/:year_id', apis.deleteYearById);
 
+
+
+
+
+router.post('/addSupply', (req, res) => { apis.addSupply(req, res) });
+router.get('/getAllSupplys', (req, res) => { apis.getAllSupplys(req, res) });
+router.delete('/deleteSupplyById/:supply_id', apis.deleteSupplyById);
+
+router.post('/createExpenses',apis.createExpenses);
+router.patch('/updateExpense/:expense_id',apis.updateExpense);
+router.get('/getAllExpenses', apis.getAllExpenses);
+router.get('/getExpenseById/:expense_id', apis.getExpenseById);
+router.delete('/deleteExpense/:expense_id', apis.deleteExpense);
+
+
+
+
+
+
 module.exports = router

@@ -106,6 +106,8 @@ const {
   getAverageInvoiceAmount,
   getMonthlySalesReport
 } = require('./Invoice/InvoiceStatistics');
+const {getAllExpenses,getExpenseById,createExpenses,updateExpense,deleteExpense,} = require("./Expense/expense")
+
 
 const createNewLeave = require("./leaveManagement/createLeave");
 const getLeaveById= require("./leaveManagement/getLeaveById");
@@ -250,6 +252,22 @@ var apis = {
   addYears:addYears,
   getAllYears:getAllYears,
 deleteYearById:deleteYearById,
+
+
+
+addSupply:addSupply,
+deleteSupplyById:deleteSupplyById,
+getAllSupplys:getAllSupplys,
+
+getAllExpenses:getAllExpenses,
+getExpenseById:getExpenseById,
+createExpenses:createExpenses,
+updateExpense:updateExpense,
+deleteExpense:deleteExpense,
+
+
+
+
 
 };
 
