@@ -1,47 +1,60 @@
 const schemas = require("../../mongodb/schemas/schemas");
 
 const getProjectCountsByStatus = async (req, res) => {
-    const { financialYear, month } = req.params; // Use req.params here
-
+    const { financialYear, month, quarter, firstQuarterMonth } = req.body; 
+    let query = {}; 
     let pipeline = [];
     let startDate, endDate;
+    const year = parseInt(financialYear, 10);
+    const firstQMonth = parseInt(firstQuarterMonth || '4', 10) - 1;
 
-    if (financialYear) {
-        // Parse the financialYear to a number
-        const year = parseInt(financialYear, 10);
+    if (financialYear && !isNaN(year) && firstQMonth >= 0 && firstQMonth <= 11) {
 
-        if (isNaN(year)) {
-            // If financialYear is invalid, return an error
-            return res.status(400).json({ message: 'Invalid financialYear provided.' });
-        }
-
-
-        if (month) {
-            // If a specific month is provided
-            const monthInt = parseInt(month, 10);
-            if (monthInt < 1 || monthInt > 12) {
-                return res.status(400).json({ message: 'Invalid month provided.' });
+        try {
+            if (month) {
+                const monthInt = parseInt(month, 10) - 1; 
+                if (monthInt < 0 || monthInt > 11) {
+                    return res.status(400).json({ message: 'Invalid month provided.' });
+                }
+                startDate = new Date(year, monthInt, 1);
+                endDate = new Date(year, monthInt + 1, 0);
+            } else if (quarter) {
+                const quarterInt = parseInt(quarter, 10);
+                if (quarterInt < 1 || quarterInt > 4) {
+                    return res.status(400).json({ message: 'Invalid quarter provided.' });
+                }
+                const startMonth = (firstQMonth + (quarterInt - 1) * 3) % 12;
+                const startYear = year + Math.floor((firstQMonth + (quarterInt - 1) * 3) / 12);
+                startDate = new Date(startYear, startMonth, 1);
+                const endMonth = (startMonth + 3) % 12;
+                const endYear = startMonth + 3 > 11 ? startYear + 1 : startYear;
+                endDate = new Date(endYear, endMonth, 0);
+            } else {
+                startDate = new Date(year, firstQMonth, 1);
+                const endMonth = (firstQMonth + 12) % 12;
+                const endYear = firstQMonth + 12 > 11 ? year + 1 : year;
+                endDate = new Date(endYear, endMonth, 0);
             }
-            startDate = new Date(year, monthInt - 1, 1); // Month is 0-indexed
-            endDate = new Date(year, monthInt, 0); // Last day of the month
-        } else {
-            startDate = new Date(year, 0, 1); // Start from January
-            endDate = new Date(year + 1, 0, 0); // Up to the end of December
-        }
-
+            pipeline.push({
+                $match: {
+                    createdAt: { $gte: startDate, $lte: endDate }
+                }
+            });
+        
+    
         pipeline.push({
-            $match: {
-                createdAt: { $gte: startDate, $lte: endDate }
+            $group: {
+                _id: "$status",
+                count: { $sum: 1 }
             }
-        });
+        });            
+        } catch (err) {
+            return res.status(500).json({ message: err.message });
+        }
+    } else {
+        return res.status(400).json({ message: 'Invalid financial year or first quarter month.' });
     }
 
-    pipeline.push({
-        $group: {
-            _id: "$status",
-            count: { $sum: 1 }
-        }
-    });
 
     try {
         console.log({ startDate, endDate });

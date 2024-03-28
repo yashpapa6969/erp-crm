@@ -133,7 +133,7 @@ router.delete('/deleteTaskById/:task_id', (req, res) => { apis.deleteTaskById(re
 
 router.get('/getTotalProjects', (req, res) => { apis.getTotalProjects(req, res) });
 
-router.post('/getProjectCountByStatus/:financialYear?/:month?', (req, res) => { apis.getProjectCountsByStatus(req, res) });
+router.post('/getProjectCountByStatus', (req, res) => { apis.getProjectCountsByStatus(req, res) });
 
 router.get('/getProjectCountByClient', (req, res) => { apis.getProjectCountsByClient(req, res) });
 router.get('/getProjectCountByBrand', (req, res) => { apis.getProjectCountsByBrand(req, res) });
@@ -148,7 +148,7 @@ router.patch('/updateLeave/:leave_id', apis.updateLeave);
 router.get('/updateLeaveStatus/:leave_id/:status', apis.updateLeaveStatus);
 
 router.post('/getLeavesByStatus/:financialYear?/:month?', (req, res) => { apis.getLeavesByStatus(req, res) });
-router.post('/getTotalLeaves/:financialYear?/:month?', (req, res) => { apis.getTotalLeaveCount(req, res) });
+router.post('/getTotalLeaves', (req, res) => { apis.getTotalLeaveCount(req, res) });
 
 
 router.post('/createLetter', uploadFields,apis.createLetter);
