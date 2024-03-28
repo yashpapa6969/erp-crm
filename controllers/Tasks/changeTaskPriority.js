@@ -23,7 +23,7 @@ async function updateTaskPriority(req, res) {
                 tasks.priority = 'High';
                 break;
                 case 3:
-                    project.priority = 'Urgent';
+                    tasks.priority = 'Urgent';
                     break;
             default:
                 tasks.priority = 'Low';

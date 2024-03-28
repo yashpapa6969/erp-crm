@@ -13,11 +13,15 @@ const getAllCompletedProjects = async (req, res) => {
                     sortPriority: {
                         $switch: {
                             branches: [
-                                { case: { $eq: ["$priority", "High"] }, then: 1 },
-                                { case: { $eq: ["$priority", "Medium"] }, then: 2 },
-                                { case: { $eq: ["$priority", "Low"] }, then: 3 }
+                                { case: { $eq: ["$priority", "Urgent"] }, then: 1 },
+                                { case: { $eq: ["$priority", "High"] }, then: 2 },
+
+                                { case: { $eq: ["$priority", "Medium"] }, then: 3 },
+                                { case: { $eq: ["$priority", "Low"] }, then: 4 }
                             ],
-                            default: 4
+                            default: 0 // Default case, replace with appropriate value or action
+
+                            
                         }
                     }
                 }

@@ -1,17 +1,14 @@
 const schemas = require("../../mongodb/schemas/schemas");
 
-const getAllProjects = async (req, res) => {
+const getAllCompletedTask = async (req, res) => {
     try {
-        // Build the aggregation pipeline
         let pipeline = [
             {
-                // Exclude projects with a status of "completed"
                 $match: {
-                    status: { $ne: "Completed" }
+                    status: "Completed"
                 }
             },
             {
-                // Add a field that represents the custom sort order based on priority
                 $addFields: {
                     sortPriority: {
                         $switch: {
@@ -24,6 +21,7 @@ const getAllProjects = async (req, res) => {
                             ],
                             default: 0 // Default case, replace with appropriate value or action
 
+                            
                         }
                     }
                 }
@@ -36,11 +34,11 @@ const getAllProjects = async (req, res) => {
             }
         ];
 
-        const projects = await schemas.Project.aggregate(pipeline);
-        res.status(200).json(projects);
+        const tasks = await schemas.Task.aggregate(pipeline);
+        res.status(200).json(tasks);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-module.exports = getAllProjects;
+module.exports = getAllCompletedTask;
