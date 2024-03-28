@@ -9,6 +9,8 @@ const getAllExpenses= async (req, res) => {
     }
   };
   
+
+  
 const getExpenseById=async (req, res) => {
     try {
       const expense = await schemas.Expense.findById( { expense_id: req.params.expense_id },);
@@ -18,7 +20,7 @@ const getExpenseById=async (req, res) => {
     }
   };
   
-  // Create a new expense
+
   const createExpenses = async (req, res) => {
     try {
       const newExpense = new schemas.Expense(req.body);
@@ -29,10 +31,10 @@ const getExpenseById=async (req, res) => {
     }
   };
   
-  // Update an expense
+
   const updateExpense = async (req, res) => {
     try {
-      const updatedExpense = await schemas.Expense.findByIdAndUpdate(      { expense_id: req.params.expense_id }, // Query by expense_id
+      const updatedExpense = await schemas.Expense.findByIdAndUpdate({ expense_id: req.params.expense_id }, // Query by expense_id
       req.body, { new: true });
       res.json(updatedExpense);
     } catch (error) {
@@ -40,7 +42,7 @@ const getExpenseById=async (req, res) => {
     }
   };
   
-  // Delete an expense
+
   const deleteExpense =  async (req, res) => {
     try {
       await schemas.Expense.findByIdAndDelete( { expense_id: req.params.expense_id }, );
