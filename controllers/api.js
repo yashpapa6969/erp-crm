@@ -108,6 +108,11 @@ const {
 } = require('./Invoice/InvoiceStatistics');
 const {getAllExpenses,getExpenseById,createExpenses,updateExpense,deleteExpense,} = require("./Expense/expense")
 
+const addSupply = require("./supplyManagement/addSupply");
+const getAllSupplys = require("./supplyManagement/getAllSupply");
+
+const deleteSupplyById = require("./supplyManagement/deleteSupplyByID");
+
 
 const createNewLeave = require("./leaveManagement/createLeave");
 const getLeaveById= require("./leaveManagement/getLeaveById");
