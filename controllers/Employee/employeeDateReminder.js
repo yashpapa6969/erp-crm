@@ -30,7 +30,7 @@ const filterEmployeeBySpecialDates = (employees) => {
             dob.add(1, 'year'); // Adjust to next year if the birthday this year has already passed
         }
         if (isWithinNext30Days(dob)) {
-            upcomingEvents.push('dateOfBirth');
+            upcomingEvents.push('dob');
         }
 
         if (upcomingEvents.length > 0) {
