@@ -13,6 +13,7 @@ const letter = require('./letter');
 const Year = require('./Years');
 const supplyTag = require('./supply');
 const Expense = require('./expense');
+const Duration = require('./duration');
 
 var schemas =
  {
@@ -31,6 +32,7 @@ var schemas =
     Year:Year,
     supplyTag:supplyTag,
     Expense:Expense,
+    Duration:Duration,
   }
 
 module.exports = schemas;

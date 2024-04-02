@@ -142,6 +142,11 @@ const updateLetter = require("./Letters/updateLetter");
 const getLetterById = require("./Letters/getLetterById");
 const deleteLetterById = require("./Letters/deleteLetterById");
 
+const addDuration = require("./Duration/addDuration");
+const deleteDurationById = require("./Duration/deleteDuration");
+const getAllDuration = require("./Duration/getAllDuration");
+
+
 var apis = {
   createEmployee: createEmployee,
   getAllEmployees: getAllEmployees,
@@ -274,7 +279,9 @@ updateExpense:updateExpense,
 deleteExpense:deleteExpense,
 
 
-
+addDuration:addDuration,
+deleteDurationById:deleteDurationById,
+getAllDuration:getAllDuration,
 
 
 };
