@@ -14,6 +14,8 @@ const Year = require('./Years');
 const supplyTag = require('./supply');
 const Expense = require('./expense');
 const Duration = require('./duration');
+const Ledger = require('./cashLedger');
+const Receivable = require('./receivables');
 
 var schemas =
  {
@@ -33,6 +35,8 @@ var schemas =
     supplyTag:supplyTag,
     Expense:Expense,
     Duration:Duration,
+    Ledger:Ledger,
+    Receivable:Receivable,
   }
 
 module.exports = schemas;

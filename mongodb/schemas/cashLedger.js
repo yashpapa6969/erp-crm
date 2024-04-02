@@ -1,31 +1,40 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
-const expenseSchema = new mongoose.Schema({
 
-    expense_id: { type: String, default: uuidv4 ,  index: true },
-    amountReceived: { type: Number, default: 0 },
-    categories: [{supplyTagName: {
+const ledgerSchema = new mongoose.Schema({
+    ledger_id: { type: String, default: uuidv4,        index: true 
+    },
+    companyName: {
         type: String,
         required: true
     },
-}
-], 
-    totalSpent: { type: Number, default: 0 }, 
+    
+    brandName: {
+        type: String,
+        required: true,
+    },
+   
+    clientName: {
+        type: String,
+        required: true
+    },
+    client_id: {
+        type: String,
+        required: false
+    },
+    employee_id: {
+        type: String,
+        required: false
+    },
+    description: {
+        type: String,
+        required: true
+    },
 
-description: {
-  type: String,
-  required: true
-},
-employee_id: {
-  type: String,
-  required: true
-},
-name: {
-  type: String,
-  required: false
-},
+    received: { type: Number, default: 0 },
+    paid: { type: Number, default: 0 },
 
-
+    createdAt: { type: Date, default: Date.now }, // Added createdAt field
 
     date1: {
         type: String,
@@ -36,11 +45,11 @@ name: {
           const year = istDate.getFullYear();
           const month = (istDate.getMonth() + 1).toString().padStart(2, "0"); // Zero-padded
           const day = istDate.getDate().toString().padStart(2, "0"); // Zero-padded
-          return `${day}-${month}-${year}`;
+          return `${year}-${month}-${day}`;
         },
         unique: false,
       },
-    
+
       time1: {
         type: String,
         default: function () {
@@ -54,14 +63,10 @@ name: {
         },
         unique: false,
       },
-    
-      createdAt: { type: Date, default: Date.now }, 
+     
 
+}, );
 
+const Ledger = mongoose.model('Ledger', ledgerSchema);
 
-
-});
-
-const Expense = mongoose.model('expense', expenseSchema);
-
-module.exports = Expense ;
+module.exports = Ledger;

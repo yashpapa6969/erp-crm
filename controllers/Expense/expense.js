@@ -25,13 +25,29 @@ const getExpenseById=async (req, res) => {
     try {
       const newExpense = new schemas.Expense(req.body);
       const savedExpense = await newExpense.save();
+      if (req.body.amountReceived && req.body.amountReceived > 0) {
+
+        const companyName = "Adversify"; 
+        const brandName = "Adversify"; 
+        const clientName = "Adversify"; 
+  
+        const newLedgerEntry = new schemas.Ledger({
+          companyName: companyName,
+          brandName: brandName,
+          clientName: clientName,
+          employee_id: req.body.employee_id, 
+          description: `Expense recorded: ${savedExpense.description}`,
+          paid: req.body.amountReceived,
+        });
+        await newLedgerEntry.save();
+      }
+  
       res.status(201).json(savedExpense);
     } catch (error) {
       res.status(500).send(error);
     }
   };
   
-
   const updateExpense = async (req, res) => {
     try {
       const updatedExpense = await schemas.Expense.findOneAndUpdate({ expense_id: req.params.expense_id }, 

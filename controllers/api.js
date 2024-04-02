@@ -33,7 +33,7 @@ const getLeadByBrandName = require("./Clients/getLeadInfoBybrandName");
 
 const createLead = require("./Leads/createLead");
 const getAllLeads = require("./Leads/getAllLeads");
-const getLeadDetails= require("./Leads/getLeadDetails");
+const getLeadDetails = require("./Leads/getLeadDetails");
 const updateLeadStatus = require("./Leads/changeLeadStatus");
 const updateLead = require("./Leads/updateDetails");
 const deleteLeadById = require("./Leads/deleteLead");
@@ -109,7 +109,11 @@ const {
   getAverageInvoiceAmount,
   getMonthlySalesReport
 } = require('./Invoice/InvoiceStatistics');
-const {getAllExpenses,getExpenseById,createExpenses,updateExpense,deleteExpense,} = require("./Expense/expense")
+
+const { getAllExpenses, getExpenseById, createExpenses, updateExpense, deleteExpense, } = require("./Expense/expense")
+
+const { addLedger, getAllLedgers, getLeadgerbyLedgerId, getLeadgerbyEmployeeId, getLeadgerByClientId, ledgerStatistics,deleteLedger,
+} = require("./cashLedger/ledger")
 
 const addSupply = require("./supplyManagement/addSupply");
 const getAllSupplys = require("./supplyManagement/getAllSupply");
@@ -117,11 +121,11 @@ const deleteSupplyById = require("./supplyManagement/deleteSupplyByID");
 
 
 const createNewLeave = require("./leaveManagement/createLeave");
-const getLeaveById= require("./leaveManagement/getLeaveById");
-const deleteLeaveById= require("./leaveManagement/deleteLeaveById");
-const getAllLeaves= require("./leaveManagement/getAllLeaves");
-const updateLeave= require("./leaveManagement/updateLeave");
-const updateLeaveStatus= require("./leaveManagement/updateLeaveStatus");
+const getLeaveById = require("./leaveManagement/getLeaveById");
+const deleteLeaveById = require("./leaveManagement/deleteLeaveById");
+const getAllLeaves = require("./leaveManagement/getAllLeaves");
+const updateLeave = require("./leaveManagement/updateLeave");
+const updateLeaveStatus = require("./leaveManagement/updateLeaveStatus");
 const getLeaveByStatus = require("./leaveManagement/getLeaveByStatus");
 const getTotalLeaveCount = require("./leaveManagement/getTotalLeaveCount");
 
@@ -146,6 +150,7 @@ const addDuration = require("./Duration/addDuration");
 const deleteDurationById = require("./Duration/deleteDuration");
 const getAllDuration = require("./Duration/getAllDuration");
 
+const {addReceivable,getAllReceivable,updateReceivable,deleteReceivable} = require("./receivables/receivable")
 
 var apis = {
   createEmployee: createEmployee,
@@ -154,7 +159,7 @@ var apis = {
   LoginEmployee: LoginEmployee,
   getAllManagersbyDepartment: getAllManagersbyDepartment,
   getManagersAllDetails: getManagersAllDetails,
-  EmployeespecialDates:EmployeespecialDates,
+  EmployeespecialDates: EmployeespecialDates,
 
   createProject: createProject,
   getAllProjects: getAllProjects,
@@ -165,17 +170,17 @@ var apis = {
   getClientDetails: getClientDetails,
   getAllClients: getAllClients,
   updateClient: updateClient,
-  specialDates:specialDates,
-  getLeadByBrandName:getLeadByBrandName,
+  specialDates: specialDates,
+  getLeadByBrandName: getLeadByBrandName,
 
 
   createLead: createLead,
   getAllLeads: getAllLeads,
   updateLeadStatus: updateLeadStatus,
   updateLead: updateLead,
-  getLeadDetails : getLeadDetails,
-  getLeadsByStatus : getLeadsByStatus,
-  getTotalLeadCount : getTotalLeadCount,
+  getLeadDetails: getLeadDetails,
+  getLeadsByStatus: getLeadsByStatus,
+  getTotalLeadCount: getTotalLeadCount,
 
   addTag: addTag,
   getAllTags: getAllTags,
@@ -187,8 +192,8 @@ var apis = {
   getAllTasks: getAllTasks,
   getTasksByEmployeeID: getTasksByEmployeeID,
   getTasksByTaskID: getTasksByTaskID,
-  updateTaskPriority:updateTaskPriority,
-  getAllCompletedTask:getAllCompletedTask,
+  updateTaskPriority: updateTaskPriority,
+  getAllCompletedTask: getAllCompletedTask,
   sourceGetTagsDetails: sourceGetTagsDetails,
   sourceAddTag: sourceAddTag,
   sourceGetAllTags: sourceGetAllTags,
@@ -203,26 +208,26 @@ var apis = {
   addProducts: addProducts,
   getAllProducts: getAllProducts,
   getProductDetails: getProductDetails,
-  getTotalProjects : getTotalProjects,
-  getProjectCountsByStatus : getProjectCountsByStatus,
-  getProjectCountsByClient : getProjectCountsByClient,
-  getProjectCountsByBrand : getProjectCountsByBrand,
-  getProjectsByDeadlineRange : getProjectsByDeadlineRange,
-  updateProjectStatus:updateProjectStatus,
-  updateProjectPriority:updateProjectPriority,
-  getAllCompletedProjects:getAllCompletedProjects,
+  getTotalProjects: getTotalProjects,
+  getProjectCountsByStatus: getProjectCountsByStatus,
+  getProjectCountsByClient: getProjectCountsByClient,
+  getProjectCountsByBrand: getProjectCountsByBrand,
+  getProjectsByDeadlineRange: getProjectsByDeadlineRange,
+  updateProjectStatus: updateProjectStatus,
+  updateProjectPriority: updateProjectPriority,
+  getAllCompletedProjects: getAllCompletedProjects,
 
 
   createInvoice: createInvoice,
   getAllInvoices: getAllInvoices,
   getAllInvoiceByClient: getAllInvoiceByClient,
   downloadInvoice: downloadInvoice,
-  getAllInvoicesFilter:getAllInvoicesFilter,
-  getTotalInvoiceCount:getTotalInvoiceCount,
-  handleCumulativeInvoices:handleCumulativeInvoices,
-  getAllInvoiceByBrand:getAllInvoiceByBrand,
-  collectedInvoice:collectedInvoice,
-  getAllPaidInvoices:getAllPaidInvoices,
+  getAllInvoicesFilter: getAllInvoicesFilter,
+  getTotalInvoiceCount: getTotalInvoiceCount,
+  handleCumulativeInvoices: handleCumulativeInvoices,
+  getAllInvoiceByBrand: getAllInvoiceByBrand,
+  collectedInvoice: collectedInvoice,
+  getAllPaidInvoices: getAllPaidInvoices,
 
   getTotalPaidInvoicesCount,
   getTotalUnpaidInvoicesCount,
@@ -241,48 +246,61 @@ var apis = {
   deleteTagById: deleteTagById,
   deleteTaskById: deleteTaskById,
 
-  createNewLeave : createNewLeave,
-  getLeaveById : getLeaveById,
-  getAllLeaves : getAllLeaves,
-  deleteLeaveById: deleteLeaveById ,
-  updateLeave : updateLeave,
-  updateLeaveStatus : updateLeaveStatus,
-  getLeavesByStatus : getLeaveByStatus,
-  getTotalLeaveCount : getTotalLeaveCount,
+  createNewLeave: createNewLeave,
+  getLeaveById: getLeaveById,
+  getAllLeaves: getAllLeaves,
+  deleteLeaveById: deleteLeaveById,
+  updateLeave: updateLeave,
+  updateLeaveStatus: updateLeaveStatus,
+  getLeavesByStatus: getLeaveByStatus,
+  getTotalLeaveCount: getTotalLeaveCount,
 
 
 
-  updatePassword:updatePassword,
-  updateEmployee:updateEmployee,
+  updatePassword: updatePassword,
+  updateEmployee: updateEmployee,
 
 
-  createLetter : createLetter,
-  getAllLetters : getAllLetters ,
-  updateLetter:updateLetter, 
-  getLetterById:getLetterById,
-  deleteLetterById : deleteLetterById,
+  createLetter: createLetter,
+  getAllLetters: getAllLetters,
+  updateLetter: updateLetter,
+  getLetterById: getLetterById,
+  deleteLetterById: deleteLetterById,
 
-  addYears:addYears,
-  getAllYears:getAllYears,
-deleteYearById:deleteYearById,
-
-
-
-addSupply:addSupply,
-deleteSupplyById:deleteSupplyById,
-getAllSupplys:getAllSupplys,
-
-getAllExpenses:getAllExpenses,
-getExpenseById:getExpenseById,
-createExpenses:createExpenses,
-updateExpense:updateExpense,
-deleteExpense:deleteExpense,
+  addYears: addYears,
+  getAllYears: getAllYears,
+  deleteYearById: deleteYearById,
 
 
-addDuration:addDuration,
-deleteDurationById:deleteDurationById,
-getAllDuration:getAllDuration,
 
+  addSupply: addSupply,
+  deleteSupplyById: deleteSupplyById,
+  getAllSupplys: getAllSupplys,
+
+  getAllExpenses: getAllExpenses,
+  getExpenseById: getExpenseById,
+  createExpenses: createExpenses,
+  updateExpense: updateExpense,
+  deleteExpense: deleteExpense,
+
+
+  addDuration: addDuration,
+  deleteDurationById: deleteDurationById,
+  getAllDuration: getAllDuration,
+
+
+  addLedger: addLedger,
+  getAllLedgers: getAllLedgers,
+  getLeadgerbyLedgerId: getLeadgerbyLedgerId,
+  getLeadgerbyEmployeeId: getLeadgerbyEmployeeId,
+  getLeadgerByClientId: getLeadgerByClientId,
+  ledgerStatistics: ledgerStatistics,
+  deleteLedger:deleteLedger,
+
+  addReceivable:addReceivable,
+  getAllReceivable:getAllReceivable,
+  updateReceivable:updateReceivable,
+  deleteReceivable:deleteReceivable,
 
 };
 

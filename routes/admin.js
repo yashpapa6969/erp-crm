@@ -188,6 +188,18 @@ router.delete('/deleteDurationById/:duration_id', apis.deleteDurationById);
 
 
 
+router.post('/addLedger',apis.addLedger);
+router.get('/getLeadgerbyLedgerId/:ledger_id',apis.getLeadgerbyLedgerId);
+router.get('/getLeadgerbyEmployeeId/:ledger_id',apis.getLeadgerbyEmployeeId);
+router.get('/getLeadgerByClientId/:ledger_id',apis.getLeadgerByClientId);
+router.get('/getAllLedgers', apis.getAllLedgers);
+router.delete('/deleteLedger/:ledger_id', apis.deleteLedger);
+router.get('/ledgerStatistics', apis.ledgerStatistics);
 
+
+router.post('/addReceivable',apis.addReceivable);
+router.get('/getAllReceivable', apis.getAllReceivable);
+router.delete('/deleteReceivable/:rec_id', apis.deleteReceivable);
+router.patch('/updateReceivable/:rec_id',apis.updateReceivable);
 
 module.exports = router

@@ -45,6 +45,7 @@ const createInvoice = async (req, res) => {
         const discountAmount = (subtotal * discount) / 100;
         const totalBeforeGST = subtotal - discountAmount;
         const gstAmount = (totalBeforeGST * gst) / 100;
+ 
         const total = totalBeforeGST + gstAmount;
         console.log(client.brandName)
 
@@ -57,6 +58,9 @@ const createInvoice = async (req, res) => {
             subtotal,
             total,
             brandName: client.brandName,
+            totalBeforeGST:totalBeforeGST,
+            gstAmount:gstAmount,
+
         });
 
 

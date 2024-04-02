@@ -25,10 +25,23 @@ const collectedInvoice = async (req, res) => {
 
    
     if (invoice.totalCollected >= invoice.total) {
-      // Update the document to mark it as paid
       await schemas.Invoice.updateOne({ invoice_id: invoice_id }, { $set: { paid: true } });
-      // Reflect this change in the response
       invoice.paid = true;
+    }
+    const client = await schemas.Client.findOne({ client_id: invoice.client_id });
+    if (!client) {
+      return res.status(404).send({ message: 'Client not found.' });
+    }
+    if (invoice.billType === 'cash') {
+      const newLedgerEntry = new schemas.Ledger({
+        companyName: client.companyName, 
+        brandName: companyName.brandName, 
+        clientName: companyName.clientName, 
+        client_id: invoice.client_id,
+        description: `Collection for invoice ${invoice_id} ${invoice.description}`,
+        received:amountCollected,
+      });
+      await newLedgerEntry.save();
     }
 
     res.status(200).send(invoice);
