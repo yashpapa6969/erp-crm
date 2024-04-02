@@ -5,12 +5,13 @@ const schemas = require("../../mongodb/schemas/schemas");
 const getTotalLeaveCount = async (req, res) => {
     const { financialYear, month, quarter, firstQuarterMonth } = req.body; 
     let query = {}; 
+    if (financialYear) {
+        const year = parseInt(financialYear, 10);
+        const firstQMonth = parseInt(firstQuarterMonth || '4', 10) - 1;
 
-    const year = parseInt(financialYear, 10);
-    const firstQMonth = parseInt(firstQuarterMonth || '4', 10) - 1;
+        if (!isNaN(year) && firstQMonth >= 0 && firstQMonth <= 11) {
+            let startDate, endDate;
 
-    if (financialYear && !isNaN(year) && firstQMonth >= 0 && firstQMonth <= 11) {
-        let startDate, endDate;
 
         try {
             if (month) {
@@ -44,13 +45,14 @@ const getTotalLeaveCount = async (req, res) => {
     } else {
         return res.status(400).json({ message: 'Invalid financial year or first quarter month.' });
     }
+}
     try {
         const totalLeaveCount = await schemas.LeaveRequest.countDocuments(query);
         res.json({ totalLeaveCount });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
-};
+}
 
 module.exports = getTotalLeaveCount;
 
