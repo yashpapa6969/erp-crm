@@ -33,8 +33,8 @@ router.post('/createLead', uploadFields, apis.createLead);
 router.post('/createClient', uploadFields, apis.createClient);
 router.patch('/updateLead/:lead_id', uploadFields,(req, res) => { apis.updateLead(req, res) });
 
+router.post('/createEmployee', uploadFields, apis.createEmployee);
 
-router.post('/createEmployee', (req, res) => { apis.createEmployee(req, res) });
 router.get('/getAllEmployees', (req, res) => { apis.getAllEmployees(req, res) });
 router.get('/getEmployeeByID/:employee_id', (req, res) => { apis.getEmployeeDetails(req, res) });
 router.post('/loginEmployee', (req, res) => { apis.LoginEmployee(req, res) });
