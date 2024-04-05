@@ -59,12 +59,22 @@ const getExpenseById=async (req, res) => {
   };
   
 
-  const deleteExpense =  async (req, res) => {
+
+  const deleteExpense = async (req, res) => {
+    const expense_id = req.params.expense_id;
+  
     try {
-      await schemas.Expense.findByIdAndDelete( { expense_id: req.params.expense_id }, );
-      res.status(204).send();
+      const deletedExpense= await schemas.Expense.findOne({expense_id:expense_id});
+  
+      if (!deletedExpense) {
+        return res.status(404).json({ message: "Expense not found." });
+      }
+      await schemas.Expense.deleteOne({expense_id});
+  
+  
+      res.status(200).json({ message: "Expense deleted successfully." });
     } catch (error) {
-      res.status(500).send(error);
+      res.status(400).json({ message: error.message });
     }
   };
 
