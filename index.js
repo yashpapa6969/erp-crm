@@ -32,14 +32,15 @@ app.get('/', (req, res) => {
 const httpServer = createServer(app);
 
 const corsOptions = {
-  origin: '*', // This should be the URL of your front-end app
+  origin: '*', 
 };
 
 // Use CORS with the above options
 app.use(cors(corsOptions));
-app.get('/', (req, res) => {
-  // Send the response with a JSON object containing the "message"
-  res.json({ message: '!welcome home njnfbjbjfff1scscscjnjnshbjhbcjdddd0mj1' });
+app.use(express.static(path.join(__dirname, './dist.index.html')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'./dist.index.html'));
 });
 
 app.use('/api/admin', adminRoutes);
