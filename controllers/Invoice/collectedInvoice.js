@@ -57,7 +57,7 @@ const collectedInvoice = async (req, res) => {
         brandName: invoice.brandName,
         companyName: client.companyName, 
         totalAmount: parseFloat(invoice.total),
-        amount: parseFloat(totalBeforeGST),
+        amount: parseFloat(invoice.totalBeforeGST),
         balanceDue: parseFloat(amountCollected) 
       });
       await newReceivable.save();
