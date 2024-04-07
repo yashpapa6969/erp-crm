@@ -16,6 +16,7 @@ const Expense = require('./expense');
 const Duration = require('./duration');
 const Ledger = require('./cashLedger');
 const Receivable = require('./receivables');
+const Calender = require('./calender');
 
 var schemas =
  {
@@ -37,6 +38,7 @@ var schemas =
     Duration:Duration,
     Ledger:Ledger,
     Receivable:Receivable,
+    Calendar : Calender
   }
 
 module.exports = schemas;
