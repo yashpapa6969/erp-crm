@@ -202,4 +202,10 @@ router.get('/getAllReceivable', apis.getAllReceivable);
 router.delete('/deleteReceivable/:rec_id', apis.deleteReceivable);
 router.patch('/updateReceivable/:rec_id',apis.updateReceivable);
 
+router.post('/addHoliday', apis.addHoliday);
+router.get('/getAllHolidays', apis.getHolidays);
+router.get('/getHolidayById/:id', apis.getHolidayById);
+router.delete('/deleteHoliday/:id', apis.deleteHolidayById);
+router.patch('/updateHoliday/:id', apis.updateHolidayById);
+
 module.exports = router

@@ -152,6 +152,12 @@ const getAllDuration = require("./Duration/getAllDuration");
 
 const {addReceivable,getAllReceivable,updateReceivable,deleteReceivable} = require("./receivables/receivable")
 
+const addHoliday = require("./calender/addHoliday");
+const getHolidayById = require("./calender/getHolidayById");
+const getHolidays = require("./calender/getHolidays");
+const updateHolidayById = require("./calender/updateHolidayById");
+const deleteHolidayById = require("./calender/deleteHolidayById");
+
 var apis = {
   createEmployee: createEmployee,
   getAllEmployees: getAllEmployees,
@@ -302,6 +308,11 @@ var apis = {
   updateReceivable:updateReceivable,
   deleteReceivable:deleteReceivable,
 
+  getHolidayById : getHolidayById,
+  addHoliday : addHoliday,
+  getHolidays : getHolidays,
+  updateHolidayById : updateHolidayById,
+  deleteHolidayById : deleteHolidayById
 };
 
 module.exports = apis;

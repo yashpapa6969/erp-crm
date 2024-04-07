@@ -14,6 +14,11 @@ const calendarSchema = new mongoose.Schema({
         required: true
 
     },
+    type: {
+        type: String,
+        enum: ['company', 'festive', 'other'], 
+        required: true
+    },
     title: {
         type: String,
         required: true
@@ -21,9 +26,7 @@ const calendarSchema = new mongoose.Schema({
     date: {
         type: String,
         required: true
-    },
-   
-   
+    }
 });
 
 const Calendar = mongoose.model('Calendar', calendarSchema);
