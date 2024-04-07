@@ -34,8 +34,8 @@ const collectedInvoice = async (req, res) => {
     if (invoice.billType === 'cash') {
       const newLedgerEntry = new schemas.Ledger({
         companyName: client.companyName, 
-        brandName: companyName.brandName, 
-        clientName: companyName.clientName, 
+        brandName: client.brandName, 
+        clientName: client.clientName, 
         client_id: invoice.client_id,
         description: `Collection for invoice ${invoice_id} ${invoice.description}`,
         received:amountCollected,

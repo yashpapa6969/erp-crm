@@ -73,12 +73,22 @@ const ledgerStatistics = async (req, res) => {
     }
 };
 
-const deleteLedger =  async (req, res) => {
+
+  const deleteLedger = async (req, res) => {
+    const ledger_id = req.params.ledger_id;
+  
     try {
-      await schemas.Ledger.findByIdAndDelete( { ledger_id: req.params.ledger_id }, );
-      res.status(204).send();
+      const deletedLedger= await schemas.Ledger.findOne({ledger_id:ledger_id});
+  
+      if (!deletedLedger) {
+        return res.status(404).json({ message: "Ledger not found." });
+      }
+      await schemas.Expense.deleteOne({ledger_id});
+  
+  
+      res.status(200).json({ message: "Ledger deleted successfully." });
     } catch (error) {
-      res.status(500).send(error);
+      res.status(400).json({ message: error.message });
     }
   };
 module.exports = {
