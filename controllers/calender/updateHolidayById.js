@@ -2,9 +2,8 @@ const schemas = require("../../mongodb/schemas/schemas");
 
 const updateHolidayById = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { calender_id } = req.params;
         const holidayData = req.body;
-
         // Manual validation
         if (!holidayData || typeof holidayData !== 'object') {
             return res.status(400).json({ message: 'Invalid holiday data' });
@@ -22,7 +21,7 @@ const updateHolidayById = async (req, res) => {
             return res.status(400).json({ message: 'Type is required and must be one of: company, festive, other' });
         }
 
-        const updatedHoliday = await schemas.Calendar.findOneAndUpdate({calender_id: id}, holidayData, { new: true });
+        const updatedHoliday = await schemas.Calendar.findOneAndUpdate({calender_id: calender_id}, holidayData, { new: true });
         if (!updatedHoliday) {
             return res.status(404).json({ message: 'Holiday not found' });
         }

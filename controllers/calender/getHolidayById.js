@@ -2,8 +2,8 @@ const schemas = require("../../mongodb/schemas/schemas");
 
 const getHolidayById = async (req, res) => {
     try {
-        const { id } = req.params;
-        const holiday = await schemas.Calendar.findOne({ calender_id: id });
+        const { calender_id } = req.params;
+        const holiday = await schemas.Calendar.findOne({ calender_id: calender_id });
         if (!holiday) {
             return res.status(404).json({ message: 'Holiday not found' });
         }

@@ -2,8 +2,8 @@ const schemas = require("../../mongodb/schemas/schemas");
 
 const deleteHolidayById = async (req, res) => {
     try {
-        const { id } = req.params;
-        const deletedHoliday = await schemas.Calendar.findOneAndDelete({calender_id:id});
+        const { calender_id } = req.params;
+        const deletedHoliday = await schemas.Calendar.findOneAndDelete({calender_id:calender_id});
         if (!deletedHoliday) {
             return res.status(404).json({ message: 'Holiday not found' });
         }
