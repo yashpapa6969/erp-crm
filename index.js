@@ -37,10 +37,10 @@ const corsOptions = {
 
 // Use CORS with the above options
 app.use(cors(corsOptions));
-app.use(express.static(path.join(__dirname, './dist.index.html')));
+app.use(express.static(path.join(__dirname, './dist/index.html')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'./dist.index.html'));
+  res.sendFile(path.join(__dirname+'./dist/index.html'));
 });
 
 app.use('/api/admin', adminRoutes);
