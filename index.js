@@ -37,12 +37,13 @@ const corsOptions = {
 
 // Use CORS with the above options
 app.use(cors(corsOptions));
-app.use(express.static(path.join(__dirname, './dist/index.html')));
+const buildPath = path.join(__dirname, '..', 'erp', 'dist'); // Adjust this line
+
+app.use(express.static(buildPath));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'./dist/index.html'));
+    res.sendFile(path.join(buildPath, 'index.html')); // And this line
 });
-
 app.use('/api/admin', adminRoutes);
 
 const port = 3000;
