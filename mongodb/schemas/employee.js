@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const employeeSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    gender: { type: String, required: true },
+    gender: { type: String, required: false },
     contactNo: { type: String, required: true },
     type: { type: String, required: false },
     dob: {
@@ -13,10 +13,10 @@ const employeeSchema = new mongoose.Schema({
     },
     position: {
         type: String,
-        required: true,
+        required: false,
         enum: ['superadmin', 'admin', 'user', "manager"],
     },
-    department: { type: String, required: true, },
+    department: { type: String, required: false, },
     designation: { type: String, required: true, },
 
     employee_id: { type: String, default: uuidv4,index: true },
@@ -66,12 +66,12 @@ const employeeSchema = new mongoose.Schema({
     guardianDetails: {
         guardianName: {
             type: String,
-            required: true,
+            required: false,
             unique: false,
         },
         relation: {
             type: String,
-            required: true,
+            required: false,
             unique: false,
         },
 
@@ -80,7 +80,7 @@ const employeeSchema = new mongoose.Schema({
     bankDetails: {
         bankName: {
             type: String,
-            required: true,
+            required: false,
             unique: false,
         },
         bankAccountNo: { type: String, required: false },
