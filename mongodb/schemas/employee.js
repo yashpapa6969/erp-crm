@@ -5,7 +5,7 @@ const employeeSchema = new mongoose.Schema({
     name: { type: String, required: true },
     gender: { type: String, required: true },
     contactNo: { type: String, required: true },
-    type: { type: String, required: true },
+    type: { type: String, required: false },
     dob: {
         type: String,
         required: true,
@@ -20,7 +20,7 @@ const employeeSchema = new mongoose.Schema({
     designation: { type: String, required: true, },
 
     employee_id: { type: String, default: uuidv4,index: true },
-    manager_id: { type: String, required: true, },
+    manager_id: { type: String, required: false, },
     email: {
         type: String,
         required: true,
