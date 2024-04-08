@@ -7,9 +7,7 @@ const addHoliday = async (req, res) => {
         if (!holidayData || typeof holidayData !== 'object') {
             return res.status(400).json({ message: 'Invalid holiday data' });
         }
-        if (typeof holidayData.client_id !== 'string' || !holidayData.client_id.trim()) {
-            return res.status(400).json({ message: 'Invalid client ID' });
-        }
+      
         if (typeof holidayData.title !== 'string' || !holidayData.title.trim()) {
             return res.status(400).json({ message: 'Invalid holiday title' });
         }

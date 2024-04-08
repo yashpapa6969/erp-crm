@@ -8,12 +8,7 @@ const calendarSchema = new mongoose.Schema({
         unique: true,
         index: true
     },
-    client_id: {
-        type: String,
-        index: true,
-        required: true
 
-    },
     type: {
         type: String,
         enum: ['company', 'festive', 'other'], 
