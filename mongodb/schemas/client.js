@@ -118,7 +118,7 @@ const clientSchema = new mongoose.Schema(
    
     singleFile: {
         type: String,
-        required: false // Set to true if it should be required
+        required: false 
     },
     multipleFiles: [{
         type: String,
