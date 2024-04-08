@@ -32,8 +32,8 @@ router.patch('/updateClient/:client_id', uploadFields, apis.updateClient);
 router.post('/createLead', uploadFields, apis.createLead);
 router.post('/createClient', uploadFields, apis.createClient);
 router.patch('/updateLead/:lead_id', uploadFields,(req, res) => { apis.updateLead(req, res) });
+router.post('/createEmployee', uploadFields,(req, res) => { apis.createEmployee(req, res) });
 
-router.post('/createEmployee', uploadFields, apis.createEmployee);
 
 router.get('/getAllEmployees', (req, res) => { apis.getAllEmployees(req, res) });
 router.get('/getEmployeeByID/:employee_id', (req, res) => { apis.getEmployeeDetails(req, res) });
