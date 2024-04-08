@@ -6,7 +6,6 @@ const employeeSchema = new mongoose.Schema({
     gender: { type: String, required: true },
     contactNo: { type: String, required: true },
     type: { type: String, required: true },
-
     dob: {
         type: String,
         required: true,
