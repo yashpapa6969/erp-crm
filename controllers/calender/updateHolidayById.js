@@ -8,9 +8,7 @@ const updateHolidayById = async (req, res) => {
         if (!holidayData || typeof holidayData !== 'object') {
             return res.status(400).json({ message: 'Invalid holiday data' });
         }
-        if (!holidayData.client_id || typeof holidayData.client_id !== 'string' || !holidayData.client_id.trim()) {
-            return res.status(400).json({ message: 'Client ID is required and must be a non-empty string' });
-        }
+
         if (!holidayData.title || typeof holidayData.title !== 'string' || !holidayData.title.trim()) {
             return res.status(400).json({ message: 'Title is required and must be a non-empty string' });
         }
