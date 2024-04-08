@@ -66,28 +66,28 @@ const employeeSchema = new mongoose.Schema({
     guardianDetails: {
         guardianName: {
             type: String,
-            required: false,
+            required: true,
             unique: false,
         },
         relation: {
             type: String,
-            required: false,
+            required: true,
             unique: false,
         },
 
-        guardianContactNo: { type: String, required: false },
+        guardianContactNo: { type: String, required: true },
     },
     bankDetails: {
         bankName: {
             type: String,
-            required: false,
+            required: true,
             unique: false,
         },
-        bankAccountNo: { type: String, required: false },
+        bankAccountNo: { type: String, required: true },
 
-        bankIfscCode: { type: String, required: false },
-        type: { type: String, required: false },
-        branch: { type: String, required: false },
+        bankIfscCode: { type: String, required: true },
+        type: { type: String, required: true },
+        branch: { type: String, required: true },
 
 
     },
