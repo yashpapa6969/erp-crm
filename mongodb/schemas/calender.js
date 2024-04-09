@@ -27,16 +27,18 @@ const calendarSchema = new mongoose.Schema({
     date1: {
         type: String,
         default: function () {
-          const currentDate = new Date();
-          const istOffset = 5.5 * 60 * 60 * 1000; // IST offset in milliseconds
-          const istDate = new Date(currentDate.getTime() + istOffset);
-          const year = istDate.getFullYear();
-          const month = (istDate.getMonth() + 1).toString().padStart(2, "0"); // Zero-padded
-          const day = istDate.getDate().toString().padStart(2, "0"); // Zero-padded
-          return `${day}-${month}-${year}`;
-        },
+            const currentDate = new Date();
+            const istOffset = 5.5 * 60 * 60 * 1000; // IST offset in milliseconds
+            const istDate = new Date(currentDate.getTime() + istOffset);
+            const year = istDate.getFullYear().toString().slice(-2); // Extract last two digits
+            const month = (istDate.getMonth() + 1).toString().padStart(2, "0"); // Zero-padded
+            const day = istDate.getDate().toString().padStart(2, "0"); // Zero-padded
+            return `${day}-${month}-${year}`;
+          },
         unique: false,
       },
+     
+      
 
       time1: {
         type: String,
