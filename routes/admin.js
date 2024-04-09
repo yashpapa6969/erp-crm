@@ -182,8 +182,8 @@ router.get('/getExpenseById/:expense_id', apis.getExpenseById);
 router.delete('/deleteExpense/:expense_id', apis.deleteExpense);
 
 
-router.post('/getAllDuration', (req, res) => { apis.getAllDuration(req, res) });
-router.get('/getAllSupplys', (req, res) => { apis.getAllSupplys(req, res) });
+router.get('/getAllDuration', (req, res) => { apis.getAllDuration(req, res) });
+router.post('/addDuration', (req, res) => { apis.addDuration(req, res) });
 router.delete('/deleteDurationById/:duration_id', apis.deleteDurationById);
 
 
