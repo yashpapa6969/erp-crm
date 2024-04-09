@@ -10,7 +10,7 @@ const deleteDurationById = async (req, res) => {
     if (!duration) {
       return res.status(404).json({ message: "duration not found." });
     }
-    await schemas.Duration.deleteOne({duration});
+    await schemas.Duration.deleteOne({duration_id});
 
 
     res.status(200).json({ message: "duration deleted successfully." });

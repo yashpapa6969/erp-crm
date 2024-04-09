@@ -17,11 +17,20 @@ const addHoliday = async (req, res) => {
         if (!['company', 'festive', 'other'].includes(holidayData.type)) {
             return res.status(400).json({ message: 'Invalid holiday type' });
         }
+console.log(req.body.date)
+const convertDateFormat = (dateString) => {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+        return dateString; 
+    }
+    let day = date.getDate().toString().padStart(2, '0');
+    let month = (date.getMonth() + 1).toString().padStart(2, '0'); 
+    let year = date.getFullYear().toString().slice(-2);
 
-        // Format the date to DD-MM-YY
-        const dateParts = holidayData.date.split('-');
-        const formattedDate = `${dateParts[2].slice(-2)}-${dateParts[1]}-${dateParts[0].slice(-2)}`;
-        holidayData.date = formattedDate;
+    return `${day}-${month}-${year}`;
+};
+const holidaydate  = convertDateFormat(holidayData.date)
+        holidayData.date = holidaydate;
 
         const newHoliday = new schemas.Calendar(holidayData);
         const savedHoliday = await newHoliday.save();
