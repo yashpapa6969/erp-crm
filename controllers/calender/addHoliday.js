@@ -1,5 +1,3 @@
-const schemas = require("../../mongodb/schemas/schemas");
-
 const addHoliday = async (req, res) => {
     try {
         const holidayData = req.body;
@@ -17,6 +15,11 @@ const addHoliday = async (req, res) => {
         if (!['company', 'festive', 'other'].includes(holidayData.type)) {
             return res.status(400).json({ message: 'Invalid holiday type' });
         }
+
+        // Format the date to DD-MM-YY
+        const dateParts = holidayData.date.split('-');
+        const formattedDate = `${dateParts[2].slice(-2)}-${dateParts[1]}-${dateParts[0].slice(-2)}`;
+        holidayData.date = formattedDate;
 
         const newHoliday = new schemas.Calendar(holidayData);
         const savedHoliday = await newHoliday.save();
