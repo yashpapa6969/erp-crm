@@ -83,7 +83,7 @@ const ledgerStatistics = async (req, res) => {
       if (!deletedLedger) {
         return res.status(404).json({ message: "Ledger not found." });
       }
-      await schemas.Expense.deleteOne({ledger_id});
+      await schemas.Ledger.deleteOne({ledger_id});
   
   
       res.status(200).json({ message: "Ledger deleted successfully." });

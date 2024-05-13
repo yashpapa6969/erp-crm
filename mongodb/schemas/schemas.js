@@ -18,27 +18,30 @@ const Ledger = require('./cashLedger');
 const Receivable = require('./receivables');
 const Calender = require('./calender');
 
+const Question = require('./knowledgeBase');
+
 var schemas =
- {
-    Project:Project,
-    Employee:Employee,
-    Client:Client,
-    LeaveRequest:LeaveRequest,
-    Lead:Lead,
-    Task:Task,
-    Tag:Tag,
-    sourceTag:sourceTag,
-    salarySlip:salarySlip,
-    Invoice:Invoice,
-    productServices:productServices,
-    Letter:letter,
-    Year:Year,
-    supplyTag:supplyTag,
-    Expense:Expense,
-    Duration:Duration,
-    Ledger:Ledger,
-    Receivable:Receivable,
-    Calendar : Calender
-  }
+{
+  Question: Question,
+  Project: Project,
+  Employee: Employee,
+  Client: Client,
+  LeaveRequest: LeaveRequest,
+  Lead: Lead,
+  Task: Task,
+  Tag: Tag,
+  sourceTag: sourceTag,
+  salarySlip: salarySlip,
+  Invoice: Invoice,
+  productServices: productServices,
+  Letter: letter,
+  Year: Year,
+  supplyTag: supplyTag,
+  Expense: Expense,
+  Duration: Duration,
+  Ledger: Ledger,
+  Receivable: Receivable,
+  Calendar: Calender
+}
 
 module.exports = schemas;

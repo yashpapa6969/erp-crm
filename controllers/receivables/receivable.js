@@ -38,13 +38,23 @@ const updateReceivable = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 }
+
 const deleteReceivable = async (req, res) => {
+    const rec_id = req.params.rec_id;
+  
     try {
-        await schemas.Receivable.findByIdAndDelete({ rec_id: req.params.rec_id });
-        res.json({ message: 'Receivable deleted successfully.' });
+      const deletedReceivable= await schemas.Receivable.findOne({rec_id:rec_id});
+  
+      if (!deletedReceivable) {
+        return res.status(404).json({ message: "Receivable not found." });
+      }
+      await schemas.Receivable.deleteOne({rec_id});
+  
+  
+      res.status(200).json({ message: "Receivable deleted successfully." });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+      res.status(400).json({ message: error.message });
     }
-};
+  };
 module.exports = { addReceivable, getAllReceivable, updateReceivable, deleteReceivable }
 

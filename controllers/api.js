@@ -6,6 +6,8 @@ const LoginEmployee = require("./Employee/login");
 const deleteEmployeeById = require("./Employee/DeleteEmployee");
 const EmployeespecialDates = require("./Employee/employeeDateReminder");
 
+const EditPermission = require("./Employee/editEmployeePermissions");
+
 const updateEmployee = require("./Employee/updateEmployee");
 
 const getAllManagersbyDepartment = require("./Employee/getAllManagersByDepartment");

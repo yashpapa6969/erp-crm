@@ -52,4 +52,3 @@ httpServer.listen(port, () => {
 })
 
 
-module.exports.handler = serverless(app);

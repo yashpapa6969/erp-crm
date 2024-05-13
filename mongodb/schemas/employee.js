@@ -39,8 +39,8 @@ const employeeSchema = new mongoose.Schema({
 
 
     permissions: [{
-        type: String,
-        default: ['read_access']
+        name: { type: String, required: true },
+        value: { type: [String], required: true, enum: ['none', 'read', 'write', 'update', 'delete'] }
     }],
 
     aadharNumber: {
