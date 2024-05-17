@@ -5,10 +5,6 @@ const { buildDateRangeQuery } = require("../../middleware/rangeFilter");
 const getAllInvoicesFilter = async (req, res) => {
     const { financialYear, month, quarter, firstQuarterMonth } = req.body;
 
-    if (!firstQuarterMonth) {
-        return res.status(400).json({ message: 'First quarter month is required.' });
-    }
-
     try {
         const query = buildDateRangeQuery(financialYear, month, quarter, firstQuarterMonth);
 
