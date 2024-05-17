@@ -1,16 +1,29 @@
+// utils/dateFilter.js
 
+/**
+ * Builds a MongoDB query object for filtering documents by a date range.
+ * The date range is determined by the financial year, month, quarter, and the first month of the first quarter.
+ * 
+ * @param {string} [financialYear] - The financial year to filter by (optional).
+ * @param {string} [month] - The month to filter by (optional).
+ * @param {string} [quarter] - The quarter to filter by (optional).
+ * @param {string} [firstQuarterMonth] - The first month of the first quarter (optional).
+ * @returns {Object} The MongoDB query object with the date range.
+ * @throws {Error} If any input is invalid.
+ */
 const buildDateRangeQuery = (financialYear, month, quarter, firstQuarterMonth) => {
-    let query = {};
+    let query = {};  // Initialize an empty query object
     let startDate, endDate;
 
-    if (!firstQuarterMonth) {
-        throw new Error('First quarter month is required.');
+    if (!financialYear && !month && !quarter) {
+        // No filtering parameters provided, return an empty query to match all documents
+        return query;
     }
 
-    const year = parseInt(financialYear, 10);
-    const firstQMonth = parseInt(firstQuarterMonth, 10) - 1;
+    const year = financialYear ? parseInt(financialYear, 10) : null;
+    const firstQMonth = firstQuarterMonth ? parseInt(firstQuarterMonth, 10) - 1 : 3;  // Default to April if not provided
 
-    if (isNaN(year) || isNaN(firstQMonth) || firstQMonth < 0 || firstQMonth > 11) {
+    if ((financialYear && isNaN(year)) || (firstQuarterMonth && (isNaN(firstQMonth) || firstQMonth < 0 || firstQMonth > 11))) {
         throw new Error('Invalid financial year or first quarter month.');
     }
 
@@ -32,14 +45,17 @@ const buildDateRangeQuery = (financialYear, month, quarter, firstQuarterMonth) =
         const endMonth = (startMonth + 3) % 12;
         const endYear = startMonth + 3 > 11 ? startYear + 1 : startYear;
         endDate = new Date(endYear, endMonth, 0);
-    } else {
+    } else if (financialYear) {
         startDate = new Date(year, firstQMonth, 1);
         const endMonth = (firstQMonth + 12) % 12;
         const endYear = firstQMonth + 12 > 11 ? year + 1 : year;
         endDate = new Date(endYear, endMonth, 0);
     }
 
-    query.createdAt = { $gte: startDate, $lte: endDate };
+    if (startDate && endDate) {
+        query.createdAt = { $gte: startDate, $lte: endDate };
+    }
+
     return query;
 };
 
