@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const apis = require("../controllers/api");
-const { uploadFile } = require('../s3');
 const multer = require('multer');
 //const upload = multer({ dest: '/tmp/' })
 const path = require('path');

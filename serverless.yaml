@@ -18,38 +18,4 @@ functions:
     events:
       - httpApi: '*'
 
-  websocketConnect:
-    handler: server.handler
-    events:
-      - websocket:
-          route: $connect
-
-  websocketDisconnect:
-    handler: server.handler
-    events:
-      - websocket:
-          route: $disconnect
-
-  websocketDefault:
-    handler: server.handler
-    events:
-      - websocket:
-          route: $default
-
-  websocketSetName:
-    handler: server.handler
-    events:
-      - websocket:
-          route: setName
-
-  websocketSendPublic:
-    handler: server.handler
-    events:
-      - websocket:
-          route: sendPublic
-
-  websocketSendPrivate:
-    handler: server.handler
-    events:
-      - websocket:
-          route: sendPrivate
+  
