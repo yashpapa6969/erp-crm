@@ -1,7 +1,6 @@
 
 const schemas = require("../../mongodb/schemas/schemas");
 
-
 const getTotalLeaveCount = async (req, res) => {
     const { financialYear, month, quarter, firstQuarterMonth } = req.body; 
     let query = {}; 
@@ -46,7 +45,8 @@ const getTotalLeaveCount = async (req, res) => {
         return res.status(400).json({ message: 'Invalid financial year or first quarter month.' });
     }
 }
-    try {
+
+try {
         const totalLeaveCount = await schemas.LeaveRequest.countDocuments(query);
         res.json({ totalLeaveCount });
     } catch (err) {

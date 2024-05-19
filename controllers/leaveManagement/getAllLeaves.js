@@ -1,6 +1,7 @@
 const schemas = require("../../mongodb/schemas/schemas");
 
 const getAllLeaves = async (req, res) => {
+  const { financialYear, month, quarter, firstQuarterMonth } = req.body;
   try {
     const allLeaves = await schemas.LeaveRequest.aggregate([
       {
@@ -22,8 +23,9 @@ const getAllLeaves = async (req, res) => {
         }
       }
     ]);
-
-    res.status(200).json({ success: true, data: allLeaves });
+    const query = buildDateRangeQuery(financialYear, month, quarter, firstQuarterMonth);
+    const allLeavesQuery = await schemas.LeaveRequest.find(query);
+    res.status(200).json({ success: true, data: allLeavesQuery });
   } catch (err) {
     res.status(400).json({ success: false, error: err.message });
   }

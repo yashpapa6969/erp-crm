@@ -1,5 +1,5 @@
 const schemas = require("../../mongodb/schemas/schemas");
-
+const { buildDateRangeQuery } = require("../../middleware/rangeFilter");
 const addReceivable = async (req, res) => {
     try {
         const { clientName, brandName, companyName, totalAmount, amount, balanceDue } = req.body;
@@ -18,8 +18,10 @@ const addReceivable = async (req, res) => {
     }
 };
 const getAllReceivable = async (req, res) => {
-    try {
-        const receivables = await schemas.Receivable.find();
+    const { financialYear, month, quarter, firstQuarterMonth } = req.body;
+  try {
+      const query = buildDateRangeQuery(financialYear, month, quarter, firstQuarterMonth);
+        const receivables = await schemas.Receivable.find(query);
         res.json(receivables);
     } catch (error) {
         res.status(500).json({ message: error.message });

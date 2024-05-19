@@ -1,6 +1,6 @@
 const schemas = require("../../mongodb/schemas/schemas");
 
-getAllProducts= async (req, res) => {
+getAllProducts= async (req, res) => {    
     try {
         const products = await schemas.productServices.find({});
         res.status(200).json(products);
