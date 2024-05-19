@@ -84,7 +84,7 @@ router.get('/getTasksByTaskID/:task_id', (req, res) => { apis.getTasksByTaskID(r
 router.get('/updateTaskPriority/:task_id/:priority', (req, res) => { apis.updateTaskPriority(req, res) });
 router.get('/getAllCompletedTask', (req, res) => { apis.getAllCompletedTask(req, res) });
 
-router.put('employees/EditPermission/:employee_id', (req, res) => { apis.EditPermission(req, res) });
+router.put('/employees/EditPermission/:employee_id', (req, res) => { apis.EditPermission(req, res) });
 
 router.post('/sourceAddTag', (req, res) => { apis.sourceAddTag(req, res) });
 router.get('/sourceGetAllTags', (req, res) => { apis.sourceGetAllTags(req, res) });
