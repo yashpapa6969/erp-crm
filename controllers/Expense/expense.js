@@ -1,8 +1,10 @@
 const schemas = require("../../mongodb/schemas/schemas");
-
+const { buildDateRangeQuery } = require("../../middleware/rangeFilter");
 const getAllExpenses= async (req, res) => {
-    try {
-      const expenses = await schemas.Expense.find();
+  const { financialYear, month, quarter, firstQuarterMonth } = req.body;
+  try {
+      const query = buildDateRangeQuery(financialYear, month, quarter, firstQuarterMonth);
+      const expenses = await schemas.Expense.find(query);
       res.json(expenses);
     } catch (error) {
       res.status(500).send(error);

@@ -1,5 +1,5 @@
 const schemas = require("../../mongodb/schemas/schemas");
-
+const { buildDateRangeQuery } = require("../../middleware/rangeFilter");
 const addLedger = async (req, res) => {
     try {
         const { companyName, brandName, clientName, client_id, employee_id, description, received,paid} = req.body;
@@ -20,8 +20,10 @@ const addLedger = async (req, res) => {
     }
 };
 const getAllLedgers= async (req, res) => {
+    const { financialYear, month, quarter, firstQuarterMonth } = req.body;
     try {
-        const entries = await schemas.Ledger.find();
+        const query = buildDateRangeQuery(financialYear, month, quarter, firstQuarterMonth);
+        const entries = await schemas.Ledger.find(query);
         res.json(entries);
     } catch (error) {
         res.status(500).json({ message: error.message });
