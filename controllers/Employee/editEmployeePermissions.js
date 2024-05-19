@@ -1,7 +1,7 @@
 const schemas = require("../../mongodb/schemas/schemas");
 
 
-EditPermission= async (req, res) => {
+const EditPermission = async (req, res) => {
     const employee_id = req.params.employee_id;
     const { permissions } = req.body;
 

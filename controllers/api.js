@@ -168,6 +168,7 @@ var apis = {
   getAllManagersbyDepartment: getAllManagersbyDepartment,
   getManagersAllDetails: getManagersAllDetails,
   EmployeespecialDates: EmployeespecialDates,
+  EditPermission: EditPermission,
 
   createProject: createProject,
   getAllProjects: getAllProjects,
