@@ -160,7 +160,22 @@ const getHolidays = require("./calender/getHolidays");
 const updateHolidayById = require("./calender/updateHolidayById");
 const deleteHolidayById = require("./calender/deleteHolidayById");
 
+
+
+
+
+
+const getAllMessages = require("./Uhl/getAllMessage");
+const addMessage = require("./Uhl/addMessage");
+
+
 var apis = {
+
+  getAllMessages:getAllMessages,
+  addMessage:addMessage,
+
+
+
   createEmployee: createEmployee,
   getAllEmployees: getAllEmployees,
   getEmployeeDetails: getEmployeeDetails,

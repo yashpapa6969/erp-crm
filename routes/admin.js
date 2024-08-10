@@ -27,6 +27,15 @@ const uploadFields = upload.fields([
 ]);
 
 
+
+router.get('/getAllMessages', (req, res) => { apis.getAllMessages(req, res) });
+router.post('/addMessage', (req, res) => { apis.addMessage(req, res) });
+
+
+
+
+
+
 router.patch('/updateClient/:client_id', uploadFields, apis.updateClient);
 router.post('/createLead', uploadFields, apis.createLead);
 router.post('/createClient', uploadFields, apis.createClient);

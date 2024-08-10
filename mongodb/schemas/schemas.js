@@ -20,8 +20,11 @@ const Calender = require('./calender');
 
 const Question = require('./knowledgeBase');
 
+const Uhl = require('./uhl');
+
 var schemas =
 {
+  Uhl:Uhl,
   Question: Question,
   Project: Project,
   Employee: Employee,
